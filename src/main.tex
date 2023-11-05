@@ -1,9 +1,12 @@
 % Preamble
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 
 % Packages
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{import}
+\usepackage{parskip}
+\usepackage{graphicx}
 
 % Document
 \title{P1}
@@ -12,8 +15,12 @@
 \begin{document}
     \maketitle
 
-    Hello, big world! \cite{how-to}
+    \chapter{Problem Analysis}
 
-    \bibliography{main}
+    \import{./}{kristiyan.tex}
+
+    \newpage
+    %\bibliography{main}
+    \bibliography{kristiyan}
     \bibliographystyle{IEEEtran}
 \end{document}
