@@ -4,7 +4,6 @@
 % Packages
 \usepackage[english]{babel}
 \usepackage{amsmath}
-\usepackage{import}
 \usepackage{parskip}
 \usepackage{graphicx}
 
@@ -15,11 +14,12 @@
 \begin{document}
     \maketitle
 
-    \chapter{Problem Analysis}
-    \import{./}{kristiyan.tex}
+    %\chapter{Problem Analysis} 
+    % textidote siger at den her kapitel er alt for kort, 
+    % men den kan ikke se at jeg importerer mere text
+    
+    \input{kristiyan}
 
-    \newpage
-    %\bibliography{main}
-    \bibliography{kristiyan}
+    \bibliography{main, kristiyan} 
     \bibliographystyle{IEEEtran}
 \end{document}
