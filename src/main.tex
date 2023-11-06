@@ -2,8 +2,11 @@
 \documentclass[11pt]{article}
 
 % Packages
+\usepackage[subpreambles=true]{standalone}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{import}
+\usepackage{hyperref}
 
 % Document
 \title{P1}
@@ -13,6 +16,8 @@
     \maketitle
 
     Hello, big world! \cite{how-to}
+
+    \input{context}
 
     \bibliography{main}
     \bibliographystyle{IEEEtran}
