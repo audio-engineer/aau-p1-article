@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TeXtidote analysis</title>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+}
+.highlight, .highlight-sh, .highlight-spelling {
+  padding: 2pt;
+  border-radius: 4pt;
+  cursor: help;
+  opacity: 0.7;
+  border: dashed 1px;
+}
+.highlight {
+  background-color: orange;
+  color: black;
+}
+.highlight-sh {
+  background-color: yellow;
+  color: black;
+}
+.highlight-spelling {
+  background-color: red;
+  color: white;
+}
+div.original-file {
+  font-family: monospace;
+  font-size: 11pt;
+  background-color: #f8f8ff;
+  padding: 20pt;
+  border-radius: 6pt;
+}
+.textidote {
+  	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiICAgd2lkdGg9IjEwMC4wOTEwNW1tIiAgIGhlaWdodD0iMTguMjA5MDk5bW0iICAgdmlld0JveD0iMCAwIDEwMC4wOTEwNSAxOC4yMDkwOTkiICAgdmVyc2lvbj0iMS4xIiAgIGlkPSJzdmc4IiAgIGlua3NjYXBlOnZlcnNpb249IjAuOTEgcjEzNzI1IiAgIHNvZGlwb2RpOmRvY25hbWU9InRleHRpZG90ZS5zdmciPiAgPGRlZnMgICAgIGlkPSJkZWZzMiIgLz4gIDxzb2RpcG9kaTpuYW1lZHZpZXcgICAgIGlkPSJiYXNlIiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIiAgICAgYm9yZGVyY29sb3I9IiM2NjY2NjYiICAgICBib3JkZXJvcGFjaXR5PSIxLjAiICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMC4wIiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIgICAgIGlua3NjYXBlOnpvb209IjEiICAgICBpbmtzY2FwZTpjeD0iLTI1NC4yNTMwOSIgICAgIGlua3NjYXBlOmN5PSItMjc4LjM3NTkxIiAgICAgaW5rc2NhcGU6ZG9jdW1lbnQtdW5pdHM9Im1tIiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ibGF5ZXIxIiAgICAgc2hvd2dyaWQ9ImZhbHNlIiAgICAgZml0LW1hcmdpbi10b3A9IjAiICAgICBmaXQtbWFyZ2luLWxlZnQ9IjAiICAgICBmaXQtbWFyZ2luLXJpZ2h0PSIwIiAgICAgZml0LW1hcmdpbi1ib3R0b209IjAiICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE5MjAiICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMDIxIiAgICAgaW5rc2NhcGU6d2luZG93LXg9IjAiICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMjY1IiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIgLz4gIDxtZXRhZGF0YSAgICAgaWQ9Im1ldGFkYXRhNSI+ICAgIDxyZGY6UkRGPiAgICAgIDxjYzpXb3JrICAgICAgICAgcmRmOmFib3V0PSIiPiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+ICAgICAgICA8ZGM6dHlwZSAgICAgICAgICAgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIgLz4gICAgICAgIDxkYzp0aXRsZSAvPiAgICAgIDwvY2M6V29yaz4gICAgPC9yZGY6UkRGPiAgPC9tZXRhZGF0YT4gIDxnICAgICBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIgICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiICAgICBpZD0ibGF5ZXIxIiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI5LjczODA5NSwtNzAuNTc3NzUxKSI+ICAgIDxnICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjIwLjkyODk0NTU0cHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MS45Nzc1MzgyMztzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZSIgICAgICAgaWQ9InRleHQ4MzYiPiAgICAgIDxwYXRoICAgICAgICAgZD0ibSAzMC43MjY4NjQsNzEuNTY2NTIgNS4yMzIyMzYsMCAwLDQuMjA5MDQ0IDUuODEzNTk2LDAgMCwzLjYwNDQyOSAtNS44MTM1OTYsMCAwLDQuODEzNjU4IDUuODEzNTk2LDAgMCwzLjYwNDQyOSAtMTEuMDQ1ODMyLDAgMCwtMTYuMjMxNTYgeiIgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LWZhbWlseTpUdXRvcjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOlR1dG9yO2ZpbGw6I2ZmZmZmZjtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MS45Nzc1MzgyMztzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZSIgICAgICAgICBpZD0icGF0aDMzODYiIC8+ICAgICAgPHBhdGggICAgICAgICBkPSJtIDQyLjMzNTg4OCw3NS43NzU1NjQgMTEuMDQ1ODMyLDAgMCw3LjgxMzQ3MyAtNS44MTM1OTYsMCAwLDAuNjA0NjE0IDUuODEzNTk2LDAgMCwzLjYwNDQyOSAtMTEuMDQ1ODMyLDAgMCwtMTIuMDIyNTE2IHogbSA1LjIzMjIzNiw0LjIwOTA0MyAwLjU4MTM2LDAgMCwtMC42MDQ2MTQgLTAuNTgxMzYsMCAwLDAuNjA0NjE0IHoiICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1mYW1pbHk6VHV0b3I7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpUdXRvcjtmaWxsOiNmZmZmZmY7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjEuOTc3NTM4MjM7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmUiICAgICAgICAgaWQ9InBhdGgzMzg4IiAvPiAgICAgIDxwYXRoICAgICAgICAgZD0ibSA1My45NDQ5MTIsNzUuNzc1NTY0IDUuMjMyMjM2LDAgMCwzLjYwNDQyOSAtNS4yMzIyMzYsMCAwLC0zLjYwNDQyOSB6IG0gNS44MTM1OTYsMCA1LjIzMjIzNiwwIDAsMy42MDQ0MjkgLTUuMjMyMjM2LDAgMCwtMy42MDQ0MjkgeiBtIC01LjgxMzU5Niw4LjQxODA4NyA1LjIzMjIzNiwwIDAsMy42MDQ0MjkgLTUuMjMyMjM2LDAgMCwtMy42MDQ0MjkgeiBtIDUuODEzNTk2LDAgNS4yMzIyMzYsMCAwLDMuNjA0NDI5IC01LjIzMjIzNiwwIDAsLTMuNjA0NDI5IHoiICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1mYW1pbHk6VHV0b3I7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpUdXRvcjtmaWxsOiNmZmZmZmY7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjEuOTc3NTM4MjM7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmUiICAgICAgICAgaWQ9InBhdGgzMzkwIiAvPiAgICAgIDxwYXRoICAgICAgICAgZD0ibSA2NS41NTM5MzYsNzEuNTY2NTIgNS4yMzIyMzYsMCAwLDQuMjA5MDQ0IDUuODEzNTk2LDAgMCwzLjYwNDQyOSAtNS44MTM1OTYsMCAwLDQuODEzNjU4IDUuODEzNTk2LDAgMCwzLjYwNDQyOSAtMTEuMDQ1ODMyLDAgMCwtMTYuMjMxNTYgeiIgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LWZhbWlseTpUdXRvcjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOlR1dG9yO2ZpbGw6I2ZmZmZmZjtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MS45Nzc1MzgyMztzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZSIgICAgICAgICBpZD0icGF0aDMzOTIiIC8+ICAgICAgPHBhdGggICAgICAgICBkPSJtIDc3LjE2Mjk2LDc1Ljc3NTU2NCA1LjIzMjIzNiwwIDAsMTIuMDIyNTE2IC01LjIzMjIzNiwwIDAsLTEyLjAyMjUxNiB6IG0gMCwtNC4yMDkwNDQgNS4yMzIyMzYsMCAwLDMuNjA0NDMgLTUuMjMyMjM2LDAgMCwtMy42MDQ0MyB6IiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtZmFtaWx5OlR1dG9yOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246VHV0b3I7ZmlsbDojZmZmZmZmO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxLjk3NzUzODIzO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lIiAgICAgICAgIGlkPSJwYXRoMzM5NCIgLz4gICAgICA8cGF0aCAgICAgICAgIGQ9Im0gODIuOTY3NDcyLDc1Ljc3NTU2NCA1LjgxMzU5NiwwIDAsLTQuMjA5MDQ0IDUuMjMyMjM2LDAgMCwxNi4yMzE1NiAtMTEuMDQ1ODMyLDAgMCwtMTIuMDIyNTE2IHogbSA1LjIzMjIzNiw4LjQxODA4NyAwLjU4MTM2LDAgMCwtNC44MTM2NTggLTAuNTgxMzYsMCAwLDQuODEzNjU4IHoiICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1mYW1pbHk6VHV0b3I7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpUdXRvcjtmaWxsOiNmZmZmZmY7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjEuOTc3NTM4MjM7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmUiICAgICAgICAgaWQ9InBhdGgzMzk2IiAvPiAgICAgIDxwYXRoICAgICAgICAgZD0ibSA5NC41NzY0OTYsNzUuNzc1NTY0IDExLjA0NTgzNCwwIDAsMTIuMDIyNTE2IC0xMS4wNDU4MzQsMCAwLC0xMi4wMjI1MTYgeiBtIDUuMjMyMjM3LDguNDE4MDg3IDAuNTgxMzU3LDAgMCwtNC44MTM2NTggLTAuNTgxMzU3LDAgMCw0LjgxMzY1OCB6IiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtZmFtaWx5OlR1dG9yOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246VHV0b3I7ZmlsbDojZmZmZmZmO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxLjk3NzUzODIzO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lIiAgICAgICAgIGlkPSJwYXRoMzM5OCIgLz4gICAgICA8cGF0aCAgICAgICAgIGQ9Im0gMTA2LjE4NTUyLDcxLjU2NjUyIDUuMjMyMjQsMCAwLDQuMjA5MDQ0IDUuODEzNTksMCAwLDMuNjA0NDI5IC01LjgxMzU5LDAgMCw0LjgxMzY1OCA1LjgxMzU5LDAgMCwzLjYwNDQyOSAtMTEuMDQ1ODMsMCAwLC0xNi4yMzE1NiB6IiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtZmFtaWx5OlR1dG9yOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246VHV0b3I7ZmlsbDojZmZmZmZmO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxLjk3NzUzODIzO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lIiAgICAgICAgIGlkPSJwYXRoMzQwMCIgLz4gICAgICA8cGF0aCAgICAgICAgIGQ9Im0gMTE3Ljc5NDU0LDc1Ljc3NTU2NCAxMS4wNDU4NCwwIDAsNy44MTM0NzMgLTUuODEzNiwwIDAsMC42MDQ2MTQgNS44MTM2LDAgMCwzLjYwNDQyOSAtMTEuMDQ1ODQsMCAwLC0xMi4wMjI1MTYgeiBtIDUuMjMyMjQsNC4yMDkwNDMgMC41ODEzNiwwIDAsLTAuNjA0NjE0IC0wLjU4MTM2LDAgMCwwLjYwNDYxNCB6IiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtZmFtaWx5OlR1dG9yOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246VHV0b3I7ZmlsbDojZmZmZmZmO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxLjk3NzUzODIzO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lIiAgICAgICAgIGlkPSJwYXRoMzQwMiIgLz4gICAgPC9nPiAgPC9nPjwvc3ZnPg==);
+}
+h2.filename {
+  font-family: monospace;
+}
+h1.textidote {
+  width: 378px;
+  height: 68px;
+  display: block;
+}
+.keyword1 {
+  font-weight: bold;
+  color: green;
+}
+.keyword2 {
+  font-weight: bold;
+  color: darkblue;
+}
+.comment, .comment * {
+  color: darkred;
+  font-weight: normal;
+}
+.linenb {
+  font-style: italic;
+  color: lightgrey;
+  width: 30pt;
+  float: left;
+  margin-top: 1pt;
+  margin-bottom: 1pt;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.codeline {
+  margin-left: -30pt;
+  padding-left: 60pt;
+  margin-top: 1pt;
+  margin-bottom: 1pt;
+}
+.no-text {
+  display: none;
+}
+.clear {
+  clear: both;
+}
+</style>
+</head>
+<body>
+<a href="https://sylvainhalle.github.io/textidote"><h1 class="textidote"><span class="no-text">Results of TeXtidote analysis</span></h1></a>
+<p>Here is the result of analyzing your file(s) with TeXtidote. Hover the mouse over highlighted portions of the document to read a tooltip that gives you some writing advice.</p>
+<h2 class="filename">src/kristiyan.tex</h2>
+
+<p>Found 0 warning(s)</p>
+<div class="original-file">
+<div class="linenb">&nbsp;&nbsp;1</div><div class="codeline"><span class="keyword1">\section</span>{Target audience analysis}</div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;2</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;3</div><div class="codeline">When working on a large scale project, it is important to ask ourselves ``who are we doing this for?''. The problem has to be big enough to affect a big number of users and the solution has to be viable to be used by said users. But we can't make a solution without understanding who our users are. </div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;4</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;5</div><div class="codeline"><span class="keyword1">\subsection</span>{Audience}</div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;6</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;7</div><div class="codeline">Our problem is about travelling, which covers a wide range of people, as everyone travels one way or another. Some examples include travelling to work, to school, family visits, or outings with friends. Therefore we have to narrow it down, as we can't address everyone. There are already some solution to the problem, but from our `analysis over existing solutions', we figured that they are more fit for single trips, rather than every day travelling. This is mainly what we want to focus on, which is why our target audience is \underline{commuters}. </div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;8</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;&nbsp;9</div><div class="codeline"><span class="keyword1">\subsection</span>{Age range}</div><div class="clear"></div>
+<div class="linenb">&nbsp;10</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;11</div><div class="codeline">With our group in mind, we can estimate an age range for commuters. Commuting means to travel to the same destination and back on a regular basis. Therefore our focus on destinations for commuting are either education or work. </div><div class="clear"></div>
+<div class="linenb">&nbsp;12</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;13</div><div class="codeline">In Denmark, primary schools are picked based on the district where the student lives \cite{primary_school}. This would exclude them from our target audience, because we want to focus on long distance commuters. At shorter distances, we would need to excludes planes, trains, and for people younger than 18, cars, making it a matter of whether the student should commute by walking or by bike, which are both CO2 friendly options. This makes our solution irrelevant for this age group. Things change from secondary education however, as students can freely pick which high school they want to go to. This makes them a better candidate for our problem, as they can choose a school farther away from where they live. Secondary education starts when the student is 16 years old \cite{secondary_school}. Our cutoff in the age range would be retirement. We looked into when the retirement age is in Denmark, and it is 66-68 years of age \cite{retirement}. That would make our age range \underline{between 15 and 68 years}.</div><div class="clear"></div>
+<div class="linenb">&nbsp;14</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;15</div><div class="codeline">The age range is quite big compared to many other projects, which makes our solution rather difficult, as we have to accommodate it for teenagers, adults and elderly. This would mean to make the program both easy and fast to use. </div><div class="clear"></div>
+<div class="linenb">&nbsp;16</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;17</div><div class="codeline"><span class="keyword1">\subsection</span>{Sender} <span class="comment">% Spøgsmål: er afsenderen os eller AAU? </span></div><div class="clear"></div>
+<div class="linenb">&nbsp;18</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;19</div><div class="codeline">As this is a private project, the sender is us. Rejseplanen, which is a similar solution that we've been looking inspiration from, is owned by DSB, Movia and many others from the public transportation business \cite{om_rejseplanen}, so if we were tasked by them to make a solution to the main problem, then they would be the senders. However, we're not looking to distribute our program.</div><div class="clear"></div>
+<div class="linenb">&nbsp;20</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;21</div><div class="codeline"><span class="keyword1">\subsection</span>{Persona}</div><div class="clear"></div>
+<div class="linenb">&nbsp;22</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;23</div><div class="codeline">To further analyse our age group, we decided to use the `persona' method. How it works is that we create fictional people with different problems and look into how our solution could help them  with their problem. We have made 3 personas, where each of them cover different age groups and have different problems related to the main problem. </div><div class="clear"></div>
+<div class="linenb">&nbsp;24</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;25</div><div class="codeline"><span class="comment"><span class="comment">% Jeg tænker at det vil være bedre hvis de tre var i bilagen</span></span></div><div class="clear"></div>
+<div class="linenb">&nbsp;26</div><div class="codeline"><span class="comment"><span class="comment">% De ser heller ikke pænt ud, hvis Martin kan hjælpe med det ^_^</span></span></div><div class="clear"></div>
+<div class="linenb">&nbsp;27</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;28</div><div class="codeline"><span class="keyword2">\begin{tabular}</span>{|l l|}</div><div class="clear"></div>
+<div class="linenb">&nbsp;29</div><div class="codeline">    \hline</div><div class="clear"></div>
+<div class="linenb">&nbsp;30</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;31</div><div class="codeline">    &amp; <span class="keyword1">\includegraphics</span>[width=0.25\textwidth]{images/Asger} \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;32</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;33</div><div class="codeline">    Name &amp; Asger Johansen \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;34</div><div class="codeline">    Age &amp; 28 years old \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;35</div><div class="codeline">    Occupation &amp; Designer \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;36</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;37</div><div class="codeline">    What's important &amp; For Asger it is important to spend his days to the fullest. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;38</div><div class="codeline">    &amp; He is very outgoing, so he goes out with people after work. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;39</div><div class="codeline">    &amp; He hates having to stay overtime. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;40</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;41</div><div class="codeline">    Current problem &amp; Asger just got a new job offer, but it's in another city. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;42</div><div class="codeline">    &amp; He isn't sure whether to move out or to commute there. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;43</div><div class="codeline">    &amp; He is also afraid of losing his free time if he has to travel. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;44</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;45</div><div class="codeline">    Potential solution &amp; We would want to make a program, where Asger could \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;46</div><div class="codeline">    &amp; calculate how long it'd take to commute from where he\\</div><div class="clear"></div>
+<div class="linenb">&nbsp;47</div><div class="codeline">    &amp; lives to the new job. He could compare different forms of \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;48</div><div class="codeline">    &amp; transport and decide whether it's worth it to commute or \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;49</div><div class="codeline">    &amp; if he should move out instead. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;50</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;51</div><div class="codeline">    \hline</div><div class="clear"></div>
+<div class="linenb">&nbsp;52</div><div class="codeline"><span class="keyword2">\end{tabular}</span></div><div class="clear"></div>
+<div class="linenb">&nbsp;53</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;54</div><div class="codeline"><span class="keyword2">\begin{tabular}</span>{|l l|}</div><div class="clear"></div>
+<div class="linenb">&nbsp;55</div><div class="codeline">    \hline</div><div class="clear"></div>
+<div class="linenb">&nbsp;56</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;57</div><div class="codeline">    &amp; <span class="keyword1">\includegraphics</span>[width=0.25\textwidth]{images/Josefine} \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;58</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;59</div><div class="codeline">    Name &amp; Josefine Madsen \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;60</div><div class="codeline">    Age &amp; 19 years old \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;61</div><div class="codeline">    Occupation &amp; Student \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;62</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;63</div><div class="codeline">    What's important &amp; For Josefine it is important to look after the nature. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;64</div><div class="codeline">    &amp; She's been taught to think green since she was little, so \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;65</div><div class="codeline">    &amp; she doesn't like taking public transport and doesn't want \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;66</div><div class="codeline">    &amp; to drive a gas car. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;67</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;68</div><div class="codeline">    Current problem &amp; Josefine is starting university, but she lives outside the \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;69</div><div class="codeline">    &amp; city. She is considering whether to take the s-train, the  \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;70</div><div class="codeline">    &amp; train or a bus to university. She is also considering \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;71</div><div class="codeline">    &amp; buying an electric car. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;72</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;73</div><div class="codeline">    Potential solution &amp; We would want to make a program, where Josefine \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;74</div><div class="codeline">    &amp; could calculate how much the emissions is made from the \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;75</div><div class="codeline">    &amp; different forms of transport. She can then compare them \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;76</div><div class="codeline">    &amp; and choose what works best for her.\\</div><div class="clear"></div>
+<div class="linenb">&nbsp;77</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;78</div><div class="codeline">    \hline</div><div class="clear"></div>
+<div class="linenb">&nbsp;79</div><div class="codeline"><span class="keyword2">\end{tabular}</span></div><div class="clear"></div>
+<div class="linenb">&nbsp;80</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;81</div><div class="codeline"><span class="keyword2">\begin{tabular}</span>{|l l|}</div><div class="clear"></div>
+<div class="linenb">&nbsp;82</div><div class="codeline">    \hline</div><div class="clear"></div>
+<div class="linenb">&nbsp;83</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;84</div><div class="codeline">    &amp; <span class="keyword1">\includegraphics</span>[width=0.25\textwidth]{images/Martin} \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;85</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;86</div><div class="codeline">    Name &amp; Martin Jensen \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;87</div><div class="codeline">    Age &amp; 34 years old \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;88</div><div class="codeline">    Occupation &amp; Factory worker \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;89</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;90</div><div class="codeline">    What's important &amp; For Martin it is important to live a carefree life. He has a \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;91</div><div class="codeline">    &amp; family and friends at work, so he's pretty happy with himself. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;92</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;93</div><div class="codeline">    Current problem &amp; Martin drives a gas car to work, but he wants to change \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;94</div><div class="codeline">    &amp; that for the sake of the environment. He has gotten used to \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;95</div><div class="codeline">    &amp; the comfort of his car, but can't afford an electric car. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;96</div><div class="codeline">    &amp; He wonders if public transport could match that. \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;97</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">&nbsp;98</div><div class="codeline">    Potential solution &amp; We would want to make a program, where Martin can\\</div><div class="clear"></div>
+<div class="linenb">&nbsp;99</div><div class="codeline">    &amp; figure out what forms of public transport are most \\</div><div class="clear"></div>
+<div class="linenb">100</div><div class="codeline">    &amp; comfortable and most climate friendly. \\</div><div class="clear"></div>
+<div class="linenb">101</div><div class="codeline">    &amp; \\</div><div class="clear"></div>
+<div class="linenb">102</div><div class="codeline">    \hline</div><div class="clear"></div>
+<div class="linenb">103</div><div class="codeline"><span class="keyword2">\end{tabular}</span></div><div class="clear"></div>
+</div>
+<h2 class="filename">src/main.tex</h2>
+
+<p>Found 0 warning(s)</p>
+<div class="original-file">
+<div class="linenb">&nbsp;1</div><div class="codeline"><span class="comment"><span class="comment">% Preamble</span></span></div><div class="clear"></div>
+<div class="linenb">&nbsp;2</div><div class="codeline"><span class="keyword1">\documentclass</span>[11pt]{report}</div><div class="clear"></div>
+<div class="linenb">&nbsp;3</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;4</div><div class="codeline"><span class="comment"><span class="comment">% Packages</span></span></div><div class="clear"></div>
+<div class="linenb">&nbsp;5</div><div class="codeline"><span class="keyword1">\usepackage</span>[subpreambles=true]{standalone}</div><div class="clear"></div>
+<div class="linenb">&nbsp;6</div><div class="codeline"><span class="keyword1">\usepackage</span>[english]{babel}</div><div class="clear"></div>
+<div class="linenb">&nbsp;7</div><div class="codeline"><span class="keyword1">\usepackage</span>{amsmath}</div><div class="clear"></div>
+<div class="linenb">&nbsp;8</div><div class="codeline"><span class="keyword1">\usepackage</span>{parskip}</div><div class="clear"></div>
+<div class="linenb">&nbsp;9</div><div class="codeline"><span class="keyword1">\usepackage</span>{graphicx}</div><div class="clear"></div>
+<div class="linenb">10</div><div class="codeline"><span class="keyword1">\usepackage</span>{import}</div><div class="clear"></div>
+<div class="linenb">11</div><div class="codeline"><span class="keyword1">\usepackage</span>{hyperref}</div><div class="clear"></div>
+<div class="linenb">12</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">13</div><div class="codeline"><span class="comment"><span class="comment">% Document</span></span></div><div class="clear"></div>
+<div class="linenb">14</div><div class="codeline"><span class="keyword1">\title</span>{P1}</div><div class="clear"></div>
+<div class="linenb">15</div><div class="codeline">\author{Group 4}</div><div class="clear"></div>
+<div class="linenb">16</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">17</div><div class="codeline"><span class="keyword2">\begin{document}</span></div><div class="clear"></div>
+<div class="linenb">18</div><div class="codeline">    <span class="keyword1">\maketitle</span></div><div class="clear"></div>
+<div class="linenb">19</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">20</div><div class="codeline">    <span class="comment">%\chapter{Problem Analysis} </span></div><div class="clear"></div>
+<div class="linenb">21</div><div class="codeline">    <span class="comment">% textidote siger at den her kapitel er alt for kort, </span></div><div class="clear"></div>
+<div class="linenb">22</div><div class="codeline">    <span class="comment">% men den kan ikke se at jeg importerer mere text</span></div><div class="clear"></div>
+<div class="linenb">23</div><div class="codeline">    </div><div class="clear"></div>
+<div class="linenb">24</div><div class="codeline">    \input{kristiyan}</div><div class="clear"></div>
+<div class="linenb">25</div><div class="codeline">    \input{context}</div><div class="clear"></div>
+<div class="linenb">26</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">27</div><div class="codeline">    \input{context}</div><div class="clear"></div>
+<div class="linenb">28</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">29</div><div class="codeline">    \bibliography{main}</div><div class="clear"></div>
+<div class="linenb">30</div><div class="codeline">    \bibliographystyle{IEEEtran}</div><div class="clear"></div>
+<div class="linenb">31</div><div class="codeline"><span class="keyword2">\end{document}</span></div><div class="clear"></div>
+</div>
+<h2 class="filename">src/context.tex</h2>
+
+<p>Found 0 warning(s)</p>
+<div class="original-file">
+<div class="linenb">&nbsp;1</div><div class="codeline"><span class="keyword1">\documentclass</span>[subpreambles=true]{standalone}</div><div class="clear"></div>
+<div class="linenb">&nbsp;2</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">&nbsp;3</div><div class="codeline"><span class="keyword2">\begin{document}</span></div><div class="clear"></div>
+<div class="linenb">&nbsp;4</div><div class="codeline">    <span class="keyword1">\section</span>{Context}<span class="keyword1">\label</span>{sec:context}</div><div class="clear"></div>
+<div class="linenb">&nbsp;5</div><div class="codeline">    Commuting is one of the staples, so to speak, of modern life, and a central part of the post-modern industrialized</div><div class="clear"></div>
+<div class="linenb">&nbsp;6</div><div class="codeline">    society.</div><div class="clear"></div>
+<div class="linenb">&nbsp;7</div><div class="codeline">    As cities rapidly grew after the industrial revolution and more and more large-scale workplaces became the norm in</div><div class="clear"></div>
+<div class="linenb">&nbsp;8</div><div class="codeline">    cities, people started commuting to work from suburban areas to the city.</div><div class="clear"></div>
+<div class="linenb">&nbsp;9</div><div class="codeline">    In the early stages of this development in the beginning and middle of the 20th century, commuting was a rather</div><div class="clear"></div>
+<div class="linenb">10</div><div class="codeline">    simple task: People just had to get to work in the mornings and back home in the evenings.</div><div class="clear"></div>
+<div class="linenb">11</div><div class="codeline">    Nowadays, the complexity of commuting has increased drastically with many additional factors having to be</div><div class="clear"></div>
+<div class="linenb">12</div><div class="codeline">    considered, e.g., how big of a carbon footprint is acceptable for me?</div><div class="clear"></div>
+<div class="linenb">13</div><div class="codeline">    This question especially became relevant in recent times due to the increasingly noticeable effects of climate</div><div class="clear"></div>
+<div class="linenb">14</div><div class="codeline">    change and the scientific evidence that increased CO2 emissions greatly contribute to climate change.</div><div class="clear"></div>
+<div class="linenb">15</div><div class="codeline">    Other questions the modern-day commuter might ask themselves are: Do I need/want to commute every day, or is it ok</div><div class="clear"></div>
+<div class="linenb">16</div><div class="codeline">    if I work from home part of the week?</div><div class="clear"></div>
+<div class="linenb">17</div><div class="codeline">    What should be the balance between cost and environmental protection?</div><div class="clear"></div>
+<div class="linenb">18</div><div class="codeline">    Do I live in an area where the availability of public means of transportation is scarce, so I am more inclined to</div><div class="clear"></div>
+<div class="linenb">19</div><div class="codeline">    use a car?</div><div class="clear"></div>
+<div class="linenb">20</div><div class="codeline">    One of the simpler questions someone that considers commuting could ask themselves is merely: What commuting route</div><div class="clear"></div>
+<div class="linenb">21</div><div class="codeline">    should I choose?</div><div class="clear"></div>
+<div class="linenb">22</div><div class="codeline">    With the advent of the digital age and smartphones, the answer to this question have become commuting planner</div><div class="clear"></div>
+<div class="linenb">23</div><div class="codeline">    applications, that have become increasingly popular in recent years, helping individuals plan their daily commutes</div><div class="clear"></div>
+<div class="linenb">24</div><div class="codeline">    efficiently and minimize travel-related stress.</div><div class="clear"></div>
+<div class="linenb">25</div><div class="codeline">    These applications offer various features and functionalities, but they often have shortcomings that prevent the</div><div class="clear"></div>
+<div class="linenb">26</div><div class="codeline">    commuter from more advanced planning strategies, including the lack of easy access to cost and environmental impact</div><div class="clear"></div>
+<div class="linenb">27</div><div class="codeline">    information, e.g., how much C02 will be spent on a trip, how much a trip will cost, as well as limited user control</div><div class="clear"></div>
+<div class="linenb">28</div><div class="codeline">    over how these factors are weighed in route calculations.</div><div class="clear"></div>
+<div class="linenb">29</div><div class="codeline">    Existing solutions include the (mostly) worldwide available Google Maps, the popular Danish Rejseplanen service and</div><div class="clear"></div>
+<div class="linenb">30</div><div class="codeline">    a couple of other mobile and web applications that are not location-bound but can be used internationally, like</div><div class="clear"></div>
+<div class="linenb">31</div><div class="codeline">    \url{commute.org}.</div><div class="clear"></div>
+<div class="linenb">32</div><div class="codeline">    We will now look at some existing solutions and discuss their shortcomings to better understand the root of the</div><div class="clear"></div>
+<div class="linenb">33</div><div class="codeline">    problem.</div><div class="clear"></div>
+<div class="linenb">34</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">35</div><div class="codeline">    <span class="keyword1">\subsection</span>{Google Maps}<span class="keyword1">\label</span>{subsec:google-maps}</div><div class="clear"></div>
+<div class="linenb">36</div><div class="codeline">    The above-mentioned application is a widely used travel and commuting planner that provides detailed navigation and</div><div class="clear"></div>
+<div class="linenb">37</div><div class="codeline">    route information.</div><div class="clear"></div>
+<div class="linenb">38</div><div class="codeline">    While it offers estimated travel time and distance, it lacks a direct and user-friendly way to determine the cost of</div><div class="clear"></div>
+<div class="linenb">39</div><div class="codeline">    the trip or the CO2 footprint.</div><div class="clear"></div>
+<div class="linenb">40</div><div class="codeline">    Users cannot easily access information about how much money the trip will cost, as Google Maps does not integrate</div><div class="clear"></div>
+<div class="linenb">41</div><div class="codeline">    with financial or payment apps to calculate expenses like tolls, fuel, or public transportation fees.</div><div class="clear"></div>
+<div class="linenb">42</div><div class="codeline">    This makes sense since Google tries to target a large international audience with the application, making is</div><div class="clear"></div>
+<div class="linenb">43</div><div class="codeline">    difficult or nearly impossible to cover every localized payment solution or traveling restriction.</div><div class="clear"></div>
+<div class="linenb">44</div><div class="codeline">    Similarly, it does not provide real-time data on the CO2 emissions associated with the chosen route, making it</div><div class="clear"></div>
+<div class="linenb">45</div><div class="codeline">    challenging for users to make informed decisions about their environmental impact.</div><div class="clear"></div>
+<div class="linenb">46</div><div class="codeline">    Users have very limited control over how cost and environmental factors are weighed in route calculations, as Google</div><div class="clear"></div>
+<div class="linenb">47</div><div class="codeline">    Maps primarily focuses on travel time and distance.</div><div class="clear"></div>
+<div class="linenb">48</div><div class="codeline">    The only available selection options are preferences for means of transportation and whether the route should be</div><div class="clear"></div>
+<div class="linenb">49</div><div class="codeline">    calculated with ``fewer transfers'', ``less walking'' or ``wheelchair accessible'', where all three of the options</div><div class="clear"></div>
+<div class="linenb">50</div><div class="codeline">    seem to be tailored towards people with restricted mobility.</div><div class="clear"></div>
+<div class="linenb">51</div><div class="codeline">&nbsp;</div><div class="clear"></div>
+<div class="linenb">52</div><div class="codeline">    <span class="keyword1">\subsection</span>{Rejseplanen}<span class="keyword1">\label</span>{subsec:rejseplanen}</div><div class="clear"></div>
+<div class="linenb">53</div><div class="codeline">    In Denmark, the most popular commuting planner application by far is Rejseplanen.</div><div class="clear"></div>
+<div class="linenb">54</div><div class="codeline">    This application, just like Google Maps, is both available as a web and mobile application.</div><div class="clear"></div>
+<div class="linenb">55</div><div class="codeline">    The app lets the traveler or commuter to enter trip starting and ending locations, which it then uses to calculate a</div><div class="clear"></div>
+<div class="linenb">56</div><div class="codeline">    route using public means of transportation or as secondary options as walking routes.</div><div class="clear"></div>
+<div class="linenb">57</div><div class="codeline">    When a route is calculated, the user is presented with a list-like interface from which the details of the trip can</div><div class="clear"></div>
+<div class="linenb">58</div><div class="codeline">    be read; what means of transportation will be used, which lines, what the departure and arrival times are, and if</div><div class="clear"></div>
+<div class="linenb">59</div><div class="codeline">    there are any special restrictions on the trip.</div><div class="clear"></div>
+<div class="linenb">60</div><div class="codeline">    Getting the price of the trip is possible too, but in a primitive manner that doesn’t consider factors such as if</div><div class="clear"></div>
+<div class="linenb">61</div><div class="codeline">    the user is a tourist or a regular resident, which is an important feature since tourists might have different</div><div class="clear"></div>
+<div class="linenb">62</div><div class="codeline">    traveling strategies than regular residents, and additionally tourists might not use the prepaid Rejsekort card,</div><div class="clear"></div>
+<div class="linenb">63</div><div class="codeline">    etc.</div><div class="clear"></div>
+<div class="linenb">64</div><div class="codeline">    There is an additional option of adding your Rejsekort ID to the app, so it can calculate the trip price based on</div><div class="clear"></div>
+<div class="linenb">65</div><div class="codeline">    your card plan, but even that feature is kept rather simple, possibly because the Danish transportation authorities</div><div class="clear"></div>
+<div class="linenb">66</div><div class="codeline">    also released the DOT app, whose primary responsibility is exactly that: calculating trip prices and buying tickets.</div><div class="clear"></div>
+<div class="linenb">67</div><div class="codeline">    The user can also customize the trip’s parameters slightly, e.g., if it’s a biking or a walking trip, what the</div><div class="clear"></div>
+<div class="linenb">68</div><div class="codeline">    maximum allowed biking or walking distance should be, whether the user is a “slow”, “medium” or “fast” walker (even</div><div class="clear"></div>
+<div class="linenb">69</div><div class="codeline">    though there is no guideline for how fast exactly each of these options is), and a few additional details, but a</div><div class="clear"></div>
+<div class="linenb">70</div><div class="codeline">    feature that definitely lacks is the calculation of the trip’s total CO2 emissions, which is an important factor in</div><div class="clear"></div>
+<div class="linenb">71</div><div class="codeline">    the modern-day world.</div><div class="clear"></div>
+<div class="linenb">72</div><div class="codeline"><span class="keyword2">\end{document}</span></div><div class="clear"></div>
+</div>
+<hr/>
+Output produced by TeXtidote v0.8.2, &copy; 2018-2020 Sylvain Hall&eacute; - All rights reserved.<br/>
+See the <a href="https://sylvainhalle.github.io/textidote">TeXtidote website</a> for more information.
+</body>
+</html>
