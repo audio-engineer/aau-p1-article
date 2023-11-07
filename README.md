@@ -11,7 +11,7 @@ can lint the project files before committing to the repository.
 
 2. Right click inside the folder and press ``Open in Terminal``
 
-3.  Run ``java -jar path/to/textidote.jar --check en --dict src/whitelist.txt --ignore sh:seclen src/main.tex``
+3. Run ``java -jar path/to/textidote.jar --check en --dict src/whitelist.txt --ignore sh:seclen src/main.tex``
 
 ## To do
 
