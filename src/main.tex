@@ -2,7 +2,7 @@
 \documentclass[11pt]{report}
 
 % Packages
-\usepackage[subpreambles=true]{standalone}
+\usepackage{subfiles}
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{parskip}
@@ -13,6 +13,7 @@
 % Document
 \title{P1}
 \author{Group 4}
+\date{}
 
 \begin{document}
     \maketitle
@@ -20,12 +21,13 @@
 
     \chapter{Problem Analysis}\label{ch:problem-analysis}
 
-    \input{introduction}
-    \input{history}
-    \input{audience}
-    \input{context}
-    \input{simon}
+    \subfile{history}
+    \subfile{audience}
+    \subfile{context}
+    \subfile{simon}
+%    \subfile{test}
+%    \include{test}
 
-    \bibliography{audience,simon}
     \bibliographystyle{IEEEtran}
+    \bibliography{audience,simon}
 \end{document}
