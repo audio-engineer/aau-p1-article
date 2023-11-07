@@ -1,10 +1,12 @@
 % Preamble
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 
 % Packages
 \usepackage[subpreambles=true]{standalone}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{graphicx}
 \usepackage{import}
 \usepackage{hyperref}
 
@@ -15,10 +17,11 @@
 \begin{document}
     \maketitle
 
-    Hello, big world! \cite{how-to}
+    \chapter{Problem Analysis}
 
+    \input{audience}
     \input{context}
 
-    \bibliography{main}
+    \bibliography{main,audience}
     \bibliographystyle{IEEEtran}
 \end{document}
