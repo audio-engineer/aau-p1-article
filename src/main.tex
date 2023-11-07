@@ -2,10 +2,13 @@
 \documentclass[11pt]{report}
 
 % Packages
+\usepackage[subpreambles=true]{standalone}
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{parskip}
 \usepackage{graphicx}
+\usepackage{import}
+\usepackage{hyperref}
 
 % Document
 \title{P1}
@@ -19,7 +22,8 @@
     % men den kan ikke se at jeg importerer mere text
     
     \input{kristiyan}
+    \input{context}
 
-    \bibliography{main, kristiyan} 
+    \bibliography{main}
     \bibliographystyle{IEEEtran}
 \end{document}
