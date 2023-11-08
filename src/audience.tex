@@ -36,7 +36,7 @@ The age range is quite big compared to many other projects, which makes our solu
 accommodate it for teenagers, adults and elderly.
 This would mean to make the program both easy and fast to use.
 
-\subsection{Sender}\label{subsec:sender} % Spøgsmål: er afsenderen os eller AAU?
+\subsection{Sender}\label{subsec:sender}
 
 As this is a private project, the sender is us.
 Rejseplanen, which is a similar solution that we've been looking inspiration from, is owned by DSB, Movia and many
@@ -52,88 +52,60 @@ with their issue.
 We have made 3 personas, where each of them cover different age groups and have distinct characteristics related to the
 main problem.
 
-% Jeg tænker at det vil være bedre hvis de tre var i bilagen
-% De ser heller ikke pænt ud, hvis Martin kan hjælpe med det ^_^
+\renewcommand{\arraystretch}{1.5}
 
-\begin{tabular}{|l l|}
+\begin{tabularx}{\textwidth}{ | l X | }
     \hline
-    &                                                                \\
-    & \includegraphics[width=0.25\textwidth]{images/asger}           \\
-    &                                                                \\
-    Name               & Asger Johansen                                                 \\
-    Age                & 28 years old                                                   \\
-    Occupation         & Designer                                                       \\
-    &                                                                \\
-    What's important   & For Asger it is important to spend his days to the fullest.    \\
-    & He is very outgoing, so he goes out with people after work.    \\
-    & He hates having to stay overtime.                              \\
-    &                                                                \\
-    Current problem    & Asger just got a new job offer, but it's in another city.      \\
-    & He isn't sure whether to move out or to commute there.         \\
-    & He is also afraid of losing his free time if he has to travel. \\
-    &                                                                \\
-    Potential solution & We would want to make a program, where Asger could             \\
-    & calculate how long it'd take to commute from where he          \\
-    & lives to the new job.
-    He could compare different forms of \\
-    & transport and decide whether it's worth it to commute or       \\
-    & if he should move out instead.                                 \\
-    &                                                                \\
+    &                                                      \\
+    & \includegraphics[width=0.25\textwidth]{images/asger} \\
+    Name       & Asger Johansen                                       \\
+    Age        & 28 years old                                         \\
+    Occupation & Designer                                             \\
+    What's important & For Asger it is important to spend his days to the fullest.
+    He is very outgoing, so he goes out with people after work.
+    He hates having to stay overtime. \\
+    Current problem & Asger just got a new job offer, but it's in another city.
+    He isn't sure whether to move out or to commute there.
+    He is also afraid of losing his free time if he has to travel. \\
+    Potential solution & We would want to make a program, where Asger could calculate how long it'd take to commute from
+    where he lives to the new job.
+    He could compare different forms of transport and decide whether it's worth it to commute or if he should move out
+    instead. \\
     \hline
-\end{tabular}
+\end{tabularx}
 
-\begin{tabular}{|l l|}
+\begin{tabularx}{\textwidth}{ | l X | }
     \hline
-    &                                                            \\
-    & \includegraphics[width=0.25\textwidth]{images/josefine}    \\
-    &                                                            \\
-    Name               & Josefine Madsen                                            \\
-    Age                & 19 years old                                               \\
-    Occupation         & Student                                                    \\
-    &                                                            \\
-    What's important   & For Josefine it is important to look after the nature.     \\
-    & She's been taught to think green since she was little, so  \\
-    & she doesn't like taking public transport and doesn't want  \\
-    & to drive a gas car.                                        \\
-    &                                                            \\
-    Current problem    & Josefine is starting university, but she lives outside the \\
-    & city.
-    She is considering whether to take the s-train, the \\
-    & train or a bus to university.
-    She is also considering \\
-    & buying an electric car.                                    \\
-    &                                                            \\
-    Potential solution & We would want to make a program, where Josefine            \\
-    & could calculate how much the emissions is made from the    \\
-    & different forms of transport.
-    She can then compare them \\
-    & and choose what works best for her.                        \\
-    &                                                            \\
+    &                                                         \\
+    & \includegraphics[width=0.25\textwidth]{images/josefine} \\
+    Name       & Josefine Madsen                                         \\
+    Age        & 19 years old                                            \\
+    Occupation & Student                                                 \\
+    What's important & For Josefine it is important to look after the nature.
+    She's been taught to think green since she was little, so she doesn't like taking public transport and doesn't want
+    to drive a gas car. \\
+    Current problem & Josefine is starting university, but she lives outside the city.
+    She is considering whether to take the S-train, the train or a bus to university.
+    She is also considering buying an electric car. \\
+    Potential solution & We would want to make a program, where Josefine could calculate how much the emissions is made
+    from different forms of transport.
+    She can then compare them and choose what works best for her. \\
     \hline
-\end{tabular}
+\end{tabularx}
 
-\begin{tabular}{|l l|}
+\begin{tabularx}{\textwidth}{ | l X | }
     \hline
-    &                                                                \\
-    & \includegraphics[width=0.25\textwidth]{images/martin}          \\
-    &                                                                \\
-    Name               & Martin Jensen                                                  \\
-    Age                & 34 years old                                                   \\
-    Occupation         & Factory worker                                                 \\
-    &                                                                \\
+    &                                                       \\
+    & \includegraphics[width=0.25\textwidth]{images/martin} \\
+    Name       & Martin Jensen                                         \\
+    Age        & 34 years old                                          \\
+    Occupation & Factory worker                                        \\
     What's important & For Martin it is important to live a carefree life.
-    He has a \\
-    & family and friends at work, so he's pretty happy with himself. \\
-    &                                                                \\
-    Current problem    & Martin drives a gas car to work, but he wants to change        \\
-    & that for the sake of the environment.
-    He has gotten used to \\
-    & the comfort of his car, but can't afford an electric car.      \\
-    & He wonders if public transport could match that.               \\
-    &                                                                \\
-    Potential solution & We would want to make a program, where Martin can              \\
-    & figure out what forms of public transport are most             \\
-    & comfortable and most climate friendly.                         \\
-    &                                                                \\
+    He has a family and friends at work, so he's pretty happy with himself. \\
+    Current problem & Martin drives a gas car to work, but he wants to change that for the sake of the environment.
+    He has gotten used to the comfort of his car, but can't afford an electric car.
+    He wonders if public transport could match that. \\
+    Potential solution & We would want to make a program, where Martin can figure out what forms of public transport are
+    most comfortable and most climate friendly. \\
     \hline
-\end{tabular}
+\end{tabularx}
