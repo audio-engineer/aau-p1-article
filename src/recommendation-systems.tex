@@ -21,8 +21,15 @@ these systems are made.
 A real world example of where this is used is in a movie recommender.
 Movies are somewhat easy to classify, as one can look at the genres of different movies.
 This type of RS works by filtering the movies through genres and is called content based filtering.
+% TODO Reference figure in a more meaningful way.
+See~\ref{fig:figure3} for more information.
 
-\includegraphics[width=\textwidth]{images/content-filtering}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/content-filtering}
+    \caption{Content filtering.}
+    \label{fig:figure3}
+\end{figure}
 
 An example would be user a watching an action movie, movie A, and the system would then remember user a's preferences
 and recommend another action movie, movie B, to the user.\newline
@@ -35,8 +42,15 @@ opinions and tastes.
 Another type of filtering is Collaborative filtering (CB).
 CB works by comparing users with each other.
 This means that CB groups users by similarly watched movies, and then suggests movies from the users group.
+% TODO Reference figure in a more meaningful way.
+See~\ref{fig:figure4} for more information.
 
-\includegraphics[width=\textwidth]{images/collaborative-filtering}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/collaborative-filtering}
+    \caption{Collaborative filtering.}
+    \label{fig:figure4}
+\end{figure}
 
 By using CB you don't limit the recommendations to genres or other attributes that you already know the user watches it
 can also recommend things from other genres, which would not have been recommended by the content filter.\newline

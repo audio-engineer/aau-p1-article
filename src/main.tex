@@ -3,29 +3,24 @@
 
 % Packages
 \usepackage[english]{babel}
-\usepackage{amsmath}
 \usepackage{parskip}
 \usepackage{graphicx}
-\usepackage{import}
 \usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{siunitx}
 
 % Document
 \title{P1}
 \author{Group 4}
-\date{}
 
 \begin{document}
     \maketitle
 
+    \tableofcontents{}
 
-    \chapter{Problem Analysis}\label{ch:problem-analysis}
-
-    \input{history}
-    \input{audience}
-    \input{context}
-    \input{simon}
-    \input{recommendation-systems}
+    \input{problem-analysis}
+    \input{problem-statement}
 
     \bibliographystyle{IEEEtran}
-    \bibliography{audience,simon}
+    \bibliography{audience,existing-solutions,financial-awareness,history,what-is-the-problem}
 \end{document}
