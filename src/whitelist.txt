@@ -9,3 +9,4 @@ Fynbus
 Eilstrup
 rejseplanens
 simon
+Gini
