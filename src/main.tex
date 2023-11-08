@@ -2,7 +2,6 @@
 \documentclass[11pt]{report}
 
 % Packages
-\usepackage{subfiles}
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{parskip}
@@ -21,12 +20,10 @@
 
     \chapter{Problem Analysis}\label{ch:problem-analysis}
 
-    \subfile{history}
-    \subfile{audience}
-    \subfile{context}
-    \subfile{simon}
-%    \subfile{test}
-%    \include{test}
+    \input{history}
+    \input{audience}
+    \input{context}
+    \input{simon}
 
     \bibliographystyle{IEEEtran}
     \bibliography{audience,simon}
