@@ -1,54 +1,58 @@
-\begin{abstract}
-    In this section, we will discuss extant solutions and their operational mechanisms pertaining to the provided
-    problem statement.
-    We will analyze prominent software applications in the market, including Rejseplanen, Google Maps, and Apple Maps.
-\end{abstract}
+\section{Extant solutions and their operational mechanisms}\label{sec:extant-solutions-and-their-operational-mechanisms}
 
+In this section, we will discuss extant solutions and their operational mechanisms pertaining to the provided problem
+statement.
+We will analyze prominent software applications in the market, including Rejseplanen, Google Maps, and Apple Maps.
 
-\section{Rejseplanen}\label{sec:rejseplanen}
+\subsection{Rejseplanen}\label{subsec:rejseplanen2}
 
-\textbf{What is Rejseplanen?}
+We will first take a look at the Danish ``Rejsekort'' application.
+
+\subsubsection{What is Rejseplanen?}
 
 The ``Rejseplanen'' is an online service used in Denmark to plan journeys using public transport.
 It is used to find information about routes, timings, prices and ticket purchases for trains, buses, metro, trams and
-ferries throughout the country~\cite{rejseplanen2023}. \newline
+ferries throughout the country~\cite{rejseplanen2023}.
 
 With ``Rejseplanen'', you can input your departure point and destination point to get information about the fastest,
 cheapest or most convenient way to travel from point A to B using public transport.
 The service provides detailed information about the departure times, transfers, expected arrival times and prices.
 It also provides any additional information about the delays or canceled departures in the operation of public
-transport~\cite{rejseplanen2023}.\newline
+transport~\cite{rejseplanen2023}.
 
-\subsection{Data Sources for Rejseplanen}\label{subsec:where-does-rejseplanen-get-their-data-from?}
+\subsubsection{Data sources for Rejseplanen}\label{subsubsec:where-does-rejseplanen-get-their-data-from?}
 
 Rejseplanen is jointly owned by DSB, Movia, Metroselskabet, NT, Midttrafik, Sydtrafik, Fynbus, and BAT\@.
 As a result of its ownership by these various transportation service providers, Rejseplanen has access to the data
 necessary to determine the most efficient public transport routes.
 
-\subsection{What makes Rejseplanen great?}\label{subsec:what-makes-rejseplanen-great?}
+\subsubsection{What makes Rejseplanen great?}\label{subsubsec:what-makes-rejseplanen-great?}
+
 \begin{description}
-    \item [Comprehensive Data Integration] - Rejseplanen integrates data from various transportation providers, thus
-    ensuring up-to-date and accurate information
-    \item [Very efficient] - Rejseplanen provides a quick and convenient travel plan, saving time for daily commuters
-    \item [User friendly] - Rejseplanen provides additional features such as filtering out specific trains or buses, so
-    your route matches your personal preferences and enhancing the user experience
+    \item \textbf{Comprehensive Data Integration}: Rejseplanen integrates data from various transportation providers,
+    thus ensuring up-to-date and accurate information.
+    \item \textbf{Very efficient}: Rejseplanen provides a quick and convenient travel plan, saving time for daily
+    commuters.
+    \item \textbf{User-friendly}: Rejseplanen provides additional features such as filtering out specific trains or
+    buses, so your route matches your personal preferences and enhancing the user experience.
 \end{description}
 
+\subsection{Google Maps/Apple Maps}\label{subsec:google-maps-/-apple-maps}
 
-\section{Google Maps / Apple Maps}\label{sec:google-maps-/-apple-maps}
+We will now take a look at the two internationally popular ``Google Maps'' and ``Apple Maps'' services.
 
-\textbf{What is Google Maps}
+\subsubsection{What is Google Maps}
 
 Google Maps is another online service used for travelling.
 It is one of the most extensive and detailed mapping databases globally.
 Its comprehensive coverage includes even remote areas, making it a go to for travelers and commuters.
 Whether you're navigating in unknown areas or exploring remote landmarks, Google Maps is sure to provide accurate
-mapping data~\cite{googlemaps2023}. \newline
+mapping data~\cite{googlemaps2023}.
 
 Google Maps began as a C++ desktop program developed by two Danish software engineers who so happens to be brothers,
-Lars Eilstrup Rasmussen and Jens Eilstrup Rasmussen~\cite{googlemaps2023}. \newline
+Lars Eilstrup Rasmussen and Jens Eilstrup Rasmussen~\cite{googlemaps2023}.
 
-\textbf{What is Apple Maps}
+\subsubsection{What is Apple Maps}
 
 Apple Maps is mostly the same as Google Maps, it also has very detailed mapping data.
 Apple Maps also provide a navigation function like Google Maps that is with turn-by-turn directions for driving, walking
@@ -57,33 +61,34 @@ It also supports real-time traffic information and alternative routes to help us
 efficiently.
 Apple Maps can provide various information about shopping centers, restaurants, hotels and gas stations.
 Some of that information includes user reviews, photos, contact details and hours of operation.
-Google Maps does also provide this kind of information. \newline
+Google Maps does also provide this kind of information.
 
 Google Maps used to be the default web mapping service for iOS, but they replaced Google Maps with their own version
-which is of course Apple Maps now~\cite{applemaps2023}. \newline
+which is of course Apple Maps now~\cite{applemaps2023}.
 
+\subsection{How can we help solve this problem?}\label{subsec:how-can-we-help-solve-this-problem?}
 
-\section{How can we help solve this problem?}\label{sec:how-can-we-help-solve-this-problem?}
+Finally, we will take a look at how we propose to solve this issue.
 
-\textbf{Data collection}
+\subsubsection{Data collection}
 
 We would start to gather data from ``rejseplanens'' API so that we could use all their data about the public transport
 in Denmark.
 We would further investigate in the environmental scene where we would look further into how much CO2 emission different
 car types and public transport causes per kilometer.
 
-\textbf{Environmental metrics}
+\subsubsection{Environmental metrics}
 
 We would research about how much CO2 emission different types of cars causes and set them to an average for the program
 parameters and make it easier to calculate routes with less CO2 emission.
 The same goes for public transport, and we would have to research how much CO2 emission trains, buses and metros emit.
 
-\textbf{Personalized preferences}
+\subsubsection{Personalized preferences}
 
 We will allow users to make different priorities such as the time of arrival, cost, environmental impact and comfort.
 We would then make a filter where the user would be able to set their own priorities.
 
-\textbf{User Interface}
+\subsubsection{User Interface}
 
 The User Interface is supposed to be user-friendly for all people around the world, so that it can be used more by
 everybody.
@@ -91,7 +96,7 @@ The GUI we are using for this project are the terminal, which is just text-based
 The reason for the choice of our GUI is limited by the projects rules in which we were recommended to do a terminal GUI
 instead of another more user-friendly GUI\@.
 
-\textbf{Expected Outcomes}
+\subsubsection{Expected Outcomes}
 
 The expected outcome from making a service like this is that we want it cause people to think more on the environment
 and make them think twice about their daily journey to work and just how much CO2 emission is actually used every time.
