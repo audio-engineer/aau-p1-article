@@ -9,7 +9,6 @@ jobs:
         id: textidote
         with:
           root_file: src/main.tex
-          args: --check en --dict src/whitelist.txt --ignore sh:seclen,lt:en:UPPERCASE_SENTENCE_START --read-all
       - uses: actions/upload-artifact@v3
         with:
           name: report.html

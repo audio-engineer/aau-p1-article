@@ -9,7 +9,7 @@ task: People just had to get to work in the mornings and back home in the evenin
 Nowadays, the complexity of commuting has increased drastically with many additional factors having to be considered,
 e.g., how big of a carbon footprint is acceptable for me?
 This question especially became relevant in recent times due to the increasingly noticeable effects of climate change
-and the scientific evidence that increased CO2 emissions greatly contribute to climate change.
+and the scientific evidence that increased \unit{CO_{2}} emissions greatly contribute to climate change.
 Other questions the modern-day commuter might ask themselves are: Do I need/want to commute every day, or is it ok if I
 work from home part of the week?
 What should be the balance between cost and environmental protection?
@@ -22,30 +22,46 @@ applications, that have become increasingly popular in recent years, helping ind
 efficiently and minimize travel-related stress.
 These applications offer various features and functionalities, but they often have shortcomings that prevent the
 commuter from more advanced planning strategies, including the lack of easy access to cost and environmental impact
-information, e.g., how much C02 will be spent on a trip, how much a trip will cost, as well as limited user control over
-how these factors are weighed in route calculations.
+information, e.g., how much \unit{CO_{2}} will be spent on a trip, how much a trip will cost, as well as limited user
+control over how these factors are weighed in route calculations.
 Existing solutions include the (mostly) worldwide available Google Maps, the popular Danish Rejseplanen service and a
 couple of other mobile and web applications that are not location-bound but can be used internationally, like
-\url{commute.org}.
+\url{https://commute.org/}.
 We will now look at some existing solutions and discuss their shortcomings to better understand the root of the problem.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/google-maps}
+    \caption{Google Maps web UI.}
+    \label{fig:figure6}
+\end{figure}
 
 \subsection{Google Maps}\label{subsec:google-maps}
 
 The above-mentioned application is a widely used travel and commuting planner that provides detailed navigation and
-route information.
+route information and can also be seen in Figure~\ref{fig:figure6}.
 While it offers estimated travel time and distance, it lacks a direct and user-friendly way to determine the cost of the
-trip or the CO2 footprint.
+trip or the \unit{CO_{2}} footprint.
 Users cannot easily access information about how much money the trip will cost, as Google Maps does not integrate with
 financial or payment apps to calculate expenses like tolls, fuel, or public transportation fees.
 This makes sense since Google tries to target a large international audience with the application, making is difficult
 or nearly impossible to cover every localized payment solution or traveling restriction.
-Similarly, it does not provide real-time data on the CO2 emissions associated with the chosen route, making it
+Similarly, it does not provide real-time data on the \unit{CO_{2}} emissions associated with the chosen route, making it
 challenging for users to make informed decisions about their environmental impact.
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{images/google-maps-options}
+    \end{center}
+    \caption{Google Maps web UI options.}
+    \label{fig:figure7}
+\end{wrapfigure}
+
 Users have very limited control over how cost and environmental factors are weighed in route calculations, as Google
 Maps primarily focuses on travel time and distance.
-The only available selection options are preferences for means of transportation and whether the route should be
-calculated with ``fewer transfers'', ``less walking'' or ``wheelchair accessible'', where all three of the options
-seem to be tailored towards people with restricted mobility.
+The only available selection options, as can be seen in Figure~\ref{fig:figure7}, are preferences for means of
+transportation and whether the route should be calculated with ``fewer transfers'', ``less walking'' or ``wheelchair
+accessible'', where all three of the options seem to be tailored towards people with restricted mobility.
 
 \subsection{Rejseplanen}\label{subsec:rejseplanen}
 
@@ -56,14 +72,33 @@ route using public means of transportation or as secondary options as walking ro
 When a route is calculated, the user is presented with a list-like interface from which the details of the trip can be
 read; what means of transportation will be used, which lines, what the departure and arrival times are, and if there are
 any special restrictions on the trip.
+See Figure~\ref{fig:figure8}.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{images/rejseplanen-trip}
+    \end{center}
+    \caption{Rejseplanen mobile UI trip planner.}
+    \label{fig:figure8}
+\end{wrapfigure}
+
 Getting the price of the trip is possible too, but in a primitive manner that doesn't consider factors such as if the
 user is a tourist or a regular resident, which is an important feature since tourists might have different traveling
 strategies than regular residents, and additionally tourists might not use the prepaid Rejsekort card, etc.
 There is an additional option of adding your Rejsekort ID to the app, so it can calculate the trip price based on your
 card plan, but even that feature is kept rather simple, possibly because the Danish transportation authorities also
 released the DOT app, whose primary responsibility is exactly that: calculating trip prices and buying tickets.
-The user can also customize the trip’s parameters slightly, e.g., if it’s a biking or a walking trip, what the maximum
-allowed biking or walking distance should be, whether the user is a “slow”, “medium” or “fast” walker (even though there
-is no guideline for how fast exactly each of these options is), and a few additional details, but a feature that
-definitely lacks is the calculation of the trip’s total CO2 emissions, which is an important factor in the modern-day
-world.
+See Figure~\ref{fig:figure9}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/rejseplanen-options}
+    \caption{Rejseplanen mobile UI trip planner options.}
+    \label{fig:figure9}
+\end{figure}
+
+The user can also customize the trip's parameters slightly, e.g., if it's a biking or a walking trip, what the maximum
+allowed biking or walking distance should be, whether the user is a ``slow'', ``medium'' or ``fast'' walker (even though
+there is no guideline for how fast exactly each of these options is), and a few additional details, but a feature that
+definitely lacks is the calculation of the trip’s total \unit{CO_{2}} emissions, which is an important factor in the
+modern-day world.

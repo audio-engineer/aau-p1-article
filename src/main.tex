@@ -3,11 +3,25 @@
 
 % Packages
 \usepackage[english]{babel}
-\usepackage{parskip}
+\usepackage[indent=20pt]{parskip}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{siunitx}
+\usepackage{wrapfig}
+\usepackage{tikz}
+
+% textidote: ignore begin
+\hypersetup{pdfborder=0 0 0}
+
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+% textidote: ignore end
 
 % Document
 \title{P1}
@@ -16,10 +30,13 @@
 \begin{document}
     \maketitle
 
-    \tableofcontents{}
+    % textidote: ignore begin
+    \tableofcontents
+    % textidote: ignore end
 
     \input{problem-analysis/problem-analysis}
     \input{problem-statement/problem-statement}
+    \input{problem-solution/problem-solution}
 
     \bibliographystyle{IEEEtran}
     \bibliography{problem-analysis/audience,problem-analysis/existing-solutions,problem-analysis/financial-awareness,problem-analysis/history,problem-analysis/what-is-the-problem}
