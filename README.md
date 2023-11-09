@@ -7,17 +7,21 @@ can lint the project files before committing to the repository.
 
 ### TeXtidote usage
 
+The `textidote` executable should be run in the project directory.
+It will read the contents of the [`.textidote`](./.textidote) configuration file and use them as the arguments for the
+program.
+The `TeXtidote` GitHub Action reads the same configuration file and thus uses the same options when running `TeXtidote`.
+
 On Windows:
 
 ```shell
-java -jar textidote.jar --check en --dict src/whitelist.txt --ignore sh:seclen,lt:en:UPPERCASE_SENTENCE_START \
---read-all src/main.tex
+java -jar textidote.jar src/main.tex
 ```
 
 On Unix-like operating systems:
 
 ```shell
-textidote --check en --dict src/whitelist.txt --ignore sh:seclen,lt:en:UPPERCASE_SENTENCE_START --read-all src/main.tex
+textidote src/main.tex
 ```
 
 ## To do
