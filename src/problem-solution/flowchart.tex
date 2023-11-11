@@ -1,8 +1,35 @@
+\section{Flowchart of the program}
+
+Hello world!
+
 % textidote: ignore begin
+%-----------------------------------------------------------------------------------------------------------------------
+\subsection{Main}
 \noindent
 \begin{tikzpicture}[node distance=2cm]
 
-\node (start)[startstop] {Start};
+\node (start) [startstop] {Start};
+\node (func1) [function, right of=start, xshift=1.5cm] {Input};
+\node (func2) [function, below of=func1, yshift=-1cm] {Search};
+\node (func3) [function, left of=func2, xshift=-1.5cm] {Calculate};
+\node (func4) [function, left of=func3, xshift=-1.5cm] {Sort};
+\node (func5) [function, below of=func4, yshift=-1cm] {Output};
+\node (stop)  [startstop, right of=func5, xshift=1.5cm] {Stop};
+
+\draw [arrow] (start) -- (func1);
+\draw [arrow] (func1) -- (func2);
+\draw [arrow] (func2) -- (func3);
+\draw [arrow] (func3) -- (func4);
+\draw [arrow] (func4) -- (func5);
+\draw [arrow] (func5) -- (stop);
+
+\end{tikzpicture}
+%-----------------------------------------------------------------------------------------------------------------------
+\subsection{Input}
+\noindent
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
 \node (in1)   [io, below of=start] {Read start and end destination};
 \node (in2)   [io, below of=in1] {Read time of departure / arrival};
 \node (in3)   [io, below of=in2, text width=4cm, yshift=-1cm] {Read user choice:\\ set preferences (Y)\\ no preferences (N)\\ open custom file (F)};
@@ -14,20 +41,20 @@
 \node (in6)   [io, below of=in5] {Read the priorities};
 \node (dec3)  [decision, below of=in6, yshift=-1cm] {Save?};
 \node (pro2)  [process, below of=dec3, yshift=-1cm] {Save current preferences to a file};
-\node (func1) [function, below of=dec1, yshift=-3cm] {Search};
+\node (stop) [startstop, below of=dec1, yshift=-3cm] {Stop};
 
 \coordinate [right of=dec1, xshift=1cm] (ph1);
-\coordinate [left of=dec3, xshift=-1.5cm] (ph2);
+\coordinate [left of=dec3, xshift=-1cm] (ph2);
 \coordinate [below of=ph2, yshift=-1cm] (ph3);
-\coordinate [right of=dec2, xshift=0.5cm] (ph4);
+\coordinate [right of=dec2, xshift=1cm] (ph4);
 
 \draw [arrow] (start) -- (in1);
 \draw [arrow] (in1) -- (in2);
 \draw [arrow] (in2) -- (in3);
 \draw [arrow] (in3) -- (dec1);
 \draw [arrow] (dec1) -- node[anchor=south] {F} (pro1);
-\draw [arrow] (pro1) |- (func1);
-\draw [arrow] (dec1) -- node[anchor=east] {N} (func1);
+\draw [arrow] (pro1) |- (stop);
+\draw [arrow] (dec1) -- node[anchor=east] {N} (stop);
 \draw [line] (dec1) -- node[anchor=south] {Y} (ph1);
 \draw [arrow] (ph1) |- (in4);
 \draw [arrow] (in4) -- (dec2);
@@ -39,7 +66,63 @@
 \draw [line] (dec3) -- node[anchor=south] {no} (ph2);
 \draw [line] (ph2) -- (ph3);
 \draw [arrow] (dec3) -- node[anchor=east] {yes} (pro2);
-\draw [arrow] (pro2) -- (func1);
+\draw [arrow] (pro2) -- (stop);
 
 \end{tikzpicture}
+%-----------------------------------------------------------------------------------------------------------------------
+\subsection{Input}
+\noindent
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
+
+\end{tikzpicture}
+%-----------------------------------------------------------------------------------------------------------------------
+\subsection{Calculate}
+\noindent
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
+
+\end{tikzpicture}
+%-----------------------------------------------------------------------------------------------------------------------
+\subsection{Sort}
+\noindent
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
+
+\end{tikzpicture}
+%-----------------------------------------------------------------------------------------------------------------------
+\subsection{Output}
+\noindent
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
+\node (out1)  [io, below of=start] {Print search results};
+\node (in1)   [io, below of=out1, text width=4cm, yshift=-0.5cm] {Read user choice:\\ view route details (1-5)\\ sort the list (P,T,S,C)};
+\node (dec1)  [decision, below of=in1, yshift=-1.5cm] {Check int/char};
+\node (pro1)  [process, left of=dec1, xshift=-2.5cm] {Sort the list according to the input character};
+\node (func1) [function, below of=pro1, yshift=-1cm] {Sort};
+\node (out2)  [io, right of=dec1, xshift=2.5cm] {Print details for chosen route};
+\node (in2)   [io, below of=out2, text width=4cm, yshift=-0.5cm] {Read user choice:\\ go back to list (B)\\ quit the program (Q)};
+\node (dec2)  [decision, below of=in2, yshift=-1.5cm] {Check choice};
+\node (stop)  [startstop, left of=dec2, xshift=-2.5cm] {Stop};
+
+\coordinate [right of=dec2, xshift=1.5cm] (ph1);
+
+\draw [arrow] (start) -- (out1);
+\draw [arrow] (out1) -- (in1);
+\draw [arrow] (in1) -- (dec1);
+\draw [arrow] (dec1) -- node[anchor=south] {char} (pro1);
+\draw [arrow] (pro1) -- (func1);
+\draw [arrow] (dec1) -- node[anchor=south] {int} (out2);
+\draw [arrow] (out2) -- (in2);
+\draw [arrow] (in2) -- (dec2);
+\draw [arrow] (dec2) -- node[anchor=south] {Q} (stop);
+\draw [line] (dec2) -- node[anchor=south] {B} (ph1);
+\draw [arrow] (ph1) |- (out1);
+
+\end{tikzpicture}
+%-----------------------------------------------------------------------------------------------------------------------
 % textidote: ignore end
