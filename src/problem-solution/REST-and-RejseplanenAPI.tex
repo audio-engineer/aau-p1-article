@@ -1,3 +1,59 @@
 \section{Integrations}\label{sec:integrations}
 
-In the following section we will take a closer look at the integrations that will help us create the software
+In the following section we will take a closer look at the integrations that will help us create the software.
+We will be taking a further look into what an REST-API is, and we would also be looking into how Rejseplanens API works
+and how we are going to use it for this project.
+
+
+\section{REST-API}\label{sec:rest-api}
+
+To understand what a REST-API is we will look further into what a NON-REST-API is and what it does.
+It will all be explained shortly what an API is.
+
+\subsection{What is an API}\label{subsec:what-is-an-api}
+
+Application Programming Interface (API), is a way for two or more programs to communicate with eachother.
+it is a type of interface for software as it can service other pieces of software.
+An API is often made up of different parts which can act as a tool for the programmer, when a programmer is using the
+API they can make \textit{calls} to different parts of the API\@.
+The \textit{calls} that make up the API are also known as \textit{methods, requests or endpoints}. \cite{APIwiki}
+
+The purpose of an API is that it simplifies programming by abstracting the implementation and only exposing the objects
+or actions the developer needs.
+An API makes it so that a developer can press a button in a program that does something like replacing files one place
+to another without the developer needing to understand the operations occurring behind the scenes.
+
+\subsection{What is a REST-API}\label{subsec:what-is-a-rest-api}
+
+A REST API is an API that goes by the design of REST also known as \textit{representational state transfer}
+architectural style.
+It is called a REST API because it uses a certain design compared to other APIs where some use different frameworks
+such as SOAP where its data is strictly XML-format and where REST is more flexible being able to support a larger
+framework for data transfers as REST supports different formats, including \textit{XML, HTML, plain text, JSON... and
+more}~\cite{IBMrestapi}.
+
+REST APIs communicate via HTTP requests to perform simple database functions such as \textit{creating, reading,
+    updating and deleting records}~\cite{IBMrestapi}, an example could be that a REST API would want to use a GET
+request to retrieve data and a POST request to create data, a PUT request to update the data and a DELETE request to
+delete data.
+
+\textbf{Key principles and characteristics of a RESTful API}
+\begin{itemize}
+    \item \textbf{Staleness}: Each request made from a client to a server must contain all the information needed to
+    understand and process that request.
+    The server should not store any information about the client's state between requests.
+    This enhances scalability and simplifies server implementation.
+    \item \textbf{CRUD Operations}: RESTful APIs use standard HTTP methods (GET, POST, PUT, DELETE) to perform CRUD
+    operations on resources so that would be (Create, Read, Update, Delete).
+    Each HTTP method corresponds to a specific action on the resource.
+    \subitem \textbf{GET}: Retrieves a representation of the resource
+    \subitem \textbf{POST}: Creates a new resource
+    \subitem \textbf{PUT}: Updates an already existing resource
+    \subitem \textbf{DELETE}: Removes an existing resource
+    \item \textbf{Representation}: The resources are represented in a format, such as JSON or XML.
+    The client and server has to agree on which format the data needs to be in during the communication.
+    JSON and XML is often preferred because it can be read by a human and is therefore easier to navigate.
+\end{itemize}
+
+
+\section{Rejseplanens API}\label{sec:rejseplanens-api}
