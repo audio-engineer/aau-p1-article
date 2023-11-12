@@ -29,12 +29,11 @@ jobs:
           working_directory: src/
           compiler: lualatex
           args: -file-line-error -interaction=nonstopmode -output-format=pdf
-      - name: Get commit hash and rename PDF
-        run: |
-          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
-          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
-          mv src/main.pdf "src/${{ env.branch }}-${{ env.sha_short }}.pdf"
+      - name: Get commit hash
+        run: echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+      - name: Rename PDF
+        run: mv src/main.pdf "src/$GITHUB_REF_NAME-${{ env.sha_short }}.pdf"
       - uses: actions/upload-artifact@v3
         with:
           name: "${{ env.branch }}-${{ env.sha_short }}.pdf"
-          path: "src/${{ env.branch }}-${{ env.sha_short }}.pdf"
+          path: "src/$GITHUB_REF_NAME-${{ env.sha_short }}.pdf"
