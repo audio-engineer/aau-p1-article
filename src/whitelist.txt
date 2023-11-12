@@ -11,3 +11,11 @@ rejseplanens
 simon
 Gini
 GAN
+GoogleTest
+JetBrain
+cURL
+cJSON
+CLion
+ClangFormat
+ClangTidy
+EditorConfig

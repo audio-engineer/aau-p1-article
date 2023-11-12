@@ -1,0 +1,182 @@
+\section{Solution stack}\label{sec:solution-stack}
+
+In the following section, we will take a closer look at the solution stack that the development team has chosen to use
+to create the software that will constitute the problem solution.
+
+\subsection{Development team}\label{subsec:development-team}
+
+The development team consisted of seven young computer science students with different levels of previous development
+experience.
+
+\subsection{Basic requirements}\label{subsec:basic-requirements}
+
+Before the development team began the development process, a wide variety of basic technological and workflow-related
+requirements and constraints were discussed.
+
+The team understood very quickly that high productivity and development efficiency were one of the top priorities for
+the task at hand, due to the relatively short deadline, development team size and the complexity of the software's
+logic.
+
+Other constraints were identified as well, such as the fact that while every member of the development team had
+different levels of experience with different programming languages and technologies, everyone was familiar with the
+C programming language.
+
+Finally, coming from a wide range of backgrounds and having different preferences, the individual members of the team
+wanted to be able to make individual choices regarding their development setups, while still maintaining project-level
+coherency.
+Examples of such individual preferences included which development operating system each member would work on (such as
+Windows 11, macOS, various Linux distributions, and also Windows Subsystem for Linux (WSL)).
+Additionally, individual preferences extended to choices regarding what code editor or intelligent development
+environment (IDE) the member would use.
+And finally, another constraint dictated by personal preferences was what tools were available for the chosen
+development platform, such as compilers, linters, etc.
+
+Those three basic realizations largely dictated all the other choices of technologies, workflows and other development
+tools.
+
+\subsection{Version control}\label{subsec:version-control}
+
+When dealing with a software project of this size and complexity, combined with a development team of this size, it is
+crucial to be able to collaborate remotely over the internet.
+Also, it is paramount that the team is able to trace incremental changes in the software source code.
+This is where version control and version control systems come into play.
+
+\subsubsection{Version control system}
+
+For this project, the team selected the \lstinline{git} version control system, which is modern, efficient and
+relatively easy to use.
+The usage of \lstinline{git} allowed each team member to develop incremental features and changes on their own
+development machine and then combine the changes on the \lstinline{main} version control branch.
+To further ease the process and make individual development fully independent, a server was needed to which the
+individual members' contributions could be uploaded.
+For this task, \href{https://github.com/}{GitHub} was chosen, and a public code repository was created using the private
+GitHub account of one of the team members.
+The repository can be found here: \href{https://github.com/audio-engineer/aau-p1-software}{aau-p1-software}.
+
+\subsubsection{Branching model}
+
+Modern version control using \lstinline{git} relies on the idea of \textit{branching}.
+\textit{Branches} consist of a series of \textit{commits}, which are snapshots of the source code taken at arbitrary
+times by the developers while working on their development machines.
+The team decided that the easiest approach to branching would be a model based heavily on \textit{trunk-based
+development}~\cite{trunk-based}, which is a simple model where all changes from individual branches are merged directly
+into the project's \lstinline{main} branch without additional branching complexity.
+Additionally, to keep the development routines as simple and efficient as possible, it was decided that each developer
+would have their own branch on which they would continuously commit their individual contributions.
+Those branches were then continuously uploaded (\textit{pushed} in \lstinline{git} terminology) to GitHub, where they
+were merged into the \lstinline{main} branch.
+Each time after a merge was completed, the contributor in question's branch was reset to match the \lstinline{main}
+branch, upon which the development cycle was resumed.
+
+We will take a closer look at how it was implemented practically in the Section~\ref{sec:workflows-and-routines}.
+
+\subsection{Development systems and tools}\label{subsec:development-systems-and-tools}
+
+As previously mentioned, the teams' personal development setup preferences varied, not least in the choice of code
+editor or IDE, and development machine operating system.
+Simultaneously, it was determined that to maximize efficiency, some project configurations and other related settings
+would have to be shared across development machines and operating systems.
+This was deemed necessary to prevent that each developer would have to set up their local development environment
+from scratch.
+To mitigate this issue, some sort of configuration sharing was necessary to be introduced into the development flow.
+Luckily, a majority of the developers were already familiar with the IDE vendor JetBrain's products, which offer great
+support for shared configurations~\cite{shared-config}.
+Therefore, a shared configuration was added to the source code repository, which was then read by each developer's
+IDE upon opening the project.
+Examples of configurations that were shared include code indentation and bracket placement style, unit test runner
+configuration, text encoding, required IDE plugins and code linting settings.
+
+\subsection{Programming languages}\label{subsec:programming-languages}
+
+As was mentioned in the Section~\ref{subsec:basic-requirements}, the C programming language was the single
+programming language that all developers in the team were familiar with, which is one of the primary reasons why it was
+chosen as the development language.
+
+Another reason was the flexibility that C offers: It can be developed and compiled for a wide range of target systems.
+In other words, C offers cross-platform compatibility both from development and distribution perspectives.
+
+It was also decided early on that the solution application would be a console application, and C also has the advantage
+that it is an excellent language for console application development.
+
+Finally, C has been on the market for many decades and is a very well-established language with exceptional tooling and
+availability of libraries, compilers, IDEs, and frameworks that support it, making it a good choice for many tasks.
+
+But while C made up the majority of the source code, it also turned out to be necessary to introduce C++ into the
+project, due to the usage of the \textit{GoogleTest} unit testing library.
+GoogleTest is originally built for usage with C++, but can easily be adopted to be used with purely C-based projects,
+only requiring slight modifications to how the project is built and how the tests are written.
+Also, luckily GoogleTest is almost exclusively built on macros, which made writing tests a lot easier for the team,
+since only very little or almost no C++ syntax had to be learned.
+This will be further discussed in the Section~\ref{subsec:testing}.
+
+\subsection{Integrations}\label{subsec:integrations}
+
+// REST service, Rejseplanen API
+
+\subsection{Build system}\label{subsec:build-system}
+
+One of the disadvantages of C, though, is that it requires a solid and substantial ecosystem of build tools and
+compilers around the C source code to be able to build the distribution-ready application.
+One approach would be to let each developer set up their own build system to be able to compile the source code on their
+local development environment, and then later decide on a \textit{master} compilation machine where the distribution
+version would be compiled.
+But the development team chose an approach where the build configuration was built into the source code itself, making
+it easy to share it across local development environments.
+This also allowed each developer to build the software using the same build parameters.
+
+The primary tool picked to solve this task was CMake, which is a build automation tool that generates build
+configuration files based on a common project configuration.
+
+CMake also has the advantage that it can prepare the compilation machine for compilation by searching for compilation
+dependencies aka ``dependencies of dependencies'' without which the compilation would fail.
+For this purpose, the team made use of the \lstinline{pkg-config} CMake integration. \lstinline{Pkg-config} is a tool
+that searches the compilation machine exactly for those prerequisite dependencies to make sure that all direct
+dependencies and if they are not found, the compilation is aborted.
+If they are, on the other hand, found, the application compilation is resumed and completed.
+
+% TODO Insert CMake dependency, compilation and linkage flowchart
+
+Furthermore, CMake also allows for the addition and management of external software dependencies such as libraries
+and frameworks, which will be discussed in the Section~\ref{subsec:libraries-and-frameworks}.
+
+\subsection{Libraries and frameworks}\label{subsec:libraries-and-frameworks}
+
+% TODO Add more content to this subsection
+// cURL, cJSON, OpenSSL
+
+\subsection{Code style and quality}\label{subsec:code-style-and-quality}
+
+When working on larger scale software projects where more than one developer is involved, it is also crucial to keep the
+source code readable, maintainable and coherent to be able to easily develop and refactor it later.
+For this reason, the team decided to use a common code style and use tools to ensure that this style was complied with.
+As a baseline, it was decided that the Google C++ Style Guide~\cite{google-style} would be used for basic stylistic
+features such as function, data and file naming conventions, an indentation width of two spaces, bracket placement, etc.
+While the Google C++ Style Guide is, as the name suggests, made for C++ projects, it can easily be adopted for usage
+with C projects by simply adhering only to the style guidelines that regard features that both C++ and C share.
+
+To assist the developer team with adhering to those guidelines, the \textit{Clang-Format}~\cite{clang-format} and
+\textit{Clang-Tidy}~\cite{clang-tidy} tools provided by the \textit{Clang} compiler were used to automatically lint
+the code for breaches of style.
+This process was made even easier due to the seamless integration of these tools into the JetBrains CLion IDE that was
+used by a majority of developers, which made it possible to lint the source code while writing it.
+
+ClangFormat, ClangTidy, EditorConfig, Google C++ Style Guide, pull requests and code reviews.
+We will take a closer look at how it was implemented practically in the next Section~\ref{sec:workflows-and-routines}.
+
+% textidote: ignore begin
+
+\subsection{Testing}\label{subsec:testing}
+
+% TODO Add more content to this subsection
+// Unit tests, GoogleTest
+
+\subsection{CI/CD}\label{subsec:ci/cd}
+
+% TODO Add more content to this subsection
+// GitHub Workflows/Actions
+
+\subsection{Target systems}\label{subsec:target-systems}
+% textidote: ignore end
+
+% TODO Add more content to this subsection
+// Cross-platform (Windows, macOS, Linux)
