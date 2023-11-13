@@ -19,3 +19,4 @@ CLion
 ClangFormat
 ClangTidy
 EditorConfig
+rejseplanen
