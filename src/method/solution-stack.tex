@@ -115,7 +115,7 @@ In the following section we will take a closer look at the integrations that wil
 We will be taking a further look into what an REST-API is, and we would also be looking into how Rejseplanens API works
 and how we are going to use it for this project.
 
-\subsubsection{REST API}\label{subsubsec:rest-api}
+\subsubsection{\uppercase{Rest api}}\label{subsubsec:rest-api}
 
 To understand what a REST API is we will look further into what a NON-REST-API is and what it does.
 It will all be explained shortly what an API is.
@@ -157,10 +157,12 @@ delete data.
     \item \textbf{CRUD Operations}: RESTful APIs use standard HTTP methods (GET, POST, PUT, DELETE) to perform CRUD
     operations on resources so that would be (Create, Read, Update, Delete).
     Each HTTP method corresponds to a specific action on the resource.
-    \subitem \textbf{GET}: Retrieves a representation of the resource
-    \subitem \textbf{POST}: Creates a new resource
-    \subitem \textbf{PUT}: Updates an already existing resource
-    \subitem \textbf{DELETE}: Removes an existing resource
+    \begin{itemize}
+        \item \textbf{GET}: Retrieves a representation of the resource
+        \item \textbf{POST}: Creates a new resource
+        \item \textbf{PUT}: Updates an already existing resource
+        \item \textbf{DELETE}: Removes an existing resource
+    \end{itemize}
     \item \textbf{Representation}: The resources are represented in a format, such as JSON or XML.
     The client and server has to agree on which format the data needs to be in during the communication.
     JSON and XML is often preferred because it can be read by a human and is therefore easier to navigate.
