@@ -4,30 +4,30 @@
 
 A flowchart is a diagram that describes a program's process and breaks it down step by step.
 This is crucial because programming processes can often appear complex and confusing at first glance.
-The flowchart shows how the program progresses through various possibilities, which helps developers to gain a much
+The flowchart shows how the program progresses through various possibilities, which helps developers to gain a much 
 clearer visual overview of the program itself.
 Flowcharts consist of different shapes connected by arrows.
-Generally, rectangles with rounded corners are used to signal when the program starts or stops.
-Regular rectangles are used for back-end - processing and parallelograms are used for front-end - input or output.
-Diamonds are used for decisions and in our case we've made a circle to represent a function.
+Generally, rectangles with rounded corners are used to signal when the program starts or stops. 
+Regular rectangles are used for back-end - processing and parallelograms are used for front-end - input or output. 
+Diamonds are used for decisions and in our case we've made a circle to represent a function. 
 This detailed process significantly contributed to our development by providing the team with clarity.
 
 We start with an input function, which first asks the user for their current/start position and for their desired
 destination.
-We then give the user a choice.
-That's what makes our program special, the user can set custom preferences for the trip.
-If the user selects that, then they're asked to select what transportation they want to use.
-That can vary between cars, trains, bikes, walking and so on.
-In order to accurately calculate the \unit{CO_{2}} emissions, we require the user to enter their car's fuel efficiency.
-Then they can set priorities, which would determine what the search results are.
+We then give the user a choice. 
+That's what makes our program special, the user can set custom preferences for the trip. 
+If the user selects that, then they're asked to select what transportation they want to use. 
+That can vary between cars, trains, bikes, walking and so on. 
+In order to accurately calculate the \unit{CO_{2}} emissions, we require the user to enter their car's fuel efficiency. 
+Then they can set priorities, which would determine what the search results are. 
 Afterwards, the user has a choice to save the preferences to a file, making the process easier next time they have to
 use the program.
 The next couple of functions take place in the back-end.
 We make calls to Rejseplanen's API, which would return the list of routes that we need.
 But that's not all the information we require, therefore we make further calculations to find out what the attributes
-are for all the routes.
+are for all the routes. 
 Then we evaluate them according to the user's preferences, assign a number to them and sort them.
-Finally, we have the output section.
+Finally, we have the output section. 
 From there, they can sort it again according to a different preference, or view the details for a specific route.
 If the user is happy, then they can quit the program, or return to the list if they want a different route.
 
@@ -176,7 +176,7 @@ If the user is happy, then they can quit the program, or return to the list if t
 \begin{center}
     \begin{tikzpicture}[node distance=2cm]
 
-        \node (start) [startstop] {Start};
+        \node (start) [return] {Start(routes)};
         \node (out1)  [io, below of=start] {Print search results};
         \node (in1)   [io, below of=out1, text width=4cm, yshift=-0.5cm] {Read user choice:\\ view route details (1-5)\\
         sort the list (P,T,S,C)};
