@@ -22,6 +22,7 @@ You can see an example of how the distance is going to look in Figure~\ref{fig:i
     \centering
     \includegraphics[width=0.8\textwidth]{images/google-maps-distance-calculation.jpg}
     \caption{A route between Copenhagen and Odense. \\ Blue line is Google Maps' distance, black line is our distance.}
+    % TODO fix the text not being centered
     \label{fig:image-google-maps-distance-calculation}
 \end{figure}
 
@@ -42,7 +43,8 @@ What we decided to do instead is to find the average size for a zone.
 As the zones are not all the same size, the number of zones a route passes through may be slightly off.
 But this is the best we can do with the current circumstances.
 
-First we started by picking two stations and counted how many zones the route goes through using DSB's zone map. % cite here https://www.dsb.dk/globalassets/pdf/trafikinformation/storezoner-22.pdf
+First we started by picking two stations and counted how many zones the route goes through using DSB's zone
+map~\cite{price_zones}.
 We then used Google Maps to calculate the distance along the tracks between two stations, and we noted it down.
 Finally, we divided the distance by the number of zones to get the average size of a zone along the route.
 
@@ -73,15 +75,15 @@ Finally, we divided the distance by the number of zones to get the average size 
 From Figure~\ref{fig:table-zone-size-averages} we determined that the average size of a zone is roughly about 6
 kilometers.
 But as you can see, the sizes of zones varies a lot.
-This is unfortunate for us, as it means that the number of zones a route goes through may be very inaccurate.
+This is unfortunate for us, as it means that the number of zones a route goes through may be inaccurate.
 
 \subsubsection{Pendlerkort price}
 
 The way we're going to calculate the price will is by figuring out the price for Pendlerkort.
 This card allows commuters to freely travel between set amount of zones.
-Rejseplanen has a website where the user can input their route, and it'll calculate the price for the Pendlerkort. % cite here https://www.rejseplanen.dk/bin/query.exe/mn?L=vs_rkfc
-We then took the results and compared them to the price chart provided by DSB. % cite here https://www.dsb.dk/globalassets/priser_og_zoner/2023/000000_priser_rabatter_jylland_fyn_a4_15_jan23.pdf
-Our calculations can be found in Figure~\ref{fig:table-rejseplanen-price-calculations} and
+Rejseplanen has a website where the user can input their route, and it'll calculate the price for the
+Pendlerkort~\cite{price_calculator}.
+We then took the results and compared them to the price chart provided by DSB~\cite{price_sheet}.
 Figure~\ref{fig:image-dsb-pendlerkort-pris}.
 The results are accurate enough that we deemed them good enough for our purposes.
 
@@ -112,7 +114,7 @@ The results are accurate enough that we deemed them good enough for our purposes
     \label{fig:image-dsb-pendlerkort-pris}
 \end{figure}
 
-From what it seems, the price table is not recursive, so we can't implement a recursive function to calculate the price.
+From what it seems, the price table is not recursive, so we can't implement a function to calculate the price.
 Instead, we can save the table in the program and reference it when we need to find the price.
 This allows us to have a pretty accurate price chart as long as the number of zones is accurate.
 
@@ -121,7 +123,8 @@ This allows us to have a pretty accurate price chart as long as the number of zo
 Ungdomskort is a type op Pendlerkort that is primarily aimed at young people or students.
 The price is significantly lower than Pendlerkort, so we deemed it necessary to implement it in our program.
 The program would ask the user if they're a student, and if they are, the next calculation will be executed.
-Calculating the price for Ungdomskort is a lot easier than Pendlerkort, as the method is listed on their website. % cite here https://www.ungdomskort.dk/priser/
+Calculating the price for Ungdomskort is a lot easier than Pendlerkort, as the method is listed on their
+website~\cite{price_ung}.
 
 The price is calculated by taking the equivalent price for a Pendlerkort and then taking 2487 kr from it.
 Then the result is halved, and finally 663 kr is added to the result.
