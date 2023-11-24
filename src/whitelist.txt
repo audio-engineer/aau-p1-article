@@ -20,3 +20,6 @@ ClangFormat
 ClangTidy
 EditorConfig
 rejseplanen
+Pendlerkort
+Ungdomskort
+kr
