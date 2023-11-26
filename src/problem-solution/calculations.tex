@@ -1,4 +1,4 @@
-\section{Calculating the attributes}
+\section{Calculating the attributes}\label{sec:calculations}
 
 Before we can properly print results in the program, we need to calculate the attributes of the different routes.
 This is a relatively difficult task, as we need to calculate the distance, price, \unit{CO_{2}} and comfort.
@@ -8,7 +8,7 @@ Rejseplanen has systems in place to calculate some of those attributes, but the 
 This means that we have to calculate them ourselves.
 Our calculations will not be 100\% accurate, but they will be close enough for our purposes.
 
-\subsection{Calculating distance}
+\subsection{Calculating distance}\label{subsec:calculating-distance}
 
 As we don't use a map API, we can't properly calculate the distance between two points.
 This means that we have to ignore roads and instead calculate the distance by the train tracks.
@@ -28,7 +28,7 @@ You can see an example of how the distance is going to look in Figure~\ref{fig:i
 
 % TODO Add explanation for how we calculate the distance
 
-\subsection{Calculating price}
+\subsection{Calculating price}\label{subsec:calculating-price}
 
 Calculating the price is a lot more difficult than calculating the distance.
 As Denmark is divided into zones, the price is calculated based on how many zones you travel through.
@@ -132,17 +132,17 @@ Then the result is halved, and finally 663 kr is added to the result.
 Here's an example for a Pendlerkort between Odense and Copenhagen, that costs 3750 kr:
 
 \begin{equation}
-    \frac{3750 - 2487}{2} + 663 = 1294 kr
+    \frac{3750 - 2487}{2} + 663 = 1294 \text{kr}
 \end{equation}
 
 As a member in our group travels that same distance with an Ungdomskort, we can confirm that this result is accurate.
 
 % textidote: ignore begin
-\subsection{Calculating \unit{CO_{2}} emission}
+\subsection{Calculating \unit{CO_{2}} emission}\label{subsec:calculating-co2-emission}
 % TODO Add the calculations, remove textiodte ignore
 % textidote: ignore end
 
 % textidote: ignore begin
-\subsection{Calculating comfort value}
+\subsection{Calculating comfort value}\label{subsec:calculating-comfort-value}
 % TODO Add the calculation, remove textiodte ignore
 % textidote: ignore end
