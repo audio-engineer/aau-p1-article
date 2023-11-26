@@ -80,7 +80,7 @@ This is unfortunate for us, as it means that the number of zones a route goes th
 \subsubsection{Pendlerkort price}
 
 The way we're going to calculate the price will is by figuring out the price for Pendlerkort.
-This card allows commuters to freely travel between set amount of zones.
+This card allows commuters to freely travel between set amount of zones, be that with bus or train.
 Rejseplanen has a website where the user can input their route, and it'll calculate the price for the
 Pendlerkort~\cite{price_calculator}.
 We then took the results and compared them to the price chart provided by DSB~\cite{price_sheet}.
@@ -135,7 +135,56 @@ Here's an example for a Pendlerkort between Odense and Copenhagen, that costs 37
     \frac{3750 - 2487}{2} + 663 = 1294 \text{kr}
 \end{equation}
 
-As a member in our group travels that same distance with an Ungdomskort, we can confirm that this result is accurate.
+As a member in our group travels that same distance with an Ungdomskort, we can confirm this result to be accurate.
+
+\subsubsection{Car and bike price}
+
+As we're calculating the price for public transportation, we also need to calculate the price for cars and bikes.
+Of course, we'll be looking into the prices assuming that the user owns a car or a bike.
+What we're looking into is the price of gas or electricity, insurance and maintenance.
+Do note that pricing can vary a lot depending on different circumstances, so we'll be looking into the average prices.
+
+First we'll look into the prices for gas.
+According to Global Petrol Prices, the average price for gas in Denmark is 12.20 kr per liter~\cite{price_gas}, however
+looking at the graph, it seems that recently the prices have been around 14 kr, so we'll choose that number for our
+calculations.
+Since we ask the user to input their car's fuel efficiency, we can use that in our calculations, otherwise we can use
+the average fuel efficiency, which is is 24 MPG (Miles Per Gallon)~\cite{price_mpg} and equals to 10.2 km per liter.
+This will be the default in case the user does not input their car's fuel efficiency.
+Our program will take the distance and divide it by the fuel efficiency, and then multiply it by the price of gas.
+This will give us the price for gas for the route.
+We'll then have to multiply the price by two, as the user will have to travel back home.
+And finally, we'll have to multiply the price by 20, as the user will have to travel for the duaration of work month.
+Here's an example of a commute that's 30 km long with a fuel efficiency of 17 km per liter and a gas price of 14 kr
+
+\begin{equation}
+    \frac{30}{17} \times 14 \times 40 = 988 \text{kr}
+\end{equation}
+
+We can again confirm this result to be accurate.
+
+While electric cars don't require gas, they do require electricity.
+The most popular electric car in Denmark, the Tesla Model 3, happens to be the most economical electric car with an
+efficiency of 142 MPGe (Miles Per Gallon equivalent), which is about 60 km per liter equivalent~\cite{price_el}.
+Of course, electric cars don't use liters or gallons, so we say ``equivalent'' in this case.
+One gallon is the equivalent of 33.7 kWh~\cite{price_mpge}, which is 8.9 kWh per liter.
+With that in mind, we can use the price of electricity in Denmark, which is 2.8 kr per kWh~\cite{price_energy}, to
+figure out that the cost per km for electric cars is 24.9 kr.
+And we can use the same calculations as we did for gas to figure out the price for electricity.
+
+Next we'll look into the price of insurance and maintenance.
+A big factor for the insurance price depends on the type of subscription the user has, but the average cost is roughly
+250 kr per month~\cite{price_insurance}.
+When it comes to maintenance, the average cost is about \$1064~\cite{price_repair}, which equals to 600 kr per month.
+This amounts for 850 kr that the user has to pay on top of the gas or electricity prices for the month.
+
+Bikes in comparison are a lot cheaper, as they don't require insurance or gas.
+However, they do require maintenance.
+But compared to cars, maintenance for bikes is also a lot cheaper.
+According to The Pro's Closet, they've estimated that the average cost of maintenance for a road bike is about \$185 per
+year~\cite{price_bike}.
+This converts to about 1200 kr per year, which is 100 kr per month.
+This is a lot cheaper than cars, but it's still a cost that needs to be accounted for.
 
 % textidote: ignore begin
 \subsection{Calculating \unit{CO_{2}} emission}\label{subsec:calculating-co2-emission}
