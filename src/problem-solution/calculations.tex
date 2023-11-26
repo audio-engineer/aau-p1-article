@@ -149,12 +149,12 @@ According to Global Petrol Prices, the average price for gas in Denmark is 12.20
 looking at the graph, it seems that recently the prices have been around 14 kr, so we'll choose that number for our
 calculations.
 Since we ask the user to input their car's fuel efficiency, we can use that in our calculations, otherwise we can use
-the average fuel efficiency, which is is 24 MPG (Miles Per Gallon)~\cite{price_mpg} and equals to 10.2 km per liter.
+the average fuel efficiency, which is 24 MPG (Miles Per Gallon)~\cite{price_mpg} and equals to 10.2 km per liter.
 This will be the default in case the user does not input their car's fuel efficiency.
 Our program will take the distance and divide it by the fuel efficiency, and then multiply it by the price of gas.
 This will give us the price for gas for the route.
 We'll then have to multiply the price by two, as the user will have to travel back home.
-And finally, we'll have to multiply the price by 20, as the user will have to travel for the duaration of work month.
+And finally, we'll have to multiply the price by 20, as the user will have to travel for the duration of work month.
 Here's an example of a commute that's 30 km long with a fuel efficiency of 17 km per liter and a gas price of 14 kr
 
 \begin{equation}
@@ -165,7 +165,7 @@ We can again confirm this result to be accurate.
 
 While electric cars don't require gas, they do require electricity.
 The most popular electric car in Denmark, the Tesla Model 3, happens to be the most economical electric car with an
-efficiency of 142 MPGe (Miles Per Gallon equivalent), which is about 60 km per liter equivalent~\cite{price_el}.
+efficiency of 142 MPG-e (Miles Per Gallon equivalent), which is about 60 km per liter equivalent~\cite{price_el}.
 Of course, electric cars don't use liters or gallons, so we say ``equivalent'' in this case.
 One gallon is the equivalent of 33.7 kWh~\cite{price_mpge}, which is 8.9 kWh per liter.
 With that in mind, we can use the price of electricity in Denmark, which is 2.8 kr per kWh~\cite{price_energy}, to
