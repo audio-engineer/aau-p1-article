@@ -24,3 +24,10 @@ Pendlerkort
 Ungdomskort
 kr
 Odense
+InitializePreferenceFile
+SetUserPreference
+GetUserPreference
+cJSON
+JSON
+json
+fopen
