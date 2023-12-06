@@ -10,7 +10,7 @@ To perform these comparisons the \texttt{Evaluate} function, as seen in~\ref{lst
 void Evaluate(TripData trip_arr[], size_t size_of_struct_array);
 \end{lstlisting}
 
-This routine has an array of the type TripData as an input parameter, which is a struct type as seen in
+This routine has an array of the type \texttt{TripData} as an input parameter, which is a struct type as seen in
 ~\ref{lst:TripData-declaration}.
 
 \begin{lstlisting}[caption={Declaration of \texttt{TripData} struct}, label={lst:TripData-declaration}]
@@ -29,7 +29,7 @@ typedef struct TripData {
 
 This, as well as the size of the array, allows the \texttt{Evaluate} function to read from the members served by the
 \texttt{Calculating} functions mentioned earlier as well as write to the \texttt{\_score} members.
-This functions primary function is to call the function \texttt{CalculateScore} function, as seen in
+This function's primary function is to call the function \texttt{CalculateScore} function, as seen in
 ~\ref{lst:calculatescore-prototype}, with the different attributes of the routes as input parameters.
 
 \begin{lstlisting}[caption={Function prototype for \texttt{CalculateScore}}, label={lst:calculatescore-prototype}]
@@ -73,9 +73,9 @@ Finally, the \texttt{overall\_score} member is calculated for all the iterations
 \begin{lstlisting}[caption={Calculation of \texttt{overall\_score}}, label={lst:overall_score-calculation}]
 for (size_t i = 0; i < size_of_struct_array; i++) {
   trip_arr[i].overall_score =
-      GetUserPreference("price")       * trip_arr[i].price_score +
-      GetUserPreference("health")      * trip_arr[i].comfortability_score +
-      GetUserPreference("time")        * trip_arr[i].time_score +
+      GetUserPreference("price") * trip_arr[i].price_score +
+      GetUserPreference("health") * trip_arr[i].comfortability_score +
+      GetUserPreference("time") * trip_arr[i].time_score +
       GetUserPreference("environment") * trip_arr[i].emissions_score;
 }
 \end{lstlisting}
