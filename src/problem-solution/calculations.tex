@@ -186,6 +186,23 @@ year~\cite{price_bike}.
 This converts to about 1200 kr per year, which is 100 kr per month.
 This is a lot cheaper than cars, but it's still a cost that needs to be accounted for.
 
+\subsection{Calculating time}\label{subsec:calculating-time}
+
+Calculating the time is marginably easier than calculating the distance, but only for trains.
+Rejseplanen provides a time for when the train arrives at the station, and when it departs.
+So for a train route, we can simply find the difference in time and that'll be our time for the route.
+However, for cars and bikes, we need to calculate the time ourselves.
+We can do this by taking the distance and dividing it by the average speed of a car or bike.
+As we're looking into long distances, we're expecting that the user will be using the highway.
+But the user will also have to spend some time in the city, so we'll have to take that into account as well.
+
+We expect that the user will spend around 15 minutes to get out of the city, and 15 minutes to get into the city.
+So for the first 30 minutes, we'll be using the average speed of a car in the city, and afterwards we'll be using the
+average speed of a car on the highway.
+The average speed of a car on the highway is about 130 km/h~\cite{time_highway}, and the average speed of a car in
+the city is about 50 km/h~\cite{time_city}.
+
+
 % textidote: ignore begin
 \subsection{Calculating \unit{CO_{2}} emission}\label{subsec:calculating-co2-emission}
 % TODO Add the calculations, remove textiodte ignore
