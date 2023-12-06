@@ -1,0 +1,85 @@
+% textidote: ignore begin
+\section{Evaluating the attributes}\label{sec:evaluating-the-attributes}
+% textidote: ignore end
+
+After the attributes for each route has been calculated, the attributes are evaluated against each other, as stated in
+the flowchart.
+To perform these comparisons the \texttt{Evaluate} function, as seen in~\ref{lst:evaluate-prototype}, is used.
+
+\begin{lstlisting}[caption={Function prototype for \texttt{Evaluate}}, label={lst:evaluate-prototype}]
+void Evaluate(TripData trip_arr[], size_t size_of_struct_array);
+\end{lstlisting}
+
+This routine has an array of the type TripData as an input parameter, which is a struct type as seen in
+~\ref{lst:TripData-declaration}.
+
+\begin{lstlisting}[caption={Declaration of \texttt{TripData} struct}, label={lst:TripData-declaration}]
+typedef struct TripData {
+  double overall_score;
+  double price;
+  double price_score;
+  double comfortability;
+  double comfortability_score;
+  double time;
+  double time_score;
+  double emissions;
+  double emissions_score;
+} TripData;
+\end{lstlisting}
+
+This, as well as the size of the array, allows the \texttt{Evaluate} function to read from the members served by the
+\texttt{Calculating} functions mentioned earlier as well as write to the \texttt{\_score} members.
+This functions primary function is to call the function \texttt{CalculateScore} function, as seen in
+~\ref{lst:calculatescore-prototype}, with the different attributes of the routes as input parameters.
+
+\begin{lstlisting}[caption={Function prototype for \texttt{CalculateScore}}, label={lst:calculatescore-prototype}]
+void CalculateScore(TripData trip_data[], const CalculateScoreParameters* calculate_score_parameters);
+\end{lstlisting}
+
+It does this by having the struct array mentioned before and by having an instance of the
+\texttt{CalculateScoreParameters} struct, as seen in~\ref{lst:CalculateScoreParameters-declaration} as input parameters.
+
+\begin{lstlisting}[caption={Declaration of \texttt{CalculateScoreParameters} struct},
+    label={lst:CalculateScoreParameters-declaration}]
+typedef struct CalculateScoreParameters {
+  const size_t kNumTrips;
+  const size_t kReadOffset;
+  const size_t kWriteOffset;
+  const int kInverted;
+} CalculateScoreParameters;
+\end{lstlisting}
+
+This struct is used to pass multiple input parameters without clouding the input parameters of the function.
+The functionality of the \texttt{CalculateScore} function includes identifying the largest and smallest member of a
+specific member type for all iterations of the struct array.
+The initialization of the local variable \texttt{Score}, as seen in~\ref{lst:score_initialization}, includes the score
+calculation for each instance of the struct for the relevant member passed in the \texttt{CalculateScore} function.
+
+\begin{lstlisting}[caption={Initialization of \texttt{Score}}, label={lst:score_initialization}]
+double score = (*(double*)read_member - attribute_smallest) /
+  (attribute_largest - attribute_smallest);
+\end{lstlisting}
+
+By subtracting the smallest member from the value of each member, as well as the largest member, the values are shifted
+to a common baseline of \texttt{0}.
+The score for the relevant member for each route is then given relative to the largest and smallest member, hereby
+given one member the score of \texttt{1}, another the score of \texttt{0} and the rest the relative score in between.
+
+This process is as mentioned iterated over all member types in the \texttt{TripData} struct array.
+
+Finally, the \texttt{overall\_score} member is calculated for all the iterations in the struct array, as seen in
+~\ref{lst:overall_score-calculation}.
+
+\begin{lstlisting}[caption={Calculation of \texttt{overall\_score}}, label={lst:overall_score-calculation}]
+for (size_t i = 0; i < size_of_struct_array; i++) {
+  trip_arr[i].overall_score =
+      GetUserPreference("price")       * trip_arr[i].price_score +
+      GetUserPreference("health")      * trip_arr[i].comfortability_score +
+      GetUserPreference("time")        * trip_arr[i].time_score +
+      GetUserPreference("environment") * trip_arr[i].emissions_score;
+}
+\end{lstlisting}
+
+
+
+
