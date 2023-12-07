@@ -31,3 +31,6 @@ cJSON
 JSON
 json
 fopen
+CalculateScore
+CalculateScoreParameters
+TripData
