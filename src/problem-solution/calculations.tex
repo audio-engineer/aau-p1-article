@@ -10,6 +10,7 @@ Our calculations will not be 100\% accurate, but they will be close enough for o
 
 \subsection{Calculating distance}\label{subsec:calculating-distance}
 
+We need the distance of a route for our calculations.
 As we don't use a map API, we can't properly calculate the distance between two points.
 This means that we have to ignore roads and instead calculate the distance by the train tracks.
 The problem is that Rejseplanen only provides the coordinates of the stations, not the tracks.
@@ -26,7 +27,23 @@ You can see an example of how the distance is going to look in Figure~\ref{fig:i
     \label{fig:image-google-maps-distance-calculation}
 \end{figure}
 
-% TODO Add explanation for how we calculate the distance
+The way we're going to calculate the distance is by using the Haversine formula~\cite{haversine}.
+The formula is used to calculate the distance between two points on a sphere, and it's used in navigation.
+We'll be using the coordinates from Rejseplanen to calculate the distance between two stations.
+The formula is as follows:
+
+\begin{equation}
+    haversine(\theta) = sin^{2}(\frac{\theta}{2})
+\end{equation}
+
+We can use it to calculate the distance between two points using the following formula:
+
+\begin{equation}
+    (\frac{d}{r}) = haversine(\phi_{2} - \phi_{1}) + cos(\phi_{1}) \times cos(\phi_{2}) \times haversine(\lambda_{2} - \lambda_{1})
+\end{equation}
+
+Where $\phi$ is the latitude, $\lambda$ is the longitude, $d$ is the distance and $r$ is the radius of the Earth,
+which is 6371 km.
 
 \subsection{Calculating price}\label{subsec:calculating-price}
 
@@ -200,7 +217,7 @@ We expect that the user will spend around 15 minutes to get out of the city, and
 So for the first 30 minutes, we'll be using the average speed of a car in the city, and afterwards we'll be using the
 average speed of a car on the highway.
 The average speed of a car on the highway is about 130 km/h~\cite{time_highway}, and the average speed of a car in
-the city is about 50 km/h~\cite{time_city}.
+the city is about 50 km/h~\cite{time_city}. % TODO ADD SOURCES!!!
 This would mean that for the first 25 km we'd divide by 50 and for the remaining we'll divide by 130.
 Which will result in the number of hours the car ride will take.
 We can also find the number of minutes by multiplying the decimal by 60.
@@ -224,23 +241,23 @@ Luckily, public companies have to report their \unit{CO_{2}} emissions, so we ca
 The list below is a sample of the different types of public transport vehicles and their \unit{CO_{2}} emissions pr.
 person pr. kilometer (km) as seen in~\ref{tab:emissions}.
 
-\begin{table}
+\begin{table}[H]
     \centering
     \begin{tabular}{ || c | c || }
         \hline
         Vehicle type & \unit{CO_{2}} pr. person pr. km \\
         \hline\hline
-        S-train & 14~\cite{dsb2023} \\
+        S-train & 14 gram~\cite{dsb2023} \\
         \hline
-        Regional train & 38~\cite{dsb2023} \\
+        Regional train & 38 gram~\cite{dsb2023} \\
         \hline
-        InterCity train & 29~\cite{dsb2023} \\
+        InterCity train & 29 gram~\cite{dsb2023} \\
         \hline
-        Speed train & 37~\cite{dsb2023} \\
+        Speed train & 37 gram~\cite{dsb2023} \\
         \hline
-        Long distance bus & 23~\cite{cowi2022} \\
+        Long distance bus & 23 gram~\cite{cowi2022} \\
         \hline
-        City bus & 10~\cite{ntm2023} \\
+        City bus & 10 gram~\cite{ntm2023} \\
         \hline
     \end{tabular}
     \caption{\unit{CO_{2}} pr. person pr. km. pr. vehicle type.}
