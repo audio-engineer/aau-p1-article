@@ -196,19 +196,61 @@ We can do this by taking the distance and dividing it by the average speed of a 
 As we're looking into long distances, we're expecting that the user will be using the highway.
 But the user will also have to spend some time in the city, so we'll have to take that into account as well.
 
-We expect that the user will spend around 15 minutes to get out of the city, and 15 minutes to get into the city.
+We expect that the user will spend around 15 minutes to get out of the city, and 15 minutes to get into the next city.
 So for the first 30 minutes, we'll be using the average speed of a car in the city, and afterwards we'll be using the
 average speed of a car on the highway.
 The average speed of a car on the highway is about 130 km/h~\cite{time_highway}, and the average speed of a car in
 the city is about 50 km/h~\cite{time_city}.
+This would mean that for the first 25 km we'd divide by 50 and for the remaining we'll divide by 130.
+Which will result in the number of hours the car ride will take.
+We can also find the number of minutes by multiplying the decimal by 60.
 
+Depending on the distance, bike and walking time might be unrealistic.
+This is already the case with for example Google Maps, where the time it takes to walk a distance does not include
+breaks or sleep, resulting in a vastly smaller time estimate.
+A 100 km trip is estimated to take 23 hours, but it'll realisically take more than 2 days at least.
+This could be misleading at longer distances, because 24 hours converts to 1 day.
+We would keep this behaviour, however we won't round the time up to days.
+Walk and bike speed can vary by age and sex, but we decided to settle on an average of 4.6 km/h, which should be
+accurate for people up to 50 years of age~\cite{time_walk}.
+As for biking, the speed can vary by the bike and the biker's experience too.
+We settled for 17.5 km/h, which is the average speed for a normal bike tour~\cite{time_bike}.
+The calculation process is similar to that for cars.
 
-% textidote: ignore begin
 \subsection{Calculating \unit{CO_{2}} emission}\label{subsec:calculating-co2-emission}
-% TODO Add the calculations, remove textiodte ignore
-% textidote: ignore end
 
-% textidote: ignore begin
-\subsection{Calculating comfort value}\label{subsec:calculating-comfort-value}
-% TODO Add the calculation, remove textiodte ignore
-% textidote: ignore end
+The final attribute we need to calculate is the \unit{CO_{2}} emission.
+Luckily, public companies have to report their \unit{CO_{2}} emissions, so we can use that in our calculations.
+The list below is a sample of the different types of public transport vehicles and their \unit{CO_{2}} emissions pr.
+person pr. kilometer (km) as seen in~\ref{tab:emissions}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{ || c | c || }
+        \hline
+        Vehicle type & \unit{CO_{2}} pr. person pr. km \\
+        \hline\hline
+        S-train & 14~\cite{dsb2023} \\
+        \hline
+        Regional train & 38~\cite{dsb2023} \\
+        \hline
+        InterCity train & 29~\cite{dsb2023} \\
+        \hline
+        Speed train & 37~\cite{dsb2023} \\
+        \hline
+        Long distance bus & 23~\cite{cowi2022} \\
+        \hline
+        City bus & 10~\cite{ntm2023} \\
+        \hline
+    \end{tabular}
+    \caption{\unit{CO_{2}} pr. person pr. km. pr. vehicle type.}
+    \label{tab:emissions}
+\end{table}
+
+Since the data is per km, we can multiply the distance by the \unit{CO_{2}} emission to get the total \unit{CO_{2}}.
+And multiply by 40, similar to how we did in the price calculation, to get the \unit{CO_{2}} emission for a month.
+The number will be quite large, as it is in grams, so we'll have to divide by 1000 to get the number in kilograms.
+And with that, we're finished with all the calculations.
+
+% \subsection{Calculating comfort value}\label{subsec:calculating-comfort-value}
+% TODO Optional: Add comfort as an attribute
