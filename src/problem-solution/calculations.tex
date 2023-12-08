@@ -205,7 +205,7 @@ This is a lot cheaper than cars, but it's still a cost that needs to be accounte
 
 \subsection{Calculating time}\label{subsec:calculating-time}
 
-Calculating the time is marginably easier than calculating the distance, but only for trains.
+Calculating the time is marginally easier than calculating the distance, but only for trains.
 Rejseplanen provides a time for when the train arrives at the station, and when it departs.
 So for a train route, we can simply find the difference in time and that'll be our time for the route.
 However, for cars and bikes, we need to calculate the time ourselves.
@@ -225,9 +225,9 @@ We can also find the number of minutes by multiplying the decimal by 60.
 Depending on the distance, bike and walking time might be unrealistic.
 This is already the case with for example Google Maps, where the time it takes to walk a distance does not include
 breaks or sleep, resulting in a vastly smaller time estimate.
-A 100 km trip is estimated to take 23 hours, but it'll realisically take more than 2 days at least.
+A 100 km trip is estimated to take 23 hours, but it'll realistically take more than 2 days at least.
 This could be misleading at longer distances, because 24 hours converts to 1 day.
-We would keep this behaviour, however we won't round the time up to days.
+We would keep this behavior, however we won't round the time up to days.
 Walk and bike speed can vary by age and sex, but we decided to settle on an average of 4.6 km/h, which should be
 accurate for people up to 50 years of age~\cite{time_walk}.
 As for biking, the speed can vary by the bike and the biker's experience too.
