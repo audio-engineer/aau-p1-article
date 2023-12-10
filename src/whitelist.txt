@@ -34,3 +34,4 @@ fopen
 CalculateScore
 CalculateScoreParameters
 TripData
+Haversine
