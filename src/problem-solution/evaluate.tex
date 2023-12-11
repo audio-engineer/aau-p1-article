@@ -15,15 +15,11 @@ This routine has an array of the type \texttt{TripData} as an input parameter, w
 
 \begin{lstlisting}[caption={Declaration of \texttt{TripData} struct}, label={lst:TripData-declaration}]
 typedef struct TripData {
-  double overall_score;
+  int trip_id;
   double price;
-  double price_score;
   double comfortability;
-  double comfortability_score;
   double time;
-  double time_score;
   double emissions;
-  double emissions_score;
 } TripData;
 \end{lstlisting}
 
