@@ -16,14 +16,16 @@ A way to do this is to, at the programs start, initialize the save file with som
 continue running even if the user does not want to input their own preferences.
 We initialize the save file through a function called ``InitializePreferenceFile''
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{InitPref}
-    \caption{Saving preferences to file.}
-    \label{fig:figureInitSaveFile}
-\end{figure}
+\begin{lstlisting}[label={lst:SavePreferences}, caption={Saving preferences to file.}]
+    FILE* preferences = fopen("preferences.json", "w");
+    fputs(kSerializedJsonWithNewline, preferences);
+    fclose(preferences);
+    free(kSerializedJsonWithNewline);
 
-In Figure~\ref{fig:figureInitSaveFile} it can be seen that we are trying to open the preferences file,
+    cJSON_Delete(kJsonPreferences);
+\end{lstlisting}
+
+In Figure~\ref{lst:SavePreferences} it can be seen that we are trying to open the preferences file,
 and by using ``fopen'' we make use of the property that creates the file if it does not already exist.
 The rest of the code inside InitializePreferenceFile is used to convert our given inputs into the JSON format, which in
 C is somewhat difficult.
@@ -37,15 +39,17 @@ Parsing JSON and generating JSON is done through the library cJSON which we have
 As seen above it works by first parsing the content of the preference file and then searching for the item we want to
 change.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{ParsingJSON}
-    \caption{Parsing JSON.}
-    \label{fig:figureParsingJSON}
-\end{figure}
+\begin{lstlisting}[label={lst:ParseJSON}, caption={Parsing JSON.}]
+  const cJSON* const kJsonPreferences = cJSON_Parse(kFileBuffer);
+  free(kFileBuffer);
+
+  cJSON* const kJsonValue = cJSON_GetObjectItem(kJsonPreferences, key);
+
+  kJsonValue->valuedouble = value;
+\end{lstlisting}
 
 cJSON stores all JSON values as structs and to change the value we access the struct as seen on line 82 in
-Figure~\ref{fig:figureParsingJSON}.
+Figure~\ref{lst:ParseJSON}.
 The next step is then to save the changes to our preferences file, but because saving to a file in C can get
 complicated if you change the length of the file, we sidestep this problem by overwriting the whole save file with the
 updated values.
@@ -55,15 +59,18 @@ This is done much in the same way we used in SetUserPreference as we open the fi
 the item we want to use.
 Both InitializePreferenceFile and SetUserPreference are void functions, but GetUserPreference is a double function
 this is done so the returned value will be the value for the preference we want to get out of the save file, see
-Figure~\ref{fig:figureGetPref}.
+Figure~\ref{lst:GetPref}.
 GetUserPreference only takes in one input which is the key we want to look for, this could be ``price'' or another of
 the attributes.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{GetPref}
-    \caption{Reading attribute value from preference file.}
-    \label{fig:figureGetPref}
-\end{figure}
+\begin{lstlisting}[label={lst:GetPref}, caption={Reading attribute value from preference file.}]
+  cJSON* file_item = cJSON_GetObjectItem(json_preferences, key);
+
+  value = cJSON_GetNumberValue(file_item);
+
+  cJSON_Delete(json_preferences);
+
+  return value;
+\end{lstlisting}
 
 With these three functions it is now possible for us to store and use preferences locally on the device.
