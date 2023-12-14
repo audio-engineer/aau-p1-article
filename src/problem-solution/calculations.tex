@@ -237,7 +237,7 @@ The calculation process is similar to that for cars.
 \subsection{Calculating \unit{CO_{2}} emission}\label{subsec:calculating-co2-emission}
 
 The final attribute we need to calculate is the \unit{CO_{2}} emission.
-Luckily, public companies have to report their \unit{CO_{2}} emissions, so we can use that in our calculations.
+Luckily, public companies have to report their \unit{CO_{2}} emission, so we can use that in our calculations.
 The list below is a sample of the different types of public transport vehicles and their \unit{CO_{2}} emissions pr.
 person pr. kilometer (km) as seen in~\ref{tab:emissions}.
 
@@ -268,6 +268,14 @@ Since the data is per km, we can multiply the distance by the \unit{CO_{2}} emis
 And multiply by 40, similar to how we did in the price calculation, to get the \unit{CO_{2}} emission for a month.
 The number will be quite large, as it is in grams, so we'll have to divide by 1000 to get the number in kilograms.
 And with that, we're finished with all the calculations.
+
+When it comes to car emissions, we can use the fuel efficiency to calculate the \unit{CO_{2}} emission.
+For a diesel car, one liter of diesel creates 2.68 kg of \unit{CO_{2}}~\cite{co2_car}.
+With that in mind, we can divide the distance with the fuel efficiency to figure out how many liters of
+diesel the car uses per trip, and then multiply that by 2.68 to get the \unit{CO_{2}} emission for that trip.
+And similar to the other calculations, we'll multiply by 40 to get the \unit{CO_{2}} emission for the whole month.
+
+As for electric cars, they don't emit any \unit{CO_{2}}.
 
 % \subsection{Calculating comfort value}\label{subsec:calculating-comfort-value}
 % TODO Optional: Add comfort as an attribute
