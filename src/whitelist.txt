@@ -36,3 +36,6 @@ CalculateScoreParameters
 TripData
 Haversine
 Fynbus
+TripScore
+SortRoutes
+PrintTripScoresAndData
