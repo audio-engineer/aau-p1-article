@@ -2,36 +2,55 @@
 \section{Software Requirements Specification}\label{sec:software-requirements-specification}
 % textidote: ignore end
 
-The outline of the requirements of the program is divided into two categories; hard requirements labeled ``need to
-have's'' and soft requirements labeled ``nice to have's''.
+The outline of the requirements of the program is divided into 4 categories: essential requirements labeled as
+"Must-haves (Mo)," desirable requirements labeled as "Should-haves (S)" and "Could-haves (Co)," and
+undesirable requirements as "Won't-haves (W)."
+The requirements are made by taking use of the MOSCOW model as it narrows our program to what is realistically
+achievable.
 % textidote: ignore begin
-``Need to have's'' include all functions of the program which is expected to be included and implemented.
-In contrast, the ``nice to have's'' include functions which are out of scope of this report, but would improve the
-program if implemented.
+"Must-haves (Mo)" include all functions of the program that are necessary and must be included and implemented. In
+contrast, "Should-haves (S)" and "Could-haves (Co)" include functions that are desirable but not critical to the core
+functionality of the program.
 % textidote: ignore end
 
 % textidote: ignore begin
-\subsection{Need to have}\label{subsec:need-to-have}
+\subsection{Must-haves (Mo)}\label{subsec:must-haves}
 % textidote: ignore end
 
 \begin{itemize}
-    \item Able to evaluate user-input
-    \item Able to get requests from Rejseplanen’s API
-    \item Able to compare routes
-    \item Able to evaluate weighing of routes
-    \item Able to output some data calculated based on a route to the console
+    \item Evaluate user input
+    \item Get requests from Rejseplanen’s API
+    \item Compare routes
+    \item Evaluate the weighing of routes
+    \item Output calculated data based on a route to the console
 \end{itemize}
 
 % textidote: ignore begin
-\subsection{Nice to have}\label{subsec:nice-to-have}
+\subsection{Should-haves (S)}\label{subsec:should-haves}
 % textidote: ignore end
 
 \begin{itemize}
-    \item Able to search and choose stops
-    \item Able to use a map related API
-    \item Cross platform compatibility
-    \item Graphical/Terminal user interface (GUI/TUI)
-    \item Desktop / mobile / web application
+    \item Search and choose stops
+    \item Use a map-related API
+    \item Cross-platform compatibility
+\end{itemize}
+
+% textidote: ignore begin
+\subsection{Could-haves (Co)}\label{subsec:could-haves}
+% textidote: ignore end
+
+\begin{itemize}
+    \item Sort journeys by health preferences like stress or physical activity
+    \item Graphical user interface (GUI)
+    \item Desktop/mobile/web application
+\end{itemize}
+
+\subsection{Won't-haves}\label{subsec:wont-haves}
+
+\begin{itemize}
+    \item Advanced security features like encryption or user authentication
+    \item User health tracking or personalized health recommendations
+    \item Real-time updates to a shown journey.
 \end{itemize}
 
 The following flowcharts and analysis of the program will encompass these requirements.
