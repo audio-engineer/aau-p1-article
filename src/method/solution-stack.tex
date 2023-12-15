@@ -242,12 +242,19 @@ used by a majority of developers, which made it possible to lint the source code
 
 We will take a closer look at how it was implemented practically in the next Section~\ref{sec:workflows-and-routines}.
 
-% textidote: ignore begin
-
 \subsection{Testing}\label{subsec:testing}
 
-% TODO Add more content to this subsection
-// Unit tests, GoogleTest
+As mentioned in the Section~\ref{subsec:programming-languages}, the teams uses GoogleTest to evaluate functions and
+methods in the code. GoogleTest is a framework for writing C++ tests on a variety of platforms (Linux, Windows, Mac OS
+X, etc.)~\cite{googletest}.
+GoogleTest is a framework that is used to test C++ code, but it can also be used to test C code.
+The reason why the team chose to use GoogleTest is because of the size of the team and the complexity of the project.
+GoogleTest allows for the team to test functions and methods in the code, without including them in main code.
+It does this by creating a separate file for the tests, which is then compiled and run separately from the main code.
+This allows for the team to work on individual parts of the code, without having to worry about interfering with each
+other.
+
+% textidote: ignore begin
 
 \subsection{CI/CD}\label{subsec:ci/cd}
 

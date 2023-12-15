@@ -1,0 +1,95 @@
+\section{Evaluation}\label{sec:evaluation}
+
+During and after the development of the program, we used different types of testing techniques to evaluate the accuracy
+of the program.
+Otherwise, we wouldn't know whether the program is working as intended.
+During the development, we used CLion's built-in debugger to step through the program and evaluate the
+values of the variables at each step.
+We also used unit testing to test the individual components of the program, as described in
+Section~\ref{subsec:testing}.
+After the development, we used a qualitative evaluation method to determine the program's usability from the user's
+perspective.
+The method is called ``Thinking Aloud'', and the goal is to evaluate the program's UX by having the user say all their
+thoughts out loud as they're using the program.
+Below are our experiences and results with the different methods.
+
+\subsection{Debugging}\label{subsec:debugging}
+
+There were some cases during the development where we did not get the expected result from the program.
+And in some extreme cases, the program could crash.
+Due to the complexity of the program, it was not always easy to find the cause of the problem.
+In these cases, we used the built-in debugger in CLion.
+The way it works is that we can set breakpoints throughout the program, and when the program reaches a breakpoint, it
+will pause the program and give us time to inspect and evaluate the values of the variables.
+Then we can step through the program one step at a time and see how the values change.
+If we notice anything unexpected, we can investigate further and find what the issue is.
+
+An example of an issue we had was when we were testing Rejseplanens API.
+Originally we were searching for a trip between ``Høje Taastrup St.'' and ``Sydhavn St.'', and we were getting the
+expected result, but when we tried to search for a trip between ``Høje Taastrup St.'' and ``Slagelse St.'', we were
+getting an error.
+The problem seemed very strange, as it was giving an error only for some specific stations.
+So we decided to use the debugger to look at where exactly the function was failing.
+It was parsing the user input and returning the JSON response just fine, but when it tried to parse the JSON response,
+the function would fail and return no results.
+So we compared the two JSON responses, and we noticed that the only difference was that the station for ``Sydhavn St.''
+required a change of line, while the station for ``Slagelse St.'' did not.
+The JSON response has an element called ``Leg'', which would be an array if there were multiple legs (lines) in the
+trip, and it would be an object if there was only one leg.
+Our program was expecting an array, but it was getting an object, and that was causing the program to fail.
+
+\subsection{Unit Testing}\label{subsec:unit-testing}
+
+While working on different functions of the program, we didn't always have the opportunity to run them.
+There could be many reasons for this, such as the function being dependent on other functions, or the function being
+unneeded at the time.
+But we still needed to test their functionality.
+Therefore, we used unit testing to test the individual components of the program.
+An example of this can be found when we were working on our calculation functions.
+Since they were being worked on before we needed to use them, we couldn't test them by running the program.
+So instead we would write a unit test in a C++ file, and then run the test to see if it passed or failed.
+The way these tests work is that we call the function we want to test, and give it values to test.
+We also have an expected result, and if the function returns the expected result, the test passes, otherwise it fails.
+
+\begin{lstlisting}[label={lst:UnitTestExample}, caption={Example of a unit test.}]
+  TEST(CalculatePriceTest, Train30kmAdult0) {
+    const CalculatePriceParameters kParameters = {kTrain, 30, false, 0};
+    EXPECT_EQ(900, CalculatePrice(&kParameters));
+  }
+\end{lstlisting}
+
+Listing~\ref{lst:UnitTestExample} shows an example of a unit test that we use in our test suite.
+It calls the function \texttt{CalculatePrice} with the parameters \texttt{kParameters}, and expects the result to be
+900.
+This one would check the price for a train trip of 30 kilometers, for an adult.
+By manually calculating the price, we can set the expected result to 900.
+If the function returns 900, the test passes.
+If it returns anything else, we'll be notified, and we can see what the function actually returned.
+
+\subsection{Calculation Evaluation}\label{subsec:calc-evaluation}
+
+Speaking of the calculation functions, before developing them into the program we spent a considerable amount of time
+on researching how to calculate the different attributes of a trip and the accuracy of these calculations.
+For example, in the Section~\ref{subsec:calculating-price}, we would always make sure to check if our price results
+would match with either the DSB price sheet~\cite{price_sheet} or the Rejseplanen price
+calculator~\cite{price_calculator}.
+Doing this assures the accuracy of the results, and we can be confident that the program is calculating the correct.
+Of course, as we don't have access to enough data, we expect the results to be slightly off from the real world, but
+we deem the margin of error to be reasonably small.
+
+However, the same can't be said for the calculation of the duration of a trip.
+We assume that the average speed in a city is 35 km/h~\cite{time_city}, and on the highway is 120
+km/h~\cite{time_highway}.
+But when comparing our results with the results from Google Maps, we found that our results were over 30\% slower.
+The reason behind this is that Google Maps uses real time data to calculate the duration of a trip, while we use the
+average speed.
+One solution is to change the average speed to match the results from Google Maps.
+While the result would again not be completely accurate, it would be much closer to the real world results.
+
+% TODO Optional: Add program evaluation, where we evaluate the program as a whole rather than the individual components
+
+% textidote: ignore begin
+\subsection{Thinking Aloud}\label{subsec:thinking-aloud}
+% TODO Add user test
+% textidote: ignore end
+

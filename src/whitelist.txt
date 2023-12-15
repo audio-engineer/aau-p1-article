@@ -39,3 +39,10 @@ Fynbus
 TripScore
 SortRoutes
 PrintTripScoresAndData
+Høje
+Taastrup
+Sydhavn
+Slagelse
+CalculatePrice
+kParameters
+comfortability
