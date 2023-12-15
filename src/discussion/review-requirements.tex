@@ -1,0 +1,42 @@
+\section{Review of Software Requirements}\label{sec:review-of-software-requirements}
+
+We outlined a number of software requirments specifications in Section~\ref{sec:software-requirements-specification},
+and in this section we will look back at them and review what we have accomplished, what we could do better and what we
+could not finish.
+
+\subsection{Functional Requirements}\label{subsec:functional-requirements}
+
+It is safe to say that our ``need to have's'' are all implemented.
+These are the requirements that the program wouldn't function without.
+The program can prase user input, such as the user's desired start and end destination, and the time of departure or
+arrival.
+The user can also input their preferences.
+
+The program also successfully uses the Rejseplanen API to find trips between the user's desired start and end locations.
+This was achived relatively early in the process, as it was one of our top priorities.
+After we get the routes back from the API, the program can compare and evaluate each route according to the user's
+preferences for each attribute.
+
+However we could not implement every attribute that we wanted.
+Health was one of the focus areas when analyzing the problem, but due to a few reasons that we discuss in
+Section~\ref{sec:health-attribute}, we could not implement it.
+% TODO: write about output when finished
+
+\subsection{Non-Functional Requirements}\label{subsec:non-functional-requirements}
+
+We couldn't implement all of our ``nice to have's'', as some were out of the scope of our capabilities.
+While we can search the Rejseplanen API for trips, we did not implement the ability to choose a specific stop or station.
+We could in theory create a user input that would allow the user to pick and choose a specific station from their search,
+but as we didn't have a lot of time, we decided against it.
+Instead, the program chooses the first result from the search, which happens to be the city's station in most cases.
+
+At the start of the project we were discussing on using a second API, something like OpenStreetMap~\cite{openstreetmap}.
+This would make it easier to calculate the exact distance and time between two locations, be it by foot, bike or car.
+However, that would only increase the complexity of the program, which was already quite complex.
+Instead, we decided to do the calculations ourselves.
+
+The project is completely cross platform, as we are programming in C together and compiling the code with the help of
+Cmake, which makes it easy to compile the program for any platform.
+And lastly, the progrma uses the terminal to interface with the user.
+Our implementation is very simple, as we couldn't implement a graphical user interface, but it works as intended.
+And while the program can be compiled for mobile devices, the experience would not be very good.
