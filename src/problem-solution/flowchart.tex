@@ -4,30 +4,30 @@
 
 A flowchart is a diagram that describes a program's process and breaks it down step by step.
 This is crucial because programming processes can often appear complex and confusing at first glance.
-The flowchart shows how the program progresses through various possibilities, which helps developers to gain a much 
+The flowchart shows how the program progresses through various possibilities, which helps developers to gain a much
 clearer visual overview of the program itself.
 Flowcharts consist of different shapes connected by arrows.
-Generally, rectangles with rounded corners are used to signal when the program starts or stops. 
-Regular rectangles are used for back-end - processing and parallelograms are used for front-end - input or output. 
-Diamonds are used for decisions and in our case we've made a circle to represent a function. 
+Generally, rectangles with rounded corners are used to signal when the program starts or stops.
+Regular rectangles are used for back-end - processing and parallelograms are used for front-end - input or output.
+Diamonds are used for decisions and in our case we've made a circle to represent a function.
 This detailed process significantly contributed to our development by providing the team with clarity.
 
 We start with an input function, which first asks the user for their current/start position and for their desired
 destination.
-We then give the user a choice. 
-That's what makes our program special, the user can set custom preferences for the trip. 
-If the user selects that, then they're asked to select what transportation they want to use. 
-That can vary between cars, trains, bikes, walking and so on. 
-In order to accurately calculate the \unit{CO_{2}} emissions, we require the user to enter their car's fuel efficiency. 
-Then they can set priorities, which would determine what the search results are. 
+We then give the user a choice.
+That's what makes our program special, the user can set custom preferences for the trip.
+If the user selects that, then they're asked to select what transportation they want to use.
+That can vary between cars, trains, bikes, walking and so on.
+In order to accurately calculate the \unit{CO_{2}} emissions, we require the user to enter their car's fuel efficiency.
+Then they can set priorities, which would determine what the search results are.
 Afterwards, the user has a choice to save the preferences to a file, making the process easier next time they have to
 use the program.
 The next couple of functions take place in the back-end.
 We make calls to Rejseplanen's API, which would return the list of routes that we need.
 But that's not all the information we require, therefore we make further calculations to find out what the attributes
-are for all the routes. 
+are for all the routes.
 Then we evaluate them according to the user's preferences, assign a number to them and sort them.
-Finally, we have the output section. 
+Finally, we have the output section.
 From there, they can sort it again according to a different preference, or view the details for a specific route.
 If the user is happy, then they can quit the program, or return to the list if they want a different route.
 
@@ -36,7 +36,7 @@ If the user is happy, then they can quit the program, or return to the list if t
 %-----------------------------------------------------------------------------------------------------------------------
 
 \newpage
-\subsection{Main}
+\subsection{Main}\label{subsec:main}
 \noindent
 \begin{center}
     \begin{tikzpicture}[node distance=2cm]
@@ -45,16 +45,14 @@ If the user is happy, then they can quit the program, or return to the list if t
         \node (func1) [function, below of=start, yshift=-0.5cm] {Input};
         \node (func2) [function, below of=func1, yshift=-1cm] {Search};
         \node (func3) [function, below of=func2, yshift=-1cm] {Evaluate};
-        \node (func4) [function, below of=func3, yshift=-1cm] {Sort};
-        \node (func5) [function, below of=func4, yshift=-1cm] {Output};
-        \node (stop)  [startstop, below of=func5, yshift=-0.5cm] {Stop};
+        \node (func4) [function, below of=func3, yshift=-1cm] {Output};
+        \node (stop)  [startstop, below of=func4, yshift=-0.5cm] {Stop};
 
         \draw [arrow] (start) -- (func1);
         \draw [arrow] (func1) -- (func2);
         \draw [arrow] (func2) -- (func3);
         \draw [arrow] (func3) -- (func4);
-        \draw [arrow] (func4) -- (func5);
-        \draw [arrow] (func5) -- (stop);
+        \draw [arrow] (func4) -- (stop);
 
     \end{tikzpicture}
 \end{center}
@@ -62,7 +60,7 @@ If the user is happy, then they can quit the program, or return to the list if t
 %-----------------------------------------------------------------------------------------------------------------------
 
 \newpage
-\subsection{Input}
+\subsection{Input}\label{subsec:input}
 \noindent
 \begin{center}
     \begin{tikzpicture}[node distance=2cm]
@@ -114,8 +112,8 @@ If the user is happy, then they can quit the program, or return to the list if t
 
 \newpage
 \begin{center}
-    \begin{multicols}{3}
-        \subsection{Search}
+    \begin{multicols}{2}
+        \subsection{Search}\label{subsec:search}
         \noindent
         \begin{tikzpicture}[node distance=2cm]
 
@@ -134,35 +132,22 @@ If the user is happy, then they can quit the program, or return to the list if t
 
 %-----------------------------------------------------------------------------------------------------------------------
 
-        \subsection{Evaluate}
+        \subsection{Evaluate}\label{subsec:evaluate}
         \noindent
         \begin{tikzpicture}[node distance=2cm]
 
             \node (start) [return] {Start(results, prefrences, fuel)};
             \node (pro1) [process, below of=start] {Calculate attributes for each route};
-            \node (pro2) [process, below of=pro1] {Evaluate routes using user's preferences};
+            \node (pro2) [process, below of=pro1] {Evaluate relative scores for routes};
             \node (pro3) [process, below of=pro2] {Add a numerical rating to each route};
-            \node (stop) [return, below of=pro3] {Return(routes)};
+            \node (pro4) [process, below of=pro3, yshift=-1.0cm] {Add a numerical overall rating to each route based on user preferences};
+            \node (stop) [return, below of=pro4, yshift=-1.0cm] {Return(routes)};
 
             \draw [arrow] (start) -- (pro1);
             \draw [arrow] (pro1) -- (pro2);
             \draw [arrow] (pro2) -- (pro3);
-            \draw [arrow] (pro3) -- (stop);
-
-        \end{tikzpicture}
-
-%-----------------------------------------------------------------------------------------------------------------------
-
-        \subsection{Sort}
-        \noindent
-        \begin{tikzpicture}[node distance=2cm]
-
-            \node (start) [return] {Start(routes, priorities)};
-            \node (pro1) [process, below of=start] {Qsort the list of routes by user's priorities};
-            \node (stop) [return, below of=pro1] {Return(routes)};
-
-            \draw [arrow] (start) -- (pro1);
-            \draw [arrow] (pro1) -- (stop);
+            \draw [arrow] (pro3) -- (pro4);
+            \draw [arrow] (pro4) -- (stop);
 
         \end{tikzpicture}
     \end{multicols}
@@ -171,37 +156,31 @@ If the user is happy, then they can quit the program, or return to the list if t
 %-----------------------------------------------------------------------------------------------------------------------
 
 \newpage
-\subsection{Output}
+\subsection{Output}\label{subsec:output}
 \noindent
 \begin{center}
     \begin{tikzpicture}[node distance=2cm]
 
         \node (start) [return] {Start(routes)};
-        \node (out1)  [io, below of=start] {Print search results};
+        \node (out1)  [io, below of=pro1] {Print data and score results};
         \node (in1)   [io, below of=out1, text width=4cm, yshift=-0.5cm] {Read user choice:\\ view route details (1-5)\\
-        sort the list (P,T,S,C)};
+        sort the list (P,T,E,O)};
         \node (dec1)  [decision, below of=in1, yshift=-1.5cm] {Check int/char};
-        \node (pro1)  [process, left of=dec1, xshift=-2.5cm] {Sort the list according to the input character};
-        \node (func1) [function, below of=pro1, yshift=-1cm] {Sort};
-        \node (out2)  [io, right of=dec1, xshift=2.5cm] {Print details for chosen route};
-        \node (in2)   [io, below of=out2, text width=4cm, yshift=-0.5cm] {Read user choice:\\ go back to list (B)\\ quit
-        the program (Q)};
-        \node (dec2)  [decision, below of=in2, yshift=-1.5cm] {Check choice};
-        \node (stop)  [startstop, left of=dec2, xshift=-2.5cm] {Stop};
+        \node (pro1)  [process, below of=start] {Sort the list};
+        \node (out2)  [io, right of=dec1, xshift=2.5cm] {Print route details for chosen route};
+        \node (dec2)  [decision, below of=dec1, yshift=-2.5cm] {Check choice};
+        \node (stop)  [startstop, right of=dec2, xshift=2.5cm] {Stop};
 
-        \coordinate [right of=dec2, xshift=1.5cm] (ph1);
-
-        \draw [arrow] (start) -- (out1);
+        \draw [arrow] (start) -- (pro1);
         \draw [arrow] (out1) -- (in1);
         \draw [arrow] (in1) -- (dec1);
-        \draw [arrow] (dec1) -- node[anchor=south] {char} (pro1);
-        \draw [arrow] (pro1) -- (func1);
+        \draw [arrow] (dec1) -- node[anchor=south] {char} (dec2);
+        \draw [arrow] (pro1) -- (out1);
         \draw [arrow] (dec1) -- node[anchor=south] {int} (out2);
-        \draw [arrow] (out2) -- (in2);
-        \draw [arrow] (in2) -- (dec2);
         \draw [arrow] (dec2) -- node[anchor=south] {Q} (stop);
-        \draw [line] (dec2) -- node[anchor=south] {B} (ph1);
-        \draw [arrow] (ph1) |- (out1);
+        \draw [arrow] (dec2.west) -- ++(-2.5,0) node[midway, above] {P, T, E, O} |- (pro1.west);
+        \draw [arrow] (out2.north) -- ++(0,0) |- (in1.east);
+
 
     \end{tikzpicture}
 \end{center}
