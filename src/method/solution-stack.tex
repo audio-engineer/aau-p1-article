@@ -189,10 +189,8 @@ configuration files based on a common project configuration.
 CMake also has the advantage of preparing the compilation machine for compilation by searching for compilation
 dependencies aka ``dependencies of dependencies'' without which the compilation would fail.
 For this purpose, the team made use of the \lstinline{pkg-config} CMake integration.
-% textidote: ignore begin
-\lstinline{pkg-config} is a tool that searches the compilation machine for those prerequisite dependencies to
-% textidote: ignore end
-make sure that all direct dependencies are installed.
+\lstinline{Pkg-config} is a tool that searches the compilation machine for those prerequisite dependencies to make sure
+that all direct dependencies are installed.
 If that is not the case, the compilation is aborted.
 If they are found, on the other hand, the application compilation is resumed and completed.
 

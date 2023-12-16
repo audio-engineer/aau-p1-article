@@ -5,13 +5,13 @@ This is a relatively difficult task, as we need to calculate the distance, price
 Some attributes are easier to calculate than others, but they all require some form of calculation.
 
 Rejseplanen has systems in place to calculate some of those attributes, but the API does not provide them.
-This means that we have to calculate them ourselves by out own means.
-Our calculations will not be 100\% accurate, as we have simplified some of the calculations, but they will be close
+This means that we have to calculate them ourselves by our own means.
+Our calculations will not be 100\% accurate, as we have simplified some calculations, but they will be close
 enough for our purposes.
 
 \subsection{Calculating distance}\label{subsec:calculating-distance}
 
-We need the distance of a route for our calculations of the route's \unit{CO_{2}} emission.
+We need the distance of a route for our calculations.
 As we don't use a map API, we can't properly calculate the distance between two points.
 This means that we have to ignore roads and instead calculate the distance by the train tracks.
 The problem is that Rejseplanen only provides the coordinates of the stations, not the tracks, why we decided to instead
@@ -64,7 +64,7 @@ decision was made to calculate the average size for a zone.
 As the zones are not all the same size, the number of zones a route passes through may be slightly off.
 However, this is the best option to circumvent adding further complexity to out program.
 
-Our somewhat primitice solution to achieve an average zone size, is calculated by picking two stations at random and
+Our somewhat primitive solution to achieve an average zone size, is calculated by picking two stations at random and
 counting how many zones the route goes through using DSB's zone map~\cite{price_zones}.
 We then used Google Maps to provide us the distance along the tracks between two stations.
 Finally, we divided the distance by the number of zones to get the average size of a zone along the route.
@@ -106,7 +106,7 @@ This card allows commuters to freely travel between a set amount of zones, be th
 Rejseplanen has a website where the user can input their route, and it'll calculate the price for the
 Pendlerkort~\cite{price_calculator}.
 As the prices provided by Rejseplanen and DSB in the tables in Figure~\ref{fig:table-rejseplanen-price-calculations} and
-Figure~\ref{fig:image-dsb-pendlerkort-pris} are accurate enough, they are hardcoded into the program.
+Figure~\ref{fig:image-dsb-pendlerkort-pris} are accurate enough, they are hard-coded into the program.
 
 \begin{figure}[H]
     \centering
@@ -131,7 +131,7 @@ Figure~\ref{fig:image-dsb-pendlerkort-pris} are accurate enough, they are hardco
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/dsb-pendlerkort-pris.jpg}
-    \caption{Price of Pendlerkort per zones.~\cite{price_sheet}}
+    \caption{Price of Pendlerkort per zones~\cite{price_sheet}.}
     \label{fig:image-dsb-pendlerkort-pris}
 \end{figure}
 
@@ -153,7 +153,7 @@ Here's an example for a Pendlerkort between Odense and Copenhagen, that costs 37
 
 \subsubsection{Car and bike price}
 
-As commuting also entails individuals who does not use public transport, we also need to calculate the price for cars
+As commuting also entails individuals who do not use public transport, we also need to calculate the price for cars
 and bikes.
 Included in the calculations for the price of a car is price of gas or electricity, insurance and maintenance.
 As the pricing can vary a lot depending on different circumstances, so we'll use an average price.
@@ -255,7 +255,7 @@ person per kilometer as seen in Table~\ref{tab:emissions}.
 
 Since the data is per kilometer, we can multiply the distance by the \unit{CO_{2}} emission to get the total
 \unit{CO_{2}}.
-Afterward 40 (20 work days in a moth times 2 way travel) is multiply to this total, similar to tje price calculation, to get the
+Afterward 40 (20 work days in a moth times 2 way travel) is multiply to this total, similar to the price calculation, to get the
 \unit{CO_{2}} emission for a month.
 This total is finally converted to kilograms to increase readability.
 
