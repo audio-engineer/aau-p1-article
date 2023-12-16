@@ -189,13 +189,15 @@ configuration files based on a common project configuration.
 CMake also has the advantage of preparing the compilation machine for compilation by searching for compilation
 dependencies aka ``dependencies of dependencies'' without which the compilation would fail.
 For this purpose, the team made use of the \lstinline{pkg-config} CMake integration.
+% textidote: ignore begin
 \lstinline{pkg-config} is a tool that searches the compilation machine for those prerequisite dependencies to
+% textidote: ignore end
 make sure that all direct dependencies are installed.
 If that is not the case, the compilation is aborted.
 If they are found, on the other hand, the application compilation is resumed and completed.
 
 Furthermore, CMake also allows for the addition and management of external software dependencies such as libraries
-and frameworks, which will be discussed in section~\ref{subsec:libraries-and-frameworks}.
+and frameworks, which will be discussed in Section~\ref{subsec:libraries-and-frameworks}.
 
 \subsection{Libraries and frameworks}\label{subsec:libraries-and-frameworks}
 
@@ -206,7 +208,7 @@ frameworks would have to be used.
 The two primary reasons for this were the fact that C, the chosen programming language for this project, does not
 include features like making HTTP calls, nor does it have support for the JSON data format.
 These two features are crucial when designing software that communicates with and consumes data from REST APIs, as
-discussed in the section~\ref{subsubsec:rest-api}.
+discussed in the Section~\ref{subsubsec:rest-api}.
 The team therefore decided to introduce two external libraries that would provide additional functions that could
 deal with HTTP and JSON in the C language, namely \lstinline{cURL} and \lstinline{cJSON} respectively.
 
@@ -240,11 +242,11 @@ used by a majority of developers, which made it possible to lint the source code
 
 % Todo: Write about EditorConfig, pull requests and code reviews.
 
-Reference is made to section~\ref{sec:workflows-and-routines} for a closer look of how it was implemented practically.
+Reference is made to Section~\ref{sec:workflows-and-routines} for a closer look of how it was implemented practically.
 
 \subsection{Testing}\label{subsec:testing}
 
-As mentioned in section~\ref{subsec:programming-languages}, the teams uses GoogleTest to evaluate functions and
+As mentioned in Section~\ref{subsec:programming-languages}, the teams uses GoogleTest to evaluate functions and
 methods in the code.
 GoogleTest is a framework for writing C++ tests on a variety of platforms (Linux, Windows, Mac OS X, etc.)
 ~\cite{googletest}.
