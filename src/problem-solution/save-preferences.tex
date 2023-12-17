@@ -1,76 +1,72 @@
 \section{Saving user preferences}\label{sec:saving-user-preferences}
 
-To make our program more user-friendly, we want to be able to store a users preferences on climate, price,
+To make the program more user-friendly, it needs to be able to store a users preferences on climate, price,
 time, and so on.
-This will be stored locally in a configuration file, which we will call
-``\verb|preferences.json|''.
-As the name suggests we have chosen to store the data in a JSON format, this is partly because we already have
-a system in place in order to store JSON data, but also because it allows us to access individual keys of data such as
-``price''.
-If implemented correctly storing the preferences as JSON also allows us to remove or add different keys to the file
-later if it is needed, but at this point we only need to save four keys called: price, time, environment and health.
+This will be stored locally in a configuration file, which is called ``\url{preferences.json}''.
+As the name suggests, the data is stored in a JSON format.
+This is partly because the program already have a system in place to store JSON data, but also because it allows the
+program to access individual keys of data such as ``price''.
+Storing the preferences as JSON also allows us to remove or add different keys to the file later if needed.
+However, for the sake of reducing complexity, the selected attributes to be stored are: price, time and environment.
 
-For the actual implementation for saving the file.
-We will, if the program is executed, always require data for all our chosen preference categories.
-A way to do this is to, at the programs start, initialize the save file with some standard data, so the program can
-continue running even if the user does not want to input their own preferences.
-We initialize the save file through a function called ``InitializePreferenceFile''
+One of dependencies of the program is therefore data for all preference categories.
+The program initialize the save file with some standard default data, such that the program can continue running even if
+the user does not choose to input their own preferences.
+The program initializes the save file through a function called \texttt{InitializePreferenceFile}.
 
 \begin{lstlisting}[label={lst:SavePreferences}, caption={Saving preferences to file.}]
-    FILE* preferences = fopen("preferences.json", "w");
-    fputs(kSerializedJsonWithNewline, preferences);
-    fclose(preferences);
-    free(kSerializedJsonWithNewline);
+FILE* preferences = fopen("preferences.json", "w");
+fputs(kSerializedJsonWithNewline, preferences);
+fclose(preferences);
+free(kSerializedJsonWithNewline);
 
-    cJSON_Delete(kJsonPreferences);
+cJSON_Delete(kJsonPreferences);
 \end{lstlisting}
 
-In Figure~\ref{lst:SavePreferences} it can be seen that we are trying to open the preferences file,
-and by using ``fopen'' we make use of the property that creates the file if it does not already exist.
-The rest of the code inside InitializePreferenceFile is used to convert our given inputs into the JSON format, which in
-C is somewhat difficult.
+In Figure~\ref{lst:SavePreferences} the initialization of the preference file is located.
+The rest of the code inside \texttt{InitializePreferenceFile} is used to convert the given inputs into the JSON format,
+which in C is somewhat difficult.
 
-The remaining functions for the preference file are SetUserPreference and GetUserPreference.
-The SetUserPreference function will work by taking in two inputs, a key and a value for that key.
-This would be written as \(SetUserPreference("key", value)\).
-When we want to change the values in the JSON file through C, we must first read the file and then parse it as cJSON[.]
-In this way we can actually make the changes to the stored values.
-Parsing JSON and generating JSON is done through the library cJSON which we have chosen to use.
-As seen above it works by first parsing the content of the preference file and then searching for the item we want to
-change.
+The remaining functions for the preference file are \texttt{SetUserPreference} and \texttt{GetUserPreference}.
+The \texttt{SetUserPreference} function parses two inputs, a key and a desired value for that key.
+This would be written as \texttt{SetUserPreference(key, value)}.
+When changing the values in the JSON file through C, the program must first read the file and then parse it as cJSON[.]
+Parsing JSON and generating JSON is done through the library cJSON as mentioned in Section
+~\ref{subsec:libraries-and-frameworks}.
+As seen in Figure~\ref{lst:SavePreferences}, the routine works by first parsing the content of the preference file and
+then searching for the item to be changed.
 
 \begin{lstlisting}[label={lst:ParseJSON}, caption={Parsing JSON.}]
-  const cJSON* const kJsonPreferences = cJSON_Parse(kFileBuffer);
-  free(kFileBuffer);
+const cJSON* const kJsonPreferences = cJSON_Parse(kFileBuffer);
+free(kFileBuffer);
 
-  cJSON* const kJsonValue = cJSON_GetObjectItem(kJsonPreferences, key);
+cJSON* const kJsonValue = cJSON_GetObjectItem(kJsonPreferences, key);
 
-  kJsonValue->valuedouble = value;
+kJsonValue->valuedouble = value;
 \end{lstlisting}
 
-cJSON stores all JSON values as structs and to change the value we access the struct as seen on line 82 in
-Figure~\ref{lst:ParseJSON}.
-The next step is then to save the changes to our preferences file, but because saving to a file in C can get
-complicated if you change the length of the file, we sidestep this problem by overwriting the whole save file with the
-updated values.
+cJSON stores all JSON values as structs.
+To change the value, the program accesses the struct as seen in Figure~\ref{lst:ParseJSON}.
+Changing the values of a file and afterward saving to the same file location in C can get complicated if the length of
+the file is changed.
+Therefore, the program instead overwrites the whole save file with the updated values.
 
-Finally, the last step is to read the file, so we can use the stored data in our program.
-This is done much in the same way we used in SetUserPreference as we open the file, parse the JSON and then access
-the item we want to use.
-Both InitializePreferenceFile and SetUserPreference are void functions, but GetUserPreference is a double function
-this is done so the returned value will be the value for the preference we want to get out of the save file, see
-Figure~\ref{lst:GetPref}.
-GetUserPreference only takes in one input which is the key we want to look for, this could be ``price'' or another of
-the attributes.
+Finally, the program reads the file to access the stored data.
+This is done much in the same way as in \texttt{SetUserPreference} by opening the file, parsing the JSON and then
+accessing the item to be read.
+Both \texttt{InitializePreferenceFile} and \texttt{SetUserPreference} are void functions.
+However, \texttt{GetUserPreference} is a double function.
+The reason for this is to return the value of the preference from the save file, as seen in Figure~\ref{lst:GetPref}.
+\texttt{GetUserPreference} only takes one input, which is the key for the value of an attribute to be accessed.
 
 \begin{lstlisting}[label={lst:GetPref}, caption={Reading attribute value from preference file.}]
-  cJSON* file_item = cJSON_GetObjectItem(json_preferences, key);
+cJSON* file_item = cJSON_GetObjectItem(json_preferences, key);
 
-  value = cJSON_GetNumberValue(file_item);
+value = cJSON_GetNumberValue(file_item);
 
-  cJSON_Delete(json_preferences);
+cJSON_Delete(json_preferences);
 
-  return value;
+return value;
 \end{lstlisting}
 
-With these three functions it is now possible for us to store and use preferences locally on the device.
+With these three functions it is possible for the program to store and use preferences locally on the device.
