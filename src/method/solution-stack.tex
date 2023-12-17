@@ -167,10 +167,57 @@ delete data.
     The client and server has to agree on which format the data needs to be in during the communication.
     JSON and XML is often preferred because it can be read by a human and is therefore easier to navigate.
 \end{itemize}
-% textidote: ignore begin
+
 
 \subsection{Rejseplanens API}\label{subsec:rejseplanens-api}
+
+In the project we are using Rejseplanens API to get the data we need to make the software work.
+Rejseplanens API is a REST API which means that it uses the HTTP protocol to communicate with the server.
+Rejseplanens API is a public API which just means that anyone can use it, but it is also a free API, so there is no
+charge for using it.
+% textidote: ignore begin
+We use Rejseplanens API to get information about the different times for different kinds of public transportation.
+As with most API's Rejseplanens API has documentation on how to use it and what you can do with it as a developer.
+The documentation can be found here: \href{https://help.rejseplanen.dk/hc/da/articles/214174465-Rejseplanens-API}
+{Rejseplanens API documentation}.
 % textidote: ignore end
+As said before the API follows the REST API design which means that the data we retrieve from the API is in JSON format
+(JavaScript Object Notation).
+This structured format simplifies the process of parsing and interpreting the responses from the API, ensuring that
+the information retrieved can be easily integrated into the software.
+
+In summary, Rejseplanens API plays a pivotal role in our project, as it is the primary source of data for the software.
+Providing a cost-free and easy-to-use API. The RESTful design and with the use of JSON for data representation, ensures
+a smooth and efficient exchange between the API and our software, contributing to the overall success of our
+application.
+
+\subsection{How we use Rejseplanens API}\label{subsec:how-we-use-rejseplanens-api}
+
+In this section we will be looking at how we use Rejseplanens API in our software while we will also be giving a few
+examples on how the data is retrieved and received from the API\@.
+% textidote: ignore begin
+The primary focus for us in the start was to figure out how we could use the API to get the data we needed.
+So we started by looking at the documentation of the API\@.
+We figured out that you need to use a BASEURL to access the various endpoints of the API\@.
+The BASEURL is \lstinline{http://xmlopen.rejseplanen.dk/bin/rest.exe/}, and then you would want to add the endpoint
+you want to use.
+
+An example of an endpoint could be a trip request, which is what we use to receive a calculated trip from point A to B.
+The endpoint for a trip request could look like this:
+\lstinline{trip?originId=<originId>&destId=<destId>&format=json&usebus=0}.
+As you can see the endpoint contains a few parameters that dictate how the trip should be calculated and received, as
+you can see the parameters are \lstinline{originId}, \lstinline{destId}, \lstinline{format} and \lstinline{usebus}.
+
+The \lstinline{originId} and \lstinline{destId} parameters are the parameters that dictate where the trip should start
+and end.
+
+The \lstinline{format} parameter dictates what format the data should be in when it is received, in our case we want
+the data to be in JSON format.
+
+The \lstinline{usebus} parameter dictates whether the trip should include buses, in our case we do not want
+buses to be included in our trip
+% textidote: ignore end
+
 
 \subsection{Build system}\label{subsec:build-system}
 
