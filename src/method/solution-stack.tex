@@ -179,38 +179,38 @@ compilers around the C source code to be able to build the distribution-ready ap
 One approach would be to let each developer set up their own build system to be able to compile the source code on their
 local development environment, and then later decide on a \textit{master} compilation machine where the distribution
 version would be compiled.
-But the development team chose an approach where the build configuration was built into the source code itself, making
-it easy to share it across local development environments.
+As such, the development team chose an approach where the build configuration was built into the source code itself,
+making it easy to share it across local development environments.
 This also allowed each developer to build the software using the same build parameters.
 
 The primary tool picked to solve this task was CMake, which is a build automation tool that generates build
 configuration files based on a common project configuration.
 
-CMake also has the advantage that it can prepare the compilation machine for compilation by searching for compilation
+CMake also has the advantage of preparing the compilation machine for compilation by searching for compilation
 dependencies aka ``dependencies of dependencies'' without which the compilation would fail.
 For this purpose, the team made use of the \lstinline{pkg-config} CMake integration.
-\lstinline{Pkg-config} is a tool that searches the compilation machine exactly for those prerequisite dependencies to
-make sure that all direct dependencies and if they are not found, the compilation is aborted.
-If they are, on the other hand, found, the application compilation is resumed and completed.
+\lstinline{Pkg-config} is a tool that searches the compilation machine for those prerequisite dependencies to make sure
+that all direct dependencies are installed.
+If that is not the case, the compilation is aborted.
+If they are found, on the other hand, the application compilation is resumed and completed.
 
 Furthermore, CMake also allows for the addition and management of external software dependencies such as libraries
-and frameworks, which will be discussed in the Section~\ref{subsec:libraries-and-frameworks}.
+and frameworks, which will be discussed in Section~\ref{subsec:libraries-and-frameworks}.
 
 \subsection{Libraries and frameworks}\label{subsec:libraries-and-frameworks}
 
 % TODO Add more content to this subsection
-// cURL, cJSON, OpenSSL
 
 Very early on in the solution architecture design process, it became clear to the team that external libraries and
 frameworks would have to be used.
 The two primary reasons for this were the fact that C, the chosen programming language for this project, does not
 include features like making HTTP calls, nor does it have support for the JSON data format.
-Those two features are crucial when designing software that talks to and consumes data from REST APIs, as discussed
-in the Section~\ref{subsubsec:rest-api}.
+These two features are crucial when designing software that communicates with and consumes data from REST APIs, as
+discussed in the Section~\ref{subsubsec:rest-api}.
 The team therefore decided to introduce two external libraries that would provide additional functions that could
-deal with HTTP and JSON to the C language, namely \lstinline{cURL} and \lstinline{cJSON} respectively.
+deal with HTTP and JSON in the C language, namely \lstinline{cURL} and \lstinline{cJSON} respectively.
 
-How the external libraries were linked to and compiled with the software's source library can be seen in
+How the external libraries were linked to and compiled with the software's source library can be seen in figure
 \ref{fig:figure10}.
 
 % TODO Insert CMake dependency, compilation and linkage flowcharts
@@ -238,15 +238,16 @@ the code for breaches of style.
 This process was made even easier due to the seamless integration of these tools into the JetBrains CLion IDE that was
 used by a majority of developers, which made it possible to lint the source code while writing it.
 
-// ClangFormat, ClangTidy, EditorConfig, Google C++ Style Guide, pull requests and code reviews.
+% Todo: Write about EditorConfig, pull requests and code reviews.
 
-We will take a closer look at how it was implemented practically in the next Section~\ref{sec:workflows-and-routines}.
+Reference is made to Section~\ref{sec:workflows-and-routines} for a closer look of how it was implemented practically.
 
 \subsection{Testing}\label{subsec:testing}
 
-As mentioned in the Section~\ref{subsec:programming-languages}, the teams uses GoogleTest to evaluate functions and
-methods in the code. GoogleTest is a framework for writing C++ tests on a variety of platforms (Linux, Windows, Mac OS
-X, etc.)~\cite{googletest}.
+As mentioned in Section~\ref{subsec:programming-languages}, the teams uses GoogleTest to evaluate functions and
+methods in the code.
+GoogleTest is a framework for writing C++ tests on a variety of platforms (Linux, Windows, Mac OS X, etc.)
+~\cite{googletest}.
 GoogleTest is a framework that is used to test C++ code, but it can also be used to test C code.
 The reason why the team chose to use GoogleTest is because of the size of the team and the complexity of the project.
 GoogleTest allows for the team to test functions and methods in the code, without including them in main code.
