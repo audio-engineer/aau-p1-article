@@ -2,7 +2,6 @@
 
 During and after the development of the program, we used different types of testing techniques to evaluate the accuracy
 of the program.
-Otherwise, we wouldn't know whether the program is working as intended.
 During the development, we used CLion's built-in debugger to step through the program and evaluate the
 values of the variables at each step.
 We also used unit testing to test the individual components of the program, as described in
@@ -16,7 +15,7 @@ Below are our experiences and results with the different methods.
 \subsection{Debugging}\label{subsec:debugging}
 
 There were some cases during the development where we did not get the expected result from the program.
-And in some extreme cases, the program could crash.
+And in some extreme cases, the program would crash.
 Due to the complexity of the program, it was not always easy to find the cause of the problem.
 In these cases, we used the built-in debugger in CLion.
 The way it works is that we can set breakpoints throughout the program, and when the program reaches a breakpoint, it
@@ -52,10 +51,10 @@ The way these tests work is that we call the function we want to test, and give 
 We also have an expected result, and if the function returns the expected result, the test passes, otherwise it fails.
 
 \begin{lstlisting}[label={lst:UnitTestExample}, caption={Example of a unit test.}]
-  TEST(CalculatePriceTest, Train30kmAdult0) {
-    const CalculatePriceParameters kParameters = {kTrain, 30, false, 0};
-    EXPECT_EQ(900, CalculatePrice(&kParameters));
-  }
+TEST(CalculatePriceTest, Train30kmAdult0) {
+  const CalculatePriceParameters kParameters = {kTrain, 30, false, 0};
+  EXPECT_EQ(900, CalculatePrice(&kParameters));
+}
 \end{lstlisting}
 
 Listing~\ref{lst:UnitTestExample} shows an example of a unit test that we use in our test suite.

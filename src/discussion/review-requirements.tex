@@ -1,59 +1,54 @@
 \section{Review of Software Requirements}\label{sec:review-of-software-requirements}
 
-We outlined a good deal of software requirements specifications in Section~\ref{sec:software-requirements-specification},
-and in this section we will look back at them and review what we have accomplished, what we could do better and what we
-could not finish.
+We outlined some software requirement specifications in Section~\ref{sec:software-requirements-specification},
+and in this section we will evaluate and review them.
 
 \subsection{Hard requirements}\label{subsec:functional-requirements}
 
-It is safe to say that our ``need to have's'' are all implemented.
+As expected, our ``need to have's'' are all implemented and functions as intended.
 These are the requirements that the program wouldn't function without.
 The program can parse user input, such as the user's desired start and end destination, and the time of departure or
 arrival.
-The user can also input their preferences.
+The program is also able to handle user inputs.
 
 The program also successfully uses the Rejseplanen API to find trips between the user's desired start and end locations.
-This was achieved relatively early in the process, as it was one of our top priorities.
-After we get the routes back from the API, the program can compare and evaluate each route according to the user's
+After the program receives the routes from the API, it can compare and evaluate each route according to the user's
 preferences for each attribute.
 
-However, we could not implement every attribute that we wanted.
-Health was one of the focus areas when analyzing the problem, but due to a few reasons that we discuss in
-Section~\ref{subsec:health-attribute}, we could not implement it.
+However, we were not able to implement every attribute that we wanted.
+Health was one of the attributes to be implemented when analyzing the problem, but for reasons discussed in
+Section~\ref{subsec:health-attribute}, it was not implemented.
 % TODO: write about output when finished
 
 \subsection{Soft requirements}\label{subsec:non-functional-requirements}
 
-We couldn't implement all of our ``nice to have's'', as some were out of the scope of our capabilities.
-While we can search the Rejseplanen API for trips, we did not implement the ability to select a specific stop or station.
-We could in theory create a user input that would allow the user to pick and choose a specific station from their search,
-but as we didn't have a lot of time, we decided against it.
-Instead, the program selects the first result from the search, which happens to be the city's station in most cases.
+We couldn't implement all of our ``nice to have's'', as some were out of the scope of our capabilities and of this
+report.
+While the program can search the Rejseplanen API for trips, we did not manage to implement the ability to select a
+specific stop or station.
+We could in theory create a user input that would allow the user to pick and choose a specific station from their search
+, but as time was limited it was decided not to implement it.
+Instead, the program selects the first result from the search.
+This is not ideal, as it will sometimes select unintended stations.
+However, due to time constraints, we were not able to implement a better solution.
 
-At the start of the project we were discussing on using a second API, something like OpenStreetMap~\cite{openstreetmap}.
-This would make it easier to calculate the exact distance and time between two locations, be it by foot, bike or car.
-However, that would only increase the complexity of the program, which was already quite complex.
-Instead, we decided to do the calculations ourselves.
+It was considered to use a second API, like OpenStreetMap~\cite{openstreetmap} to make it easier to calculate the exact
+distances and time between two locations, be it by foot, bike or car.
+However, this would increase the complexity of the program, which is already sufficiently complex.
+Therefore, we decided to do the calculations ourselves.
 
-The project is completely cross-platform, as we are programming in C together and compiling the code with the help of
-CMake, which makes it easy to compile the program for any platform.
-And lastly, the program uses the terminal to interface with the user.
-Our implementation is very simple, as we couldn't implement a graphical user interface, but it works as intended.
-And while the program can be compiled for mobile devices, the experience would not be very good.
+The project is cross-platform between Linux, Mac OS and Windows, as we are programming in C together and compiling the
+code with the help of CMake, which enables the compilation of the program for all beforehand mentioned platforms.
+Lastly, the program uses the terminal to interface with the user.
+Our implementation is very simple, as we were not to implement a more complicated graphical user interface.
+While the program can be compiled for mobile devices, the experience would probably not be very good, as the user
+experience was focussed around PC users.
 
 \subsection{The Health Attribute}\label{subsec:health-attribute}
 
-The topic of the task specifically mentions four attributes - price, time, comfortability and environment.
-When working on analyzing the problem, we looked into each of these attributes and what they mean for the problem.
-We decided to shift the comfortability attribute to a health attribute, as we felt that it was more relevant to the
-topic.
-We discussed the health impact of travelling in great detail in Section~\ref{sec:health-consequences}, but we could not
-implement it in the program due to a few reasons.
-
-First was the complexity of the attribute.
-Health is a wide topic, so we can't just calculate and narrow it down to a single number.
-Our idea was a hard coded value for different types of transport, but health is very case dependent.
-For example biking considered healthy, because you move your body, but if we also include comfortability in the rating,
-then we would get conflicting results.
+Initially, the four different attributes was price, time, environment and health.
+When analyzing the problem, the complexity of calculating health benefits and consequences became apparent,
+why this attribute was not implemented in the final version of the program.
+Health is a wide topic, why it was of no use to somehow narrow it down to a single number to be evaluated upon.
+Another idea was to hard code a value for different types of transport, but health is very user dependent.
 Health can also be very subjective, as some people might find biking relaxing, while others might find it stressful.
-So at the end, we decided against implementing it.
