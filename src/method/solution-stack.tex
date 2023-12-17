@@ -173,15 +173,14 @@ delete data.
 
 In the project we are using Rejseplanens API to get the data we need to make the software work.
 Rejseplanens API is a REST API which means that it uses the HTTP protocol to communicate with the server.
-Rejseplanens API is a public API which just means that anyone can use it, but it is also a free API so there is no
+Rejseplanens API is a public API which just means that anyone can use it, but it is also a free API, so there is no
 charge for using it.
-
+% textidote: ignore begin
 We use Rejseplanens API to get information about the different times for different kinds of public transportation.
 As with most API's Rejseplanens API has documentation on how to use it and what you can do with it as a developer.
-The documentation can be found here: \href{https://help.rejseplanen.dk/hc/article_attachments/115002672369
-/ReST_documentation_Rejseplanen_Latest.pdf}{Rejseplanens API documentation}.
-The documentation is a PDF file which contains the latest information on how to use the API\@.
-
+The documentation can be found here: \href{https://help.rejseplanen.dk/hc/da/articles/214174465-Rejseplanens-API}
+{Rejseplanens API documentation}.
+% textidote: ignore end
 As said before the API follows the REST API design which means that the data we retrieve from the API is in JSON format
 (JavaScript Object Notation).
 This structured format simplifies the process of parsing and interpreting the responses from the API, ensuring that
@@ -196,7 +195,7 @@ application.
 
 In this section we will be looking at how we use Rejseplanens API in our software while we will also be giving a few
 examples on how the data is retrieved and received from the API\@.
-
+% textidote: ignore begin
 The primary focus for us in the start was to figure out how we could use the API to get the data we needed.
 So we started by looking at the documentation of the API\@.
 We figured out that you need to use a BASEURL to access the various endpoints of the API\@.
@@ -207,7 +206,7 @@ An example of an endpoint could be a trip request, which is what we use to recei
 The endpoint for a trip request could look like this:
 \lstinline{trip?originId=<originId>&destId=<destId>&format=json&usebus=0}.
 As you can see the endpoint contains a few parameters that dictate how the trip should be calculated and received, as
-you can see the parameters are \lstinline{originId},\lstinline{destId} \lstinline{format} and \lstinline{usebus}.
+you can see the parameters are \lstinline{originId}, \lstinline{destId}, \lstinline{format} and \lstinline{usebus}.
 
 The \lstinline{originId} and \lstinline{destId} parameters are the parameters that dictate where the trip should start
 and end.
@@ -217,6 +216,7 @@ the data to be in JSON format.
 
 The \lstinline{usebus} parameter dictates whether the trip should include buses, in our case we do not want
 buses to be included in our trip
+% textidote: ignore end
 
 
 \subsection{Build system}\label{subsec:build-system}
