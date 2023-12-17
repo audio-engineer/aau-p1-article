@@ -2,12 +2,12 @@
 
 To make the program more user-friendly, it needs to be able to store a users preferences on climate, price,
 time, and so on.
-This will be stored locally in a configuration file, which is called ``\verb|preferences.json|''.
+This will be stored locally in a configuration file, which is called ``\url{preferences.json}''.
 As the name suggests, the data is stored in a JSON format.
 This is partly because the program already have a system in place to store JSON data, but also because it allows the
 program to access individual keys of data such as ``price''.
 Storing the preferences as JSON also allows us to remove or add different keys to the file later if needed.
-However, for the sake of reducing complexity, the chosen attributes to be stored are: price, time and environment.
+However, for the sake of reducing complexity, the selected attributes to be stored are: price, time and environment.
 
 One of dependencies of the program is therefore data for all preference categories.
 The program initialize the save file with some standard default data, such that the program can continue running even if
