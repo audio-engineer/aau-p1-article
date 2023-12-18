@@ -28,8 +28,8 @@ We couldn't implement all of our ``nice to have's'', as some were out of the sco
 report.
 While the program can search the Rejseplanen API for trips, we did not manage to implement the ability to select a
 specific stop or station.
-We could in theory create a user input that would allow the user to pick and choose a specific station from their search
-, but as time was limited it was decided not to implement it.
+We could in theory create a user input that would allow the user to pick and choose a specific station from their
+search, but as time was limited it was decided not to implement it.
 Instead, the program selects the first result from the search.
 This is not ideal, as it will sometimes select unintended stations.
 However, due to time constraints, we were not able to implement a better solution.
@@ -45,14 +45,3 @@ Lastly, the program uses the terminal to interface with the user.
 Our implementation is very simple, as we were not to implement a more complicated graphical user interface.
 While the program can be compiled for mobile devices, the experience would probably not be very good, as the user
 experience was focussed around PC users.
-
-% textidote: ignore begin
-\subsection{The Health Attribute}\label{subsec:health-attribute}
-% textidote: ignore end
-
-Initially, the four different attributes was price, time, environment and health.
-When analyzing the problem, the complexity of calculating health benefits and consequences became apparent,
-why this attribute was not implemented in the final version of the program.
-Health is a wide topic, why it was of no use to somehow narrow it down to a single number to be evaluated upon.
-Another idea was to hard code a value for different types of transport, but health is very user dependent.
-Health can also be very subjective, as some people might find biking relaxing, while others might find it stressful.
