@@ -118,3 +118,50 @@ Destination station Track: 4
 \end{lstlisting}
 
 % TODO if we update the program, update the output here :)
+
+\subsection{Persona results}\label{subsec:persona-results}
+
+The following section will show the results of the program with the preferences tuned to the different personas created
+in Section~\ref{subsec:persona}.
+
+For the first persona, the problem is that he got a new job in a different city.
+Let's assume that he lives in Roskilde, and that he has to commute to Copenhagen.
+Time is his upmost priority, because he wants to live his life to the fullest.
+An example of the program output fit for his preferences can be seen in Listing~\ref{lst:results-persona1}.
+He can then make the choice of whether the commute will take too much of his free time.
+
+\begin{lstlisting}[label={lst:results-persona1}, caption={Output for Asger Johansen.}, captionpos=b, language={}]
+Priority 1: ID:   1 P: 117.00 T: 187.00 E: 487.00 --- Ps: 1.00 Ts: 1.00 Es: 0.00 --- Os: 0.81
+Priority 2: ID:   0 P: 152.00 T: 188.00 E: 452.00 --- Ps: 0.19 Ts: 1.00 Es: 0.11 --- Os: 0.68
+Priority 3: ID:   2 P: 160.00 T: 391.00 E: 171.00 --- Ps: 0.00 Ts: 0.00 Es: 1.00 --- Os: 0.19
+\end{lstlisting}
+
+For the second persona, the problem is that she wants to be more sustainable.
+Let's assume that she lives in Taastrup, and that she has to commute to Copenhagen.
+There are a number of different transportation options available for her, such as the train, the S-train, the bus and
+she is also considering an electric car.
+An example of the program output fit for her preferences can be seen in Listing~\ref{lst:results-persona2}.
+The best option for her is to buy an electric car, but the S-train is also a good option.
+
+\begin{lstlisting}[label={lst:results-persona2}, caption={Output for Josefine Madsen.}, captionpos=b, language={}]
+Priority 1: ID:   1 P: 185.00 T: 127.00 E:  85.00 --- Ps: 1.00 Ts: 0.46 Es: 1.00 --- Os: 0.90
+Priority 2: ID:   2 P: 425.00 T:   8.00 E: 357.00 --- Ps: 0.00 Ts: 1.00 Es: 0.28 --- Os: 0.36
+Priority 3: ID:   0 P: 417.00 T: 227.00 E: 463.00 --- Ps: 0.03 Ts: 0.00 Es: 0.00 --- Os: 0.01
+\end{lstlisting}
+
+For the third persona, he wonders if taking the train would be more sustainable than taking the car.
+Let's assume that he lives in Odense, and that he has to commute to Nyborg.
+The distance is rather small, at only 30 km.
+He wants to live a carefree life, so he is not concerned with his priorities.
+Therefore, let's assume that they're split evenly.
+An example of the program output fit for his preferences can be seen in Listing~\ref{lst:results-persona3}.
+It turns out that taking the train would not only be more sustainable, but also cheaper and faster.
+It is worth nothing however that the time does not include travel to and from the train stations.
+
+\begin{lstlisting}[label={lst:results-persona3}, caption={Output for Martin Jensen.}, captionpos=b, language={}]
+Priority 1: ID:   2 P: 148.00 T: 108.00 E:  19.00 --- Ps: 1.00 Ts: 0.85 Es: 1.00 --- Os: 0.97
+Priority 2: ID:   1 P: 429.00 T: 358.00 E:  32.00 --- Ps: 0.15 Ts: 0.00 Es: 0.97 --- Os: 0.64
+Priority 3: ID:   0 P: 480.00 T:  64.00 E: 453.00 --- Ps: 0.00 Ts: 1.00 Es: 0.00 --- Os: 0.19
+\end{lstlisting}
+
+% TODO if we update the program, update the output here too
