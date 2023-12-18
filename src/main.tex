@@ -111,7 +111,10 @@ fill=yellow!30
     \input{discussion/discussion}
     \input{conclusion/conclusion}
 
+    % textidote: ignore begin
     \addcontentsline{toc}{chapter}{Bibliography}
+    % textidote: ignore end
+
     \bibliographystyle{IEEEtran}
     % textidote: ignore begin
     \bibliography{problem-analysis/audience,problem-analysis/context,problem-analysis/financial-awareness,
@@ -120,6 +123,10 @@ fill=yellow!30
         discussion/perspectivation,discussion/review-requirements,problem-analysis/recommendation-systems,
         appendix/appendix,problem-solution/srs}
     % textidote: ignore end
+
+    % textidote: ignore begin
     \addcontentsline{toc}{chapter}{Appendices}
+    % textidote: ignore end
+
     \input{appendix/appendix}
 \end{document}
