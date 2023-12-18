@@ -2,4 +2,57 @@
 \section{Perspectivation}\label{sec:perspectivation}
 % textidote: ignore end
 
-% TODO write this section
+
+
+Another solution to the problem is one made by the Danish company FynBus~\cite{fynbus2023}.
+Their solutions have several similarities to our solution.
+Most notably, as seen in~\ref{tab:similarities-between-ours-and-fynbus's-solution}, is the input parameters.
+This is however to be expected, as these parameters are important for potential users.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Topics} & \textbf{Contents} \\
+        \hline
+        Parameters & Both programs has price, time and environment as input parameters \\
+        \hline
+        Output & Both programs provides information about the parameters based on route data \\
+        \hline
+    \end{tabular}
+    \caption{Similarities between ours and Fynbus's solution.}
+    \label{tab:similarities-between-ours-and-fynbus's-solution}
+\end{table}
+
+The differences are mentioned in~\ref{tab:differences-between-ours-and-fynbus's-solution} and includes insignificant as
+well as significant differences.
+An insignificant difference is the availability of the Fynbus solution, as theirs is an internet application most
+likely written in the HTML programming language.
+As we are required to write in the C programming language, it is not in scope to make a program solution that has a more
+complicated UI than the terminal window.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Topics} & \textbf{Our solution} & \textbf{Fynbus's solution} \\
+        \hline
+        UI & Terminal window & Intuitive and interactive GUI \\
+        \hline
+        Availability & Has to be run locally as a .exe-file & Internet application \\
+        \hline
+        Frontend & Default terminal window & Beautiful simple design \\
+        \hline
+        Focus & Informational service as well as personal optimization for public transport routes & Informational service \\
+        \hline
+    \end{tabular}
+    \caption{Differences between ours and Fynbus's solution.}
+    \label{tab:differences-between-ours-and-fynbus's-solution}
+\end{table}
+
+A very significant difference however is that of the focus of the program.
+As mentioned in~\ref{tab:differences-between-ours-and-fynbus's-solution} Fynbus's solutions main focus is to inform the
+user of the consequences of different transport types in their routines.
+This topic of focus is what makes our program vastly different to Fynbus's solution, as our program, as well as inform
+the user the same way Fynbus's solutions does, also makes a prioritized list of the available public transport routes
+and ranks them based on the users preferences.
