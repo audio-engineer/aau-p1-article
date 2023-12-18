@@ -14,7 +14,7 @@ The program initialize the save file with some standard default data, such that 
 the user does not choose to input their own preferences.
 The program initializes the save file through a function called \texttt{InitializePreferenceFile}.
 
-\begin{lstlisting}[label={lst:SavePreferences}, caption={Saving preferences to file.}]
+\begin{lstlisting}[label={lst:SavePreferences}, caption={Saving preferences to file.}, captionpos=b]
 FILE* preferences = fopen("preferences.json", "w");
 fputs(kSerializedJsonWithNewline, preferences);
 fclose(preferences);
@@ -36,7 +36,7 @@ Parsing JSON and generating JSON is done through the library cJSON as mentioned 
 As seen in Figure~\ref{lst:SavePreferences}, the routine works by first parsing the content of the preference file and
 then searching for the item to be changed.
 
-\begin{lstlisting}[label={lst:ParseJSON}, caption={Parsing JSON.}]
+\begin{lstlisting}[label={lst:ParseJSON}, caption={Parsing JSON.}, captionpos=b]
 const cJSON* const kJsonPreferences = cJSON_Parse(kFileBuffer);
 free(kFileBuffer);
 
@@ -59,7 +59,7 @@ However, \texttt{GetUserPreference} is a double function.
 The reason for this is to return the value of the preference from the save file, as seen in Figure~\ref{lst:GetPref}.
 \texttt{GetUserPreference} only takes one input, which is the key for the value of an attribute to be accessed.
 
-\begin{lstlisting}[label={lst:GetPref}, caption={Reading attribute value from preference file.}]
+\begin{lstlisting}[label={lst:GetPref}, caption={Reading attribute value from preference file.}, captionpos=b]
 cJSON* file_item = cJSON_GetObjectItem(json_preferences, key);
 
 value = cJSON_GetNumberValue(file_item);

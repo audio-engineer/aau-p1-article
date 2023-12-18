@@ -6,14 +6,14 @@ After the attributes for each route has been calculated, the attributes are eval
 the flowchart.
 To perform these comparisons the \texttt{Evaluate} function, as seen in~\ref{lst:evaluate-prototype}, is used.
 
-\begin{lstlisting}[caption={Function prototype for \texttt{Evaluate}}, label={lst:evaluate-prototype}]
+\begin{lstlisting}[caption={Function prototype for \texttt{Evaluate}}, label={lst:evaluate-prototype}, captionpos=b]
 void Evaluate(TripData trip_arr[], size_t size_of_struct_array);
 \end{lstlisting}
 
 This routine has an array of the type \texttt{TripData} as an input parameter, which is a struct type as seen in
 ~\ref{lst:TripData-declaration}.
 
-\begin{lstlisting}[caption={Declaration of \texttt{TripData} struct}, label={lst:TripData-declaration}]
+\begin{lstlisting}[caption={Declaration of \texttt{TripData} struct}, label={lst:TripData-declaration}, captionpos=b]
 typedef struct TripData {
   int trip_id;
   double price;
@@ -28,7 +28,8 @@ This, as well as the size of the array, allows the \texttt{Evaluate} function to
 This function's primary function is to call the function \texttt{CalculateScore} function, as seen in
 ~\ref{lst:calculatescore-prototype}, with the different attributes of the routes as input parameters.
 
-\begin{lstlisting}[caption={Function prototype for \texttt{CalculateScore}}, label={lst:calculatescore-prototype}]
+\begin{lstlisting}[caption={Function prototype for \texttt{CalculateScore}},label={lst:calculatescore-prototype},
+    captionpos=b]
 void CalculateScore(TripData trip_data[], const CalculateScoreParameters* calculate_score_parameters);
 \end{lstlisting}
 
@@ -36,7 +37,7 @@ It does this by having the struct array mentioned before and by having an instan
 \texttt{CalculateScoreParameters} struct, as seen in~\ref{lst:CalculateScoreParameters-declaration} as input parameters.
 
 \begin{lstlisting}[caption={Declaration of \texttt{CalculateScoreParameters} struct},
-    label={lst:CalculateScoreParameters-declaration}]
+    label={lst:CalculateScoreParameters-declaration}, captionpos=b]
 typedef struct CalculateScoreParameters {
   const size_t kNumTrips;
   const size_t kReadOffset;
@@ -51,7 +52,7 @@ specific member type for all iterations of the struct array.
 The initialization of the local variable \texttt{Score}, as seen in~\ref{lst:score_initialization}, includes the score
 calculation for each instance of the struct for the relevant member passed in the \texttt{CalculateScore} function.
 
-\begin{lstlisting}[caption={Initialization of \texttt{Score}}, label={lst:score_initialization}]
+\begin{lstlisting}[caption={Initialization of \texttt{Score}}, label={lst:score_initialization}, captionpos=b]
 double score = (*(double*)read_member - attribute_smallest) /
   (attribute_largest - attribute_smallest);
 \end{lstlisting}
@@ -66,7 +67,8 @@ This process is as mentioned iterated over all member types in the \texttt{TripD
 Finally, the \texttt{overall\_score} member is calculated for all the iterations in the struct array, as seen in
 ~\ref{lst:overall_score-calculation}.
 
-\begin{lstlisting}[caption={Calculation of \texttt{overall\_score}}, label={lst:overall_score-calculation}]
+\begin{lstlisting}[caption={Calculation of \texttt{overall\_score}}, label={lst:overall_score-calculation},
+    captionpos=b]
 for (size_t i = 0; i < size_of_struct_array; i++) {
   trip_arr[i].overall_score =
       GetUserPreference("price") * trip_arr[i].price_score +
