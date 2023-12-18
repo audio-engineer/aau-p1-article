@@ -5,7 +5,7 @@ DSB
 Metroselskabet
 Midttrafik
 Sydtrafik
-Fynbus
+FynBus
 Eilstrup
 rejseplanens
 simon

@@ -11,9 +11,9 @@ Generally, rectangles with rounded corners are used to signal when the program s
 Regular rectangles are used for back-end - processing and parallelograms are used for front-end - input or output.
 Diamonds are used for decisions and in our case we've made a circle to represent a function.
 This detailed process significantly contributed to our development by providing the team with clarity.
-The flowcharts are seen in Section~\ref{subsec:main} through~\ref{subsec:output}.
+The flowcharts are seen in Figure~\ref{fig:main} through Figure~\ref{fig:output}.
 
-The program starts with an input function~\ref{subsec:input}, which first prompts the user for their current/start
+The program starts with an input function~\ref{fig:input}, which first prompts the user for their current/start
 position and for their desired destination.
 We then give the user a choice of whether they want to use a preset preference file, predefined default values or engage
 in providing the information by responding to prompts.
@@ -27,12 +27,12 @@ They must input a score from 0 through 10 for each attribute, where 0 is not imp
 % textidote: ignore end
 
 The next couple of functions take place in the back-end.
-In Section~\ref{subsec:search}, we make calls to Rejseplanen's API, which returns the list of routes that we need.
+In Section~\ref{fig:search}, we make calls to Rejseplanen's API, which returns the list of routes that we need.
 Afterward, we use the trip information to further calculate the attributes for each route.
 
-Then in Section~\ref{subsec:evaluate} we evaluate them according to the user's preferences and assign a score to them.
+Then in Section~\ref{fig:evaluate} we evaluate them according to the user's preferences and assign a score to them.
 
-Finally, we have the output in Section~\ref{subsec:output}.
+Finally, we have the output in Section~\ref{fig:output}.
 From there, the trips scores are sorted.
 The user can choose to sort the list based on some individual attribute score or to print the route details of a
 specific trip.
@@ -40,10 +40,10 @@ specific trip.
 % textidote: ignore begin
 %-----------------------------------------------------------------------------------------------------------------------
 
-\newpage
-\subsection{Main}\label{subsec:main}
-\noindent
-\begin{center}
+\begin{figure}[H]
+    \centering
+    \caption{Program layout}\label{fig:main}
+    \vspace{0.5cm}
     \begin{tikzpicture}[node distance=2cm]
 
         \node (start) [startstop] {Start};
@@ -60,14 +60,14 @@ specific trip.
         \draw [arrow] (func4) -- (stop);
 
     \end{tikzpicture}
-\end{center}
+\end{figure}
 
 %-----------------------------------------------------------------------------------------------------------------------
 
-\newpage
-\subsection{Input}\label{subsec:input}
-\noindent
-\begin{center}
+\begin{figure}[H]
+    \centering
+    \caption{Input function}\label{fig:input}
+    \vspace{0.5cm}
     \begin{tikzpicture}[node distance=2cm]
 
         \node (start) [startstop] {Start};
@@ -111,15 +111,15 @@ specific trip.
         \draw [arrow] (pro2) -- (stop);
 
     \end{tikzpicture}
-\end{center}
+\end{figure}
 
 %-----------------------------------------------------------------------------------------------------------------------
 
-\newpage
-\begin{center}
+\begin{figure}[H]
+    \center
     \begin{multicols}{2}
-        \subsection{Search}\label{subsec:search}
-        \noindent
+        \caption{Search function}\label{fig:search}
+        \vspace{0.5cm}
         \begin{tikzpicture}[node distance=2cm]
 
             \node (start) [return] {Start};
@@ -133,12 +133,12 @@ specific trip.
 
         \end{tikzpicture}
 
-        \vspace{2cm}
+        \vspace{7cm}
 
 %-----------------------------------------------------------------------------------------------------------------------
 
-        \subsection{Evaluate}\label{subsec:evaluate}
-        \noindent
+        \caption{Evaluate function}\label{fig:evaluate}
+        \vspace{0.5cm}
         \begin{tikzpicture}[node distance=2cm]
 
             \node (start) [return] {Start};
@@ -156,20 +156,20 @@ specific trip.
 
         \end{tikzpicture}
     \end{multicols}
-\end{center}
+\end{figure}
 
 %-----------------------------------------------------------------------------------------------------------------------
 
-\newpage
-\subsection{Output}\label{subsec:output}
-\noindent
-\begin{center}
+\begin{figure}[H]
+    \centering
+    \caption{Output function}\label{fig:output}
+    \vspace{0.5cm}
     \begin{tikzpicture}[node distance=2cm]
 
         \node (start) [return] {Start};
         \node (out1)  [io, below of=pro1] {Print data and score results};
         \node (in1)   [io, below of=out1, text width=4cm, yshift=-0.5cm] {Read user choice:\\ view route details (1-5)\\
-        sort the list (P,T,E,O)};
+        sort the list (P,T,E,O)\\ quit program (Q)};
         \node (dec1)  [decision, below of=in1, yshift=-1.5cm] {Check int/char};
         \node (pro1)  [process, below of=start] {Sort the list};
         \node (out2)  [io, right of=dec1, xshift=2.5cm] {Print route details for chosen route};
@@ -179,7 +179,7 @@ specific trip.
         \draw [arrow] (start) -- (pro1);
         \draw [arrow] (out1) -- (in1);
         \draw [arrow] (in1) -- (dec1);
-        \draw [arrow] (dec1) -- node[anchor=south] {char} (dec2);
+        \draw [arrow] (dec1) -- node[anchor=east] {char} (dec2);
         \draw [arrow] (pro1) -- (out1);
         \draw [arrow] (dec1) -- node[anchor=south] {int} (out2);
         \draw [arrow] (dec2) -- node[anchor=south] {Q} (stop);
@@ -188,7 +188,7 @@ specific trip.
 
 
     \end{tikzpicture}
-\end{center}
+\end{figure}
 
 %-----------------------------------------------------------------------------------------------------------------------
 % textidote: ignore end

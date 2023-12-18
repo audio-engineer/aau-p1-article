@@ -1,6 +1,6 @@
 \section{Output functionality}\label{sec:output-functionality}
 
-The last routine of the software is the~\texttt{Output} routine as mentioned in the flowchart~\ref{subsec:output}.
+The last routine of the software is the~\texttt{Output} routine as mentioned in the flowchart~\ref{fig:output}.
 As seen in listing~\ref{lst:output-prototype} in line 1, the~\texttt{Output} routine has the~\texttt{TripData} struct
 and the~\texttt{TripScore} struct as input parameters.
 This is because the overall functionality of the functions is to print the information in these structs to the terminal.
@@ -13,7 +13,7 @@ void Output(TripData data_arr[], TripScore score_arr[], size_t size);
 
 The data to be printed in the~\texttt{Output} routine is either the data and scores for the routes that score in the top
 5 or the details of a specific route.
-As seen in the flowchart~\ref{subsec:output}, what is being printed is reliant of the user input.
+As seen in the flowchart~\ref{fig:output}, what is being printed is reliant of the user input.
 When printing the price, time and environment data and scores, the function~\texttt{PrintTripScoresAndData}
 ~\ref{lst:printtripscoresanddata-prototype} handles the printing to the terminal of these.
 
