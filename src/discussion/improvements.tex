@@ -1,12 +1,49 @@
 % textidote: ignore begin
-\section{Improvements}\label{sec:improvements}
+\section{What's missing from the program}\label{sec:improvements}
 % textidote: ignore end
 
-% TODO write what we did to improve the program from other solutions / original idea
+There are a few aspects of the program that the group would have liked to implement, but due to different circumstances
+were not.
+This section goes over the main features that were planned for the program, but were left out.
+While these features are not required to make the program work, they were outlined in the analysis and design phase of
+the project, so if the program were to be further developed, these features would be the first to be implemented.
+
+\subsection{The Health Attribute}\label{subsec:health-attribute}
+
+Initially, the four different attributes were price, time, environment and health.
+When analyzing the problem, the complexity of calculating health benefits and consequences became apparent,
+why this attribute was not implemented in the final version of the program.
+Health is a wide topic, why it was of no use to somehow narrow it down to a single number to be evaluated upon.
+Another idea was to hard code a value for different types of transport, but health is very user dependent.
+Health can also be very subjective, as some people might find biking relaxing, while others might find it stressful.
+
+\subsection{Cars and Bikes}\label{subsec:cars-bikes-walking}
+
+Similar to the health attribute, we did not implement cars and bikes as a means of transportation.
+This is unfortunate, but the reason behind the decision was the lack of time.
+Our main focus was communicating with the Rejseplanen API, so we put our efforts into that.
+Since it took longer than we expected, we decided to not implement cars and bikes.
+However, that does not mean that it's the intended behavior.
+The goal is to inform the user of the best route, regardless of the means of transportation.
+So ideally the program should also show routes for cars and bikes.
+
+It is worth noting however that there are already some implementations for using cars and bikes, such as giving the
+user a choice of using them, saving them to the preferences file and already having the code to calculate the time,
+price and environment impact of using them.
 
 % textidote: ignore begin
-\section{How we could improve the program}\label{sec:do-differently}
+\section{How we could improve the program}\label{sec:improve-program}
 % textidote: ignore end
+
+There are also a few ideas that the group thought of during or after the development of the program, that were not
+implemented due to either time or complexity constraints.
+As mentioned in the requirements, ideally the program would use a map API to properly calculate the distance and time
+for a given route.
+The map could also show a visual representation of any chosen route, which would be a good addition to the program.
+While on the topic of visual representation, it would have been nice to have a graphical user interface, instead of
+using the terminal.
+The program could also benefit from having commuting specific features, such as notifying the user if there's a change
+in their current commute route, such as planned track work, cancelled trains or other delays.
 
 % TODO write ideas on how to improve the program
 % Idea: have the program notify the user if there's a change in their current commute route
