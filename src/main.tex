@@ -14,6 +14,7 @@
 \usepackage{listings}
 \usepackage{multicol}
 \usepackage{float}
+\usepackage{caption}
 
 % textidote: ignore begin
 \graphicspath{ {./images/} }
@@ -110,12 +111,15 @@ fill=yellow!30
     \input{discussion/discussion}
     \input{conclusion/conclusion}
 
+    \addcontentsline{toc}{chapter}{Bibliography}
     \bibliographystyle{IEEEtran}
     % textidote: ignore begin
     \bibliography{problem-analysis/audience,problem-analysis/context,problem-analysis/financial-awareness,
         problem-analysis/health,problem-analysis/history,problem-analysis/what-is-the-problem,
         method/software-project-structure,method/solution-stack,problem-solution/calculations,
-        discussion/perspectivation,discussion/review-requirements,
-        problem-analysis/recommendation-systems,problem-solution/srs}
+        discussion/perspectivation,discussion/review-requirements,problem-analysis/recommendation-systems,
+        appendix/appendix,problem-solution/srs}
     % textidote: ignore end
+    \addcontentsline{toc}{chapter}{Appendices}
+    \input{appendix/appendix}
 \end{document}
