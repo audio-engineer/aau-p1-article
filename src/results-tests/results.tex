@@ -5,6 +5,8 @@ The below examples are created according to the group's personal commute and pre
 The results show the program's functionality and user experience, with the goal of how a user would interact with the
 program.
 
+\subsection{Program results}\label{subsec:program-results}
+
 The program is divided into five main sections.
 The first section asks the user to input the start and end destinations, as well as the time of either departure or
 arrival.
@@ -20,7 +22,7 @@ Input arrival/departure hour: 6
 Input arrival/departure minutes : 20
 \end{lstlisting}
 
-The second section asks the user if they want to enter their preferences for the trip, if they want to use a cusom
+The second section asks the user if they want to enter their preferences for the trip, if they want to use a custom
 file or if they want to use the default preferences preset.
 The preferences work as a questionnaire, where the user is asked to rate their priority for each of the preferences from
 1 to 10.
@@ -28,8 +30,8 @@ The preferences are described in Section~\ref{sec:make-people-aware-of-how-much-
 The questionnaire also asks the user if they want to include bikes, cars, trains or walking to the results.
 
 In the example in Listing~\ref{lst:results-sec2}, the user has chosen to input their own preferences.
-The user has chosen to prioritize price and time, but not health.
-The user has also chosen to exclude walking and biking from the results, but include trains.
+They decided to prioritize price and time, but not health.
+They have also decided to exclude walking and biking from the results, but include trains.
 
 \begin{lstlisting}[label={lst:results-sec2}, caption={Custom preferences input.}, captionpos=b, language={}]
 Do you want to manually input your preferenes? (m)
@@ -124,7 +126,7 @@ Destination station Track: 4
 The following section will show the results of the program with the preferences tuned to the different personas created
 in Section~\ref{subsec:persona}.
 
-For the first persona, the problem is that he got a new job in a different city.
+For the first persona, the issue is that he got a new job in a different city.
 Let's assume that he lives in Roskilde, and that he has to commute to Copenhagen.
 Time is his upmost priority, because he wants to live his life to the fullest.
 An example of the program output fit for his preferences can be seen in Listing~\ref{lst:results-persona1}.
@@ -136,9 +138,9 @@ Priority 2: ID:   0 P: 152.00 T: 188.00 E: 452.00 --- Ps: 0.19 Ts: 1.00 Es: 0.11
 Priority 3: ID:   2 P: 160.00 T: 391.00 E: 171.00 --- Ps: 0.00 Ts: 0.00 Es: 1.00 --- Os: 0.19
 \end{lstlisting}
 
-For the second persona, the problem is that she wants to be more sustainable.
+For the second persona, the issue is that she wants to be more sustainable.
 Let's assume that she lives in Taastrup, and that she has to commute to Copenhagen.
-There are a number of different transportation options available for her, such as the train, the S-train, the bus and
+There are a number of different transportation options available for her, such as the train, the S-train, the bus, and
 she is also considering an electric car.
 An example of the program output fit for her preferences can be seen in Listing~\ref{lst:results-persona2}.
 The best option for her is to buy an electric car, but the S-train is also a good option.
