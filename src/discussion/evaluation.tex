@@ -50,7 +50,7 @@ So instead we would write a unit test in a C++ file, and then run the test to se
 The way these tests work is that we call the function we want to test, and give it values to test.
 We also have an expected result, and if the function returns the expected result, the test passes, otherwise it fails.
 
-\begin{lstlisting}[label={lst:UnitTestExample}, caption={Example of a unit test.}]
+\begin{lstlisting}[label={lst:UnitTestExample}, caption={Example of a unit test.}, captionpos=b]
 TEST(CalculatePriceTest, Train30kmAdult0) {
   const CalculatePriceParameters kParameters = {kTrain, 30, false, 0};
   EXPECT_EQ(900, CalculatePrice(&kParameters));

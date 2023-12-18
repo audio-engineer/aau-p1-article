@@ -7,7 +7,7 @@ This is because the overall functionality of the functions is to print the infor
 The~\texttt{Output} routine is one big while-loop iterating as long as the user wants to use the program and only
 terminates when the user inputs~\texttt{Q} to quit.
 
-\begin{lstlisting}[caption={Function prototype for~\texttt{Output}}, label={lst:output-prototype}]
+\begin{lstlisting}[caption={Function prototype for~\texttt{Output}}, label={lst:output-prototype}, captionpos=b]
 void Output(TripData data_arr[], TripScore score_arr[], size_t size);
 \end{lstlisting}
 
@@ -17,7 +17,8 @@ As seen in the flowchart~\ref{subsec:output}, what is being printed is reliant o
 When printing the price, time and environment data and scores, the function~\texttt{PrintTripScoresAndData}
 ~\ref{lst:printtripscoresanddata-prototype} handles the printing to the terminal of these.
 
-\begin{lstlisting}[caption={Function prototype for~\texttt{PrintTripScoresAndData}}, label={lst:printtripscoresanddata-prototype}]
+\begin{lstlisting}[caption={Function prototype for~\texttt{PrintTripScoresAndData}},
+    label={lst:printtripscoresanddata-prototype}, captionpos=b]
 void PrintTripScoresAndData(TripData data_arr[], TripScore score_arr[], size_t size);
 \end{lstlisting}
 
@@ -28,6 +29,7 @@ This sorting are handled by the~\texttt{SortRoutes} function.
 This function sorts the entries in the~\texttt{TripScore} struct which is where the scores for the routes are located.
 
 
-\begin{lstlisting}[caption={Function prototype for~\texttt{SortRoutes}}, label={lst:sortroutes-prototype}]
+\begin{lstlisting}[caption={Function prototype for~\texttt{SortRoutes}}, label={lst:sortroutes-prototype},
+    captionpos=b]
 void SortRoutes(TripScore* trips, char* attribute, size_t size_of_struct_array)
 \end{lstlisting}
