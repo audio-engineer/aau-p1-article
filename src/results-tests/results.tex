@@ -1,3 +1,169 @@
-%textidote: ignore begin
 \section{Results}\label{sec:results}
-%textidote: ignore end
+
+This section will present the program in its working form.
+The below examples are created according to the group's personal commute and preferences.
+The results show the program's functionality and user experience, with the goal of how a user would interact with the
+program.
+
+\subsection{Program results}\label{subsec:program-results}
+
+The program is divided into five main sections.
+The first section asks the user to input the start and end destinations, as well as the time of either departure or
+arrival.
+In the example in Listing~\ref{lst:results-sec1}, the input sets the start location to Odense, the end location to
+Copenhagen and the time of departure to 6:20.
+
+\begin{lstlisting}[label={lst:results-sec1}, caption={Basic parameters input.}, captionpos=b, language={}]
+Use predefined or manually input? (p = predefined or m = manual) : m
+Start location : odense
+End location : copenhagen
+Do you want to plan routes for Departure time? (y) Or Arrival time? (n): y
+Input arrival/departure hour: 6
+Input arrival/departure minutes : 20
+\end{lstlisting}
+
+The second section asks the user if they want to enter their preferences for the trip, if they want to use a custom
+file or if they want to use the default preferences preset.
+The preferences work as a questionnaire, where the user is asked to rate their priority for each of the preferences from
+1 to 10.
+The preferences are described in Section~\ref{sec:make-people-aware-of-how-much-money-time-climate-they-are-using-on-commuting}.
+The questionnaire also asks the user if they want to include bikes, cars, trains or walking to the results.
+
+In the example in Listing~\ref{lst:results-sec2}, the user has chosen to input their own preferences.
+They decided to prioritize price and time, but not health.
+They have also decided to exclude walking and biking from the results, but include trains.
+
+\begin{lstlisting}[label={lst:results-sec2}, caption={Custom preferences input.}, captionpos=b, language={}]
+Do you want to manually input your preferenes? (m)
+Load preferences from a file (f)
+Use presets? (p)
+       >>> m
+To input your personal preferences please write a number between 0-10!
+Price preference (0-10): 7
+Time preference (0-10): 8
+Sustainability preference (0-10): 6
+Can your route include walking? (y/n): n
+Can your route include biking? (y/n): n
+Can your route include trains? (y/n): y
+Can your route include a car? (y/n): n
+\end{lstlisting}
+
+The third section will be hidden from the user, but as this is a prototype, the information is shown.
+It includes the links that the program calls to get the data from the Rejseplanen API and saves the data to struct.
+The ID for the start and end location is also shown, as well as the number of routes available.
+The example in Listing~\ref{lst:results-sec3} shows the output from the above examples.
+
+\begin{lstlisting}[label={lst:results-sec3}, caption={Backend data output.}, captionpos=b, language={}]
+GETTING TRIP DATA...
+Request will be made to URL: https://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=odense&format=json
+Request will be made to URL: https://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=copenhagen&format=json
+Origin location ID: 008600512
+Destination location ID: 008600626
+Request will be made to URL: https://xmlopen.rejseplanen.dk/bin/rest.exe/trip?originId=008600512&destId=008600626&time=06:20&format=json&useBus=0
+There are 3 distinct routes available for this trip.
+Request will be made to URL: http://webapp.rejseplanen.dk/bin//rest.exe/journeyDetail?ref=818994%2F273104%2F788270%2F121137%2F86%3Fdate%3D19.12.23%26station_evaId%3D8600512%26format%3Djson
+Leg: 1, number of stops: 10
+Total number of stops on trip: 10
+\end{lstlisting}
+
+The fourth section shows the table with results of the program.
+It is an overview of all the transportation options available for the commute.
+The table is sorted according to the user preferences, with the overall best score on top.
+The user can see how long a trip takes, how much it costs and how sustainable it is.
+The user can then sort the table according to the different preferences, to see which transportation option is best
+for each preference.
+The example in Listing~\ref{lst:results-sec4} again shows the output from the above examples.
+
+\begin{lstlisting}[label={lst:results-sec4}, caption={Routes table output.}, captionpos=b, language={}]
+------------------------------------------------------------
+Priority 1: ID:   0 P:  64.00 T: 104.00 E: 342.00 --- Ps: 1.00 Ts: 1.00 Es: 0.95 --- Os: 0.98
+Priority 2: ID:   2 P: 184.00 T: 213.00 E: 483.00 --- Ps: 0.65 Ts: 0.41 Es: 0.00 --- Os: 0.37
+Priority 3: ID:   1 P: 411.00 T: 288.00 E: 334.00 --- Ps: 0.00 Ts: 0.00 Es: 1.00 --- Os: 0.29
+------------------------------------------------------------
+
+View route details (number), sort the list (Price (P),Time (T), Environment (E), Overall (O)) or terminate (Q):  e
+
+------------------------------------------------------------
+Priority 1: ID:   1 P: 411.00 T: 288.00 E: 334.00 --- Ps: 0.00 Ts: 0.00 Es: 1.00 --- Os: 0.29
+Priority 2: ID:   0 P:  64.00 T: 104.00 E: 342.00 --- Ps: 1.00 Ts: 1.00 Es: 0.95 --- Os: 0.98
+Priority 3: ID:   2 P: 184.00 T: 213.00 E: 483.00 --- Ps: 0.65 Ts: 0.41 Es: 0.00 --- Os: 0.37
+------------------------------------------------------------
+\end{lstlisting}
+
+The fifth and final section shows the user the details of the chosen route.
+The user can access the details by typing the ID of the route in the terminal.
+The details screen shows the user what the name of the train is, what type it is, the exact time of departure and
+arrival, as well as the track number.
+% TODO if we update the program to show more information here
+% It also shows the result of our calculations, such as the \unit{CO_{2}} emission, the price and the time.
+The example in Listing~\ref{lst:results-sec5} yet again shows the output from the above examples.
+
+\begin{lstlisting}[label={lst:results-sec5}, caption={Route details output.}, captionpos=b, language={}]
+View route details (number), sort the list (Price (P),Time (T), Environment (E), Overall (O)) or terminate (Q):  1
+------------------------------------------------------------
+Number of legs in the chosen trip: 1
+------------------------------------------------------------
+Leg 1:
+Transportation name:       IC 838
+Transportation type:       IC
+
+Origin station name:       Odense St.
+Origin station time:       06:26
+Origin station date:       19.12.23
+Origin station Track:      3
+
+Destination station name:  Kobenhavn H
+Destination station time:  07:55
+Destination station date:  19.12.23
+Destination station Track: 4
+------------------------------------------------------------
+\end{lstlisting}
+
+% TODO if we update the program, update the output here :)
+
+\subsection{Persona results}\label{subsec:persona-results}
+
+The following section will show the results of the program with the preferences tuned to the different personas created
+in Section~\ref{subsec:persona}.
+
+For the first persona, the issue is that he got a new job in a different city.
+Let's assume that he lives in Roskilde, and that he has to commute to Copenhagen.
+Time is his upmost priority, because he wants to live his life to the fullest.
+An example of the program output fit for his preferences can be seen in Listing~\ref{lst:results-persona1}.
+He can then make the choice of whether the commute will take too much of his free time.
+
+\begin{lstlisting}[label={lst:results-persona1}, caption={Output for Asger Johansen.}, captionpos=b, language={}]
+Priority 1: ID:   1 P: 117.00 T: 187.00 E: 487.00 --- Ps: 1.00 Ts: 1.00 Es: 0.00 --- Os: 0.81
+Priority 2: ID:   0 P: 152.00 T: 188.00 E: 452.00 --- Ps: 0.19 Ts: 1.00 Es: 0.11 --- Os: 0.68
+Priority 3: ID:   2 P: 160.00 T: 391.00 E: 171.00 --- Ps: 0.00 Ts: 0.00 Es: 1.00 --- Os: 0.19
+\end{lstlisting}
+
+For the second persona, the issue is that she wants to be more sustainable.
+Let's assume that she lives in Taastrup, and that she has to commute to Copenhagen.
+There are a number of different transportation options available for her, such as the train, the S-train, the bus, and
+she is also considering an electric car.
+An example of the program output fit for her preferences can be seen in Listing~\ref{lst:results-persona2}.
+The best option for her is to buy an electric car, but the S-train is also a good option.
+
+\begin{lstlisting}[label={lst:results-persona2}, caption={Output for Josefine Madsen.}, captionpos=b, language={}]
+Priority 1: ID:   1 P: 185.00 T: 127.00 E:  85.00 --- Ps: 1.00 Ts: 0.46 Es: 1.00 --- Os: 0.90
+Priority 2: ID:   2 P: 425.00 T:   8.00 E: 357.00 --- Ps: 0.00 Ts: 1.00 Es: 0.28 --- Os: 0.36
+Priority 3: ID:   0 P: 417.00 T: 227.00 E: 463.00 --- Ps: 0.03 Ts: 0.00 Es: 0.00 --- Os: 0.01
+\end{lstlisting}
+
+For the third persona, he wonders if taking the train would be more sustainable than taking the car.
+Let's assume that he lives in Odense, and that he has to commute to Nyborg.
+The distance is rather small, at only 30 km.
+He wants to live a carefree life, so he is not concerned with his priorities.
+Therefore, let's assume that they're split evenly.
+An example of the program output fit for his preferences can be seen in Listing~\ref{lst:results-persona3}.
+It turns out that taking the train would not only be more sustainable, but also cheaper and faster.
+It is worth nothing however that the time does not include travel to and from the train stations.
+
+\begin{lstlisting}[label={lst:results-persona3}, caption={Output for Martin Jensen.}, captionpos=b, language={}]
+Priority 1: ID:   2 P: 148.00 T: 108.00 E:  19.00 --- Ps: 1.00 Ts: 0.85 Es: 1.00 --- Os: 0.97
+Priority 2: ID:   1 P: 429.00 T: 358.00 E:  32.00 --- Ps: 0.15 Ts: 0.00 Es: 0.97 --- Os: 0.64
+Priority 3: ID:   0 P: 480.00 T:  64.00 E: 453.00 --- Ps: 0.00 Ts: 1.00 Es: 0.00 --- Os: 0.19
+\end{lstlisting}
+
+% TODO if we update the program, update the output here too

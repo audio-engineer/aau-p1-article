@@ -47,3 +47,5 @@ CalculatePrice
 kParameters
 comfortability
 Won't-haves
+Roskilde
+Nyborg
