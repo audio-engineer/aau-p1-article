@@ -49,3 +49,4 @@ comfortability
 Won't-haves
 Roskilde
 Nyborg
+PrintRouteDetails
