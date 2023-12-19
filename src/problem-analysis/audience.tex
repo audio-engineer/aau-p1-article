@@ -1,4 +1,4 @@
-\section{Target audience analysis}\label{sec:target-audience-analysis}
+\section{Target users analysis}\label{sec:target-users-analysis}
 
 When working on a large scale project, it is important to analyze who the target user-base is.
 The problem has to be big enough to affect numerous users and the solution has to be viable to be used by said
@@ -12,7 +12,7 @@ Some examples include travelling to work, travelling to school, family visits, o
 As this range is too broad we will in the following section narrow the target user-base down.
 There are already some solution to this issue, but in Section~\ref{sec:extant-solutions-and-their-operational-mechanisms},
 we figured that these already existing solutions are more fit for single trips, rather than every day travelling.
-This gap in use case is mainly what we want to focus on, which is why our target audience is \underline{commuters}.
+This gap in use case is mainly what we want to focus on, which is why our target audience is commuters.
 
 \subsection{Age range}\label{subsec:age-range}
 
@@ -33,8 +33,7 @@ Many students therefore have a longer commute to school.
 Secondary education starts when the student is 16 years old~\cite{secondary_school}.
 Our cutoff in the age range would be retirement, as we assume that retired individuals will no longer be commuting in
 retirement.
-The retirement age in Denmark is 66-68 years of age~\cite{retirement}, making our age range
-\underline{between 16 and 68 years}.
+The retirement age in Denmark is 66-68 years of age~\cite{retirement}, making our age range between 16 and 68 years.
 
 The age range is rather large as the user-base includes a large part of the population, which makes our solution rather
 difficult, as we have to accommodate it for teenagers as well as adults and the elderly.
@@ -52,60 +51,81 @@ cover different age groups and have distinct characteristics related to the main
 \renewcommand{\arraystretch}{1.5}
 
 \noindent
-\begin{tabularx}{\textwidth}{ | l X | }
-    \hline
-    &                                               \\
-    & \includegraphics[width=0.25\textwidth]{asger} \\
-    Name       & Asger Johansen                                \\
-    Age        & 28 years old                                  \\
-    Occupation & Designer                                      \\
-    What's important & For Asger it is important to spend his days to the fullest.
-    He is very outgoing, so he goes out with people after work.
-    He hates having to stay overtime. \\
-    Current problem & Asger just got a new job offer, but it's in another city.
-    He isn't sure whether to move out or to commute there.
-    He is also afraid of losing his free time if he has to travel. \\
-    Potential solution & We would want to make a program, where Asger could calculate how long it'd take to commute from
-    where he lives to the new job.
-    He could compare different forms of transport and decide whether it's worth it to commute or if he should move out
-    instead. \\
-    \hline
-\end{tabularx}
+\begin{figure}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{ | l X | }
+        \hline
+        &                                               \\
+        & \includegraphics[width=0.25\textwidth]{asger} \\
+        Name       & Asger Johansen                                \\
+        Age        & 28 years old                                  \\
+        Occupation & Designer                                      \\
+        What's important & For Asger it is important to spend his days to the fullest.
+        He is very outgoing, so he goes out with people after work.
+        He hates having to stay overtime. \\
+        Current problem & Asger just got a new job offer, but it's in another city.
+        He isn't sure whether to move out or to commute there.
+        He is also afraid of losing his free time if he has to travel. \\
+        Potential solution & We would want to make a program, where Asger could calculate how long it'd take to commute from
+        where he lives to the new job.
+        He could compare different forms of transport and decide whether it's worth it to commute or if he should move out
+        instead. \\
+        \hline
+    \end{tabularx}
+    \caption{Persona: Asger.}
+    % textidote: ignore begin
+    \label{fig:persona_asger}
+\end{figure}
+% textidote: ignore end
 
 \noindent
-\begin{tabularx}{\textwidth}{ | l X | }
-    \hline
-    &                                                  \\
-    & \includegraphics[width=0.25\textwidth]{josefine} \\
-    Name       & Josefine Madsen                                  \\
-    Age        & 19 years old                                     \\
-    Occupation & Student                                          \\
-    What's important & For Josefine it is important to look after the nature.
-    She's been taught to think green since she was little, so she doesn't like taking public transport and doesn't want
-    to drive a gas car. \\
-    Current problem & Josefine is starting university, but she lives outside the city.
-    She is considering whether to take the S-train, the train or a bus to university.
-    She is also considering buying an electric car. \\
-    Potential solution & We would want to make a program, where Josefine could calculate how much the emissions is made
-    from different forms of transport.
-    She can then compare them and choose what works best for her. \\
-    \hline
-\end{tabularx}
+\begin{figure}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{ | l X | }
+        \hline
+        &                                                  \\
+        & \includegraphics[width=0.25\textwidth]{josefine} \\
+        Name       & Josefine Madsen                                  \\
+        Age        & 19 years old                                     \\
+        Occupation & Student                                          \\
+        What's important & For Josefine, it is important to look after nature.
+        She's been taught to think green since she was little, so she doesn't like taking public transport and doesn't want
+        to drive a gas car. \\
+        Current problem & Josefine is starting university, but she lives outside the city.
+        She is considering whether to take the S-train, the train, or a bus to university.
+        She is also considering buying an electric car. \\
+        Potential solution & We would want to make a program where Josefine could calculate how much emissions are
+        made from different forms of transport.
+        She can then compare them and choose what works best for her. \\
+        \hline
+    \end{tabularx}
+    \caption{Persona: Josefine.}
+    % textidote: ignore begin
+    \label{fig:persona_josefine}
+\end{figure}
+% textidote: ignore end
 
 \noindent
-\begin{tabularx}{\textwidth}{ | l X | }
-    \hline
-    &                                                \\
-    & \includegraphics[width=0.25\textwidth]{martin} \\
-    Name       & Martin Jensen                                  \\
-    Age        & 34 years old                                   \\
-    Occupation & Factory worker                                 \\
-    What's important & For Martin it is important to live a carefree life.
-    He has a family and friends at work, so he's pretty happy with himself. \\
-    Current problem & Martin drives a gas car to work, but he wants to change that for the sake of the environment.
-    He has gotten used to the comfort of his car, but can't afford an electric car.
-    He wonders if public transport could match that. \\
-    Potential solution & We would want to make a program, where Martin can figure out what forms of public transport are
-    most comfortable and most climate friendly. \\
-    \hline
-\end{tabularx}
+\begin{figure}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{ | l X | }
+        \hline
+        &                                                \\
+        & \includegraphics[width=0.25\textwidth]{martin} \\
+        Name       & Martin Jensen                                  \\
+        Age        & 34 years old                                   \\
+        Occupation & Factory worker                                 \\
+        What's important & For Martin it is important to live a carefree life.
+        He has a family and friends at work, so he's pretty happy with himself. \\
+        Current problem & Martin drives a gas car to work, but he wants to change that for the sake of the environment.
+        He has gotten used to the comfort of his car, but can't afford an electric car.
+        He wonders if public transport could match that. \\
+        Potential solution & We would want to make a program, where Martin can figure out what forms of public transport are
+        most comfortable and most climate friendly. \\
+        \hline
+    \end{tabularx}
+    \caption{Persona: Martin.}
+    % textidote: ignore begin
+    \label{fig:persona_martin}
+\end{figure}
+% textidote: ignore end
