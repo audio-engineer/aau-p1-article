@@ -1,6 +1,7 @@
 \section{Output functionality}\label{sec:output-functionality}
 
-The last routine of the software is the~\texttt{Output} routine as mentioned in the flowchart~\ref{fig:output}.
+The last routine of the software is the~\texttt{Output} routine as mentioned in the flowchart in figure
+~\ref{fig:output}.
 As seen in listing~\ref{lst:output-prototype} in line 1, the~\texttt{Output} routine has the~\texttt{TripData} struct
 and the~\texttt{TripScore} struct as input parameters.
 This is because the overall functionality of the functions is to print the information in these structs to the terminal.
@@ -22,12 +23,19 @@ When printing the price, time and environment data and scores, the function~\tex
 void PrintTripScoresAndData(TripData data_arr[], TripScore score_arr[], size_t size);
 \end{lstlisting}
 
-% TODO: Insert section about printing route details
+However, when printing the route details, the function~\texttt{PrintRouteDetails}
+~\ref{lst:printroutedetails-prototype} is used.
+This function iterates over all legs of a given trip and outputs the route details continually until all legs are
+printed.
+
+\begin{lstlisting}[caption={Function prototype for~\texttt{PrintRouteDetails}},
+    label={lst:printroutedetails-prototype}, captionpos=b]
+void PrintRouteDetails(Trips* trips, long choice, TripScore score_arr[], size_t number_trips);
+\end{lstlisting}
 
 Another important part of the~\texttt{Output} routine is the sorting of the scores.
 This sorting are handled by the~\texttt{SortRoutes} function.
-This function sorts the entries in the~\texttt{TripScore} struct which is where the scores for the routes are located.
-
+This function sorts the entries in the~\texttt{TripScore} struct, which is where the scores for the routes are located.
 
 \begin{lstlisting}[caption={Function prototype for~\texttt{SortRoutes}}, label={lst:sortroutes-prototype},
     captionpos=b]

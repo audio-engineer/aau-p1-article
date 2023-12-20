@@ -1,7 +1,8 @@
 \section{Calculating the attributes}\label{sec:calculations}
 
-Before we can evaluate the routes, we need to calculate the attributes of the different routes.
-This is a relatively difficult task, as we need to calculate the distance, price and \unit{CO_{2}} emission.
+Before the program can evaluate the routes, it needs to calculate the attributes of the different routes as mentioned in
+the flowchart in Figure~\ref{fig:evaluate}.
+This is a relatively difficult task, as the program needs to calculate the distance, price and \unit{CO_{2}} emission.
 Some attributes are easier to calculate than others, but they all require some form of calculation.
 
 Rejseplanen has systems in place to calculate some of those attributes, but the API does not provide them.
@@ -11,16 +12,14 @@ enough for our purposes.
 
 \subsection{Calculating distance}\label{subsec:calculating-distance}
 
-We need the distance of a route for our calculations.
-As we don't use a map API, we can't properly calculate the distance between two points.
-This means that we have to ignore roads and instead calculate the distance by the train tracks.
+The program needs the distance of a route for the calculations.
+As we don't use a map API, the program can't properly calculate the distance between two points.
+This means that the program has to ignore roads and instead calculate the distance by the train tracks.
 The problem is that Rejseplanen only provides the coordinates of the stations, not the tracks, why we decided to instead
 calculate the distance between these coordinates.
 The disadvantage of the approach is, that it won't account for curves along the track, as the distance is calculated as
 a straight line between the stations.
 An example of how the distance is going to look can be seen in Figure~\ref{fig:image-google-maps-distance-calculation}.
-
-% TODO: We may have to remove the picture below, as that is not how out final program functions.
 
 \begin{figure}[H]
     \centering
@@ -30,7 +29,7 @@ An example of how the distance is going to look can be seen in Figure~\ref{fig:i
     \label{fig:image-google-maps-distance-calculation}
 \end{figure}
 
-The way we're going to calculate the distance is by using the Haversine formula~\cite{haversine}.
+The way we decided to calculate what the distance, is by using the Haversine formula~\cite{haversine}.
 The formula is used to calculate the distance between two points on a sphere.
 We'll be using the coordinates from Rejseplanen to calculate the distance between two stations.
 The formula is as follows:
@@ -39,7 +38,7 @@ The formula is as follows:
     haversine(\theta) = sin^{2}(\frac{\theta}{2})
 \end{equation}
 
-We will use it to calculate the distance between two points using the following formula:
+The program will use it to calculate the distance between two points using the following formula:
 
 \begin{equation}
     (\frac{d}{r}) = haversine(\phi_{2} - \phi_{1}) + cos(\phi_{1}) \times cos(\phi_{2}) \times haversine(\lambda_{2} - \lambda_{1})
@@ -62,7 +61,7 @@ To calculate the price then is to figure out how many zones a journey passes thr
 Unfortunately, Rejseplanen's API does not provide any information about how many zones a route goes through, why the
 decision was made to calculate the average size for a zone.
 As the zones are not all the same size, the number of zones a route passes through may be slightly off.
-However, this is the best option to circumvent adding further complexity to out program.
+However, this is the best option to circumvent adding further complexity to our program.
 
 Our somewhat primitive solution to achieve an average zone size, is calculated by picking two stations at random and
 counting how many zones the route goes through using DSB's zone map~\cite{price_zones}.
@@ -153,8 +152,8 @@ Here's an example for a Pendlerkort between Odense and Copenhagen, that costs 37
 
 \subsubsection{Car and bike price}
 
-As commuting also entails individuals who do not use public transport, we also need to calculate the price for cars
-and bikes.
+As commuting also entails individuals who do not use public transport, the program also need to calculate the price for
+cars and bikes.
 Included in the calculations for the price of a car is price of gas or electricity, insurance and maintenance.
 As the pricing can vary a lot depending on different circumstances, so we'll use an average price.
 
@@ -171,7 +170,7 @@ Finally, the program multiplies the price by 20, to account for the duration of 
 Below is an example of a commute that is 30 km long with a fuel efficiency of 17 km per liter and a gas price of 14 DKK.
 
 \begin{equation}
-    \frac{30}{17} \times 14 \times 40 = 988 \text{DKK}.
+    \frac{30}{17} \times 14 \times 40 = 988 \text{DKK}.\label{eq:equation}
 \end{equation}
 
 While electric cars don't require gas, they do require electricity.
