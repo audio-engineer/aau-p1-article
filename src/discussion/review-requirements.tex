@@ -7,7 +7,7 @@ and in this section we will evaluate and review them.
 
 \subsection{Hard requirements}\label{subsec:functional-requirements}
 
-As expected, our ``need to have's'' are all implemented and functions as intended.
+As expected, our ``Must-haves'' are all implemented and functions as intended.
 These are the requirements that the program wouldn't function without.
 The program can parse user input, such as the user's desired start and end destination, and the time of departure or
 arrival.
@@ -16,16 +16,16 @@ The program is also able to handle user inputs.
 The program also successfully uses the Rejseplanen API to find trips between the user's desired start and end locations.
 After the program receives the routes from the API, it can compare and evaluate each route according to the user's
 preferences for each attribute.
+The output shows a list of the routes, with the calculated attributes for each route, sorted by the user's preferences.
 
 However, we were not able to implement every attribute that we wanted.
 Health was one of the attributes to be implemented when analyzing the problem, but for reasons discussed in
 Section~\ref{subsec:health-attribute}, it was not implemented.
-% TODO: write about output when finished
 
 \subsection{Soft requirements}\label{subsec:non-functional-requirements}
 
-We couldn't implement all of our ``nice to have's'', as some were out of the scope of our capabilities and of this
-report.
+We couldn't implement all of our ``Should-haves'' and ``Could-haves'', as some were out of the scope of our capabilities
+and of this report.
 While the program can search the Rejseplanen API for trips, we did not manage to implement the ability to select a
 specific stop or station.
 We could in theory create a user input that would allow the user to pick and choose a specific station from their
