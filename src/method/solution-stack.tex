@@ -286,13 +286,14 @@ Reference is made to Section~\ref{sec:workflows-and-routines} for a closer look 
 
 \subsection{Testing}\label{subsec:testing}
 
-As mentioned in Section~\ref{subsec:programming-languages}, the teams uses GoogleTest to evaluate functions and
+As mentioned in Section~\ref{subsec:programming-languages}, the teams uses a testing suite to evaluate functions and
 methods in the code.
+There are many testing frameworks for C and C++, but the team chose to use GoogleTest.
 GoogleTest is a framework for writing C++ tests on a variety of platforms (Linux, Windows, Mac OS X, etc.)
 ~\cite{googletest}.
 GoogleTest is a framework that is used to test C++ code, but it can also be used to test C code.
-The reason why the team chose to use GoogleTest is because of the size of the team and the complexity of the project.
+The reason why the team decided to use GoogleTest is because of the size of the team and the complexity of the project.
 GoogleTest allows for the team to test functions and methods in the code, without including them in main code.
 It does this by creating a separate file for the tests, which is then compiled and run separately from the main code.
-This allows for the team to work on individual parts of the code, without having to worry about interfering with each
-other.
+This allows for the team to work on individual parts of the code, such as functions, without having to worry about
+interfering with each other.
