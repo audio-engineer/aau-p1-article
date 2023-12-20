@@ -1,8 +1,49 @@
-%textidote: ignore begin
 \section{Tests}\label{sec:tests}
-%textidote: ignore end
 
-After the development, we used a qualitative evaluation method to determine the program's usability from the user's
-perspective.
+After the development, the group used a qualitative evaluation method to determine the program's usability from the
+user's perspective.
 The method is called ``Thinking Aloud'', and the goal is to evaluate the program's UX by having the user say all their
 thoughts out loud as they're using the program.
+Due to the time constraints, the group only had time to test the program with one user.
+The user ran two tests, first one was without any guidance, and the second one was with the group's guidance.
+The candidate is Lucas Ilmari Puck Pedersen.
+He lives in Odense, he is 19 years old, and he is currently holding a gap year.
+All the knowledge he had for the first test is that the program is about commuting.
+
+At the first glance of the program, he liked the look of the terminal interface.
+It took him a while to figure out what the text said, he thought it was saying ``COMPUTING'', while it was actually
+saying ``COMMUTING''.
+He was confused about what ``file'' meant, so he started by pressing ``m'' for ``manual''.
+As he doesn't commute a lot, he decided to test the program with a trip from Copenhagen Airport to Aalborg Airport.
+He was then met with the question of what he prioritized the most.
+That was pleasantly surprising to him and thought it was a nice feature.
+He wanted a cheap trip, so he entered a low number.
+In reality however, a higher number resulted in a cheaper price.
+That could be something that the program could communicate better.
+He also wanted a fast trip, so he entered a high number.
+And for sustainability, he entered an average number.
+Listing~\ref{lst:tests-1} shows the result of the first test.
+Lucas decided to choose the third trip out of the four, as it was the cheapest.
+He then looked at the details, took note of the time, and then he was satisfied with the result.
+
+\begin{lstlisting}[label={lst:tests-1}, caption={Copenhagen Airport to Aalborg Airport.}, captionpos=b, language={}]
+Priority 1: ID:   0 P: 113.00 T:  54.00 E:   6.00 --- Ps: 0.84 Ts: 1.00 Es: 1.00 --- Os: 0.96
+Priority 2: ID:   2 P:  93.00 T: 476.00 E: 164.00 --- Ps: 0.90 Ts: 0.00 Es: 0.67 --- Os: 0.42
+Priority 3: ID:   3 P:  61.00 T: 425.00 E: 487.00 --- Ps: 1.00 Ts: 0.12 Es: 0.00 --- Os: 0.34
+Priority 4: ID:   1 P: 394.00 T: 375.00 E:  65.00 --- Ps: 0.00 Ts: 0.24 Es: 0.88 --- Os: 0.32
+\end{lstlisting}
+
+During the second test, Lucas had a little more experience.
+This time he attempted to recreate a real world scenario.
+He has a friend that travels to university every day from Odense to Copenhagen, so he entered those stations as input.
+University starts at 8:00, so he would want to be at the station at 7:30.
+So he entered 7:30 as the time of arrival.
+For the preferences, he prioritized price and time.
+The output can be seen in Listing~\ref{lst:tests-2}.
+He chose the second trip, as it was the fastest.
+
+\begin{lstlisting}[label={lst:tests-2}, caption={Odense St. To Copenhagen St.}, captionpos=b, language={}]
+Priority 1: ID:   1 P:  86.00 T: 395.00 E: 345.00 --- Ps: 1.00 Ts: 0.00 Es: 0.96 --- Os: 0.61
+Priority 2: ID:   2 P: 309.00 T: 198.00 E: 372.00 --- Ps: 0.21 Ts: 1.00 Es: 0.00 --- Os: 0.51
+Priority 3: ID:   0 P: 368.00 T: 325.00 E: 344.00 --- Ps: 0.00 Ts: 0.36 Es: 1.00 --- Os: 0.19
+\end{lstlisting}
