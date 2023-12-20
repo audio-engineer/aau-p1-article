@@ -1,23 +1,20 @@
+% textidote: ignore begin
 \section{Software Requirements Specification}\label{sec:software-requirements-specification}
 % textidote: ignore end
 
 The outline of the requirements of the program is divided into four categories: essential requirements labeled as
-``Must-haves (Mo),'' desirable requirements labeled as ``Should-haves (S),'' and ``Could-haves (Co),'' and
-undesirable requirements as ``Won't-haves (W).''
-The requirements are made by taking use of the MOSCOW model as it narrows our program to what is realistically
+``Must-haves (Mo)'', desirable requirements labeled as ``Should-haves (S)'' and ``Could-haves (Co)'' and
+undesirable requirements as ``Won't-haves (W)''
+The requirements are made by taking use of the MoSCoW model as it narrows our program to what is realistically
 achievable~\cite{hudaib2018requirements}.
-% textidote: ignore begin
-``Must-haves (Mo)'' include all functions of the program that are necessary and must be included and implemented. In
-contrast, ``Should-haves (S)'' and ``Could-haves (Co)'' include functions that are desirable but not critical to
+``Must-haves'' include all functions of the program that are necessary and must be included and implemented.
+In contrast, ``Should-haves'' and ``Could-haves'' include functions that are desirable but not critical to
 the core functionality of the program.
-% textidote: ignore end
-
-The requirements are based on the personas in Figure~\ref{fig:persona_asger},~ Figure~\ref{fig:persona_josefine} and
-Figure~\ref{fig:persona_martin}.
+``Won't-haves'' are functions that are not included in the program, but could be included in the future.
+The requirements are based on the personas from Section~\ref{subsec:persona}.
 
 % textidote: ignore begin
 \subsection{Must-haves (Mo)}\label{subsec:must-haves}
-% textidote: ignore end
 
 \begin{itemize}
     \item Evaluate user input
@@ -27,9 +24,7 @@ Figure~\ref{fig:persona_martin}.
     \item Output calculated data based on a route to the console
 \end{itemize}
 
-% textidote: ignore begin
 \subsection{Should-haves (S)}\label{subsec:should-haves}
-% textidote: ignore end
 
 \begin{itemize}
     \item Search and choose stops
@@ -37,21 +32,19 @@ Figure~\ref{fig:persona_martin}.
     \item Cross-platform compatibility
 \end{itemize}
 
-% textidote: ignore begin
 \subsection{Could-haves (Co)}\label{subsec:could-haves}
-% textidote: ignore end
 
 \begin{itemize}
     \item Sort journeys by health preferences like stress or physical activity
     \item Graphical user interface (GUI)
     \item Desktop/mobile/web application
 \end{itemize}
-% textidote: ignore begin
-\subsection{Won't-haves}\label{subsec:wont-haves}
-% textidote: ignore end
+
+\subsection{Won't-haves (W)}\label{subsec:wont-haves}
 
 \begin{itemize}
     \item Advanced security features like encryption or user authentication
     \item User health tracking or personalized health recommendations
     \item Real-time updates to a shown journey.
 \end{itemize}
+% textidote: ignore end
