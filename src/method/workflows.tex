@@ -14,6 +14,13 @@ The Pull Request would then have to be reviewed by at least 2 other members befo
 After the merge, the person responsible for the changes will reset their branch and reuse it for the next task.
 This workflow was used for both the program and the report.
 
+GitHub has the added benefit of Actions, which is a CI/CD tool.
+The team has set up diffreent actions for the program and the repot.
+After a Commit on the program, GitHub will execute ClangTidy and ClangFormat workflows, that ensure that the code is
+properly formatted and that there are no errors in the code.
+The report has a workflow that will check for grammatical errors using TeXtidote and then compile the report into a PDF
+file, which the team can then download and review.
+
 The team had a weekly meeting with the supervisor, where the team would discuss the progress of the project.
 Every meeting would start with a Code Review, where the team would go through the program and discuss the changes made
 since the last meeting.
