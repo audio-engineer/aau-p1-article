@@ -94,6 +94,8 @@ chosen as the development language.
 
 Another reason was the flexibility that C offers: It can be developed and compiled for a wide range of target systems.
 In other words, C offers cross-platform compatibility both from development and distribution perspectives.
+This would allow for the software to be compiled and distributed for a wide range of operating systems and
+architectures, such as Windows, macOS, Linux.
 
 It was also decided early on that the solution application would be a console application, and C also has the advantage
 that it is an excellent language for console application development.
@@ -175,12 +177,10 @@ In the project we are using Rejseplanens API to get the data we need to make the
 Rejseplanens API is a REST API which means that it uses the HTTP protocol to communicate with the server.
 Rejseplanens API is a public API which just means that anyone can use it, but it is also a free API, so there is no
 charge for using it.
-% textidote: ignore begin
 We use Rejseplanens API to get information about the different times for different kinds of public transportation.
 As with most API's Rejseplanens API has documentation on how to use it and what you can do with it as a developer.
 The documentation can be found here: \href{https://help.rejseplanen.dk/hc/da/articles/214174465-Rejseplanens-API}
 {Rejseplanens API documentation}.
-% textidote: ignore end
 As said before the API follows the REST API design which means that the data we retrieve from the API is in JSON format
 (JavaScript Object Notation).
 This structured format simplifies the process of parsing and interpreting the responses from the API, ensuring that
@@ -218,7 +218,6 @@ The \lstinline{usebus} parameter dictates whether the trip should include buses,
 buses to be included in our trip
 % textidote: ignore end
 
-
 \subsection{Build system}\label{subsec:build-system}
 
 One of the disadvantages of C, though, is that it requires a solid and substantial ecosystem of build tools and
@@ -246,8 +245,6 @@ and frameworks, which will be discussed in Section~\ref{subsec:libraries-and-fra
 
 \subsection{Libraries and frameworks}\label{subsec:libraries-and-frameworks}
 
-% TODO Add more content to this subsection
-
 Very early on in the solution architecture design process, it became clear to the team that external libraries and
 frameworks would have to be used.
 The two primary reasons for this were the fact that C, the chosen programming language for this project, does not
@@ -257,10 +254,8 @@ discussed in the Section~\ref{subsubsec:rest-api}.
 The team therefore decided to introduce two external libraries that would provide additional functions that could
 deal with HTTP and JSON in the C language, namely \lstinline{cURL} and \lstinline{cJSON} respectively.
 
-How the external libraries were linked to and compiled with the software's source library can be seen in figure
-\ref{fig:figure10}.
-
-% TODO Insert CMake dependency, compilation and linkage flowcharts
+How the external libraries were linked to and compiled with the software's source library can be seen in
+Figure~\ref{fig:figure10}.
 
 \begin{figure}
     \centering
@@ -301,16 +296,3 @@ GoogleTest allows for the team to test functions and methods in the code, withou
 It does this by creating a separate file for the tests, which is then compiled and run separately from the main code.
 This allows for the team to work on individual parts of the code, without having to worry about interfering with each
 other.
-
-% textidote: ignore begin
-
-\subsection{CI/CD}\label{subsec:ci/cd}
-
-% TODO Add more content to this subsection
-// GitHub Workflows/Actions
-
-\subsection{Target systems}\label{subsec:target-systems}
-% textidote: ignore end
-
-% TODO Add more content to this subsection
-// Cross-platform (Windows, macOS, Linux)
