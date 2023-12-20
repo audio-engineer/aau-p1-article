@@ -46,8 +46,10 @@ Slagelse
 CalculatePrice
 kParameters
 comfortability
-Won't-haves
 Roskilde
 Nyborg
 PrintRouteDetails
 Ilmari
+MoSCoW
+TeXtidote
+Perspectivation

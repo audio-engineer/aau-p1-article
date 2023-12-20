@@ -24,8 +24,8 @@ An example of how the distance is going to look can be seen in Figure~\ref{fig:i
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/google-maps-distance-calculation}
+    \captionsetup{justification=centering}
     \caption{A route between Copenhagen and Odense. \\ Blue line is Google Maps' distance, black line is our distance.}
-    % TODO fix the text not being centered
     \label{fig:image-google-maps-distance-calculation}
 \end{figure}
 
@@ -142,6 +142,8 @@ The program prompts the user if they're a student, and if they are, this will be
 Calculating the price for Ungdomskort is a lot easier than Pendlerkort, as the method is listed on their
 website~\cite{price_ung}.
 
+If the price of a Pendlerkort under 2487 DKK, then the price of an Ungdomskort will be 663 DKK.
+Otherwise, if the price is higher, then it will have the following calculation:
 The price is calculated by taking the equivalent price for a Pendlerkort and then taking 2487 DKK from it.
 Then the result is halved, and finally 663 DKK is added to the result.
 Here's an example for a Pendlerkort between Odense and Copenhagen, that costs 3750 DKK:
