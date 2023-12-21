@@ -7,7 +7,7 @@ the flowchart.
 To perform these comparisons the \texttt{Evaluate} function, as seen in~\ref{lst:evaluate-prototype}, is used.
 
 \begin{lstlisting}[caption={Function prototype for \texttt{Evaluate}}, label={lst:evaluate-prototype}, captionpos=b]
-void Evaluate(TripData trip_arr[], size_t size_of_struct_array);
+void Evaluate(TripData data_arr[], TripScore score_arr[], size_t size_arr);
 \end{lstlisting}
 
 This routine has an array of the type \texttt{TripData} as an input parameter, which is a struct type as seen in
@@ -17,9 +17,9 @@ This routine has an array of the type \texttt{TripData} as an input parameter, w
 typedef struct TripData {
   int trip_id;
   double price;
-  double comfortability;
+  double health;
   double time;
-  double emissions;
+  double environment;
 } TripData;
 \end{lstlisting}
 
@@ -30,7 +30,8 @@ This function's primary function is to call the function \texttt{CalculateScore}
 
 \begin{lstlisting}[caption={Function prototype for \texttt{CalculateScore}},label={lst:calculatescore-prototype},
     captionpos=b]
-void CalculateScore(TripData trip_data[], const CalculateScoreParameters* calculate_score_parameters);
+void CalculateScore(TripData trip_data[], TripScore trip_score[],
+    const CalculateScoreParameters* calculate_score_parameters);
 \end{lstlisting}
 
 It does this by having the struct array mentioned before and by having an instance of the
@@ -54,7 +55,7 @@ calculation for each instance of the struct for the relevant member passed in th
 
 \begin{lstlisting}[caption={Initialization of \texttt{Score}}, label={lst:score_initialization}, captionpos=b]
 double score = (*(double*)read_member - attribute_smallest) /
-  (attribute_largest - attribute_smallest);
+    (attribute_largest - attribute_smallest);
 \end{lstlisting}
 
 By subtracting the smallest member from the value of each member, as well as the largest member, the values are shifted
@@ -69,13 +70,13 @@ Finally, the \texttt{overall\_score} member is calculated for all the iterations
 
 \begin{lstlisting}[caption={Calculation of \texttt{overall\_score}}, label={lst:overall_score-calculation},
     captionpos=b]
-for (size_t i = 0; i < size_of_struct_array; i++) {
-  trip_arr[i].overall_score =
-      GetUserPreference("price") * trip_arr[i].price_score +
-      GetUserPreference("health") * trip_arr[i].comfortability_score +
-      GetUserPreference("time") * trip_arr[i].time_score +
-      GetUserPreference("environment") * trip_arr[i].emissions_score;
-}
+for (size_t i = 0; i < size_arr; i++) {
+  score_arr[i].trip_id = data_arr[i].trip_id;
+  score_arr[i].overall_score =
+      GetUserPreference("price") * score_arr[i].price_score +
+      GetUserPreference("health") * score_arr[i].health_score +
+      GetUserPreference("time") * score_arr[i].time_score +
+      GetUserPreference("environment") * score_arr[i].environment_score;
 \end{lstlisting}
 
 
